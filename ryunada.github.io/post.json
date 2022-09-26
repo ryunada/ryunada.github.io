@@ -1,0 +1,49 @@
+POST = {
+    "BLOG" : [
+        {
+            link: "https://github.com/ryunada/self_blog",
+            img: "",
+            title:1,
+            content:"test1",
+            date: "Sept 23 2022"
+        },
+        {
+            link: "https://github.com/ryunada/self_blog",
+            img: "",
+            title:2,
+            content:"text2",
+            date: "Mar 4 2022"
+        },
+        {
+            link: "https://github.com/ryunada/self_blog",
+            img: "",
+            title:3,
+            content:"text2",
+            date: "Mar 4 2022"
+        },
+        {
+            link: "https://github.com/ryunada/self_blog",
+            img: "",
+            title:4,
+            content:"text2",
+            date: "Mar 4 2022"
+        }
+    ],
+
+    "PROJECT" : [
+        {
+            link: "https://github.com/ryunada/self_blog",
+            img: "",
+            title:1,
+            content:"self_blog",
+            date: "Sept 23 2022"
+        },
+        {
+            link: "https://github.com/ryunada/self_blog",
+            img: "",
+            title:2,
+            content:"text2",
+            date: "Mar 4 2022"
+        }
+    ]
+}
