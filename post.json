@@ -12,14 +12,14 @@ POST = {
             img: "",
             title: "Title2",
             content:"Project2",
-            date: "Mar 4 2022"
+            date: "Jun 4 2022"
         },
         {
             link: "https://github.com/ryunada/Bigdata_MiniProject3",
             img: "",
             title: "Title3",
             content:"Project3",
-            date: "Mar 4 2022"
+            date: "Mar 6 2022"
         },
         {
             link: "https://github.com/ryunada/self_blog",
@@ -33,14 +33,14 @@ POST = {
             img: "",
             title: "Title4",
             content:"Project4",
-            date: "Mar 5 2022"
+            date: "Mar 5 2021"
         },
         {
             link: "https://github.com/ryunada/self_blog",
             img: "",
             title: "Title4",
             content:"Project4",
-            date: "Mar 17 2022"
+            date: "Mar 17 2017"
         }
     ],
 
