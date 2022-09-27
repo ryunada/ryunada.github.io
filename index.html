@@ -94,7 +94,7 @@
                 <ul class="nav nav-pills nav-stacked">
                     <li><a href="#" class="active-page hover-effect" name="home"><i class="fa-fw fa fa-home"
                                 aria-hidden="true"></i>Home</a></li>
-                    <li><a href="#" class="hover-effect" name="projects"><i class="fa-fw fa fa-calendar"
+                    <li><a href="#" class="hover-effect" name="calendar"><i class="fa-fw fa fa-calendar"
                                 aria-hidden="true"></i>Calendar</a></li>
                     <li><a href="#" class="hover-effect" name="archive"><i class="fa-fw fa fa-archive"
                                 aria-hidden="true"></i>Archive</a></li>
@@ -182,90 +182,12 @@
                     </ul>
                 </div>
             </div>
-            <div class="section projects-section">
+            <div class="section calendar-section">
                 <div class = "multipurpose-container">
                     <!-- Calendar 시작 -->
-                    <h1>Calendar</h1>
+                    <h1>Calendar</h1> 
                     <div class="archives">
-                        <div class="year">
-                            <h6>2022</h6>
-                            <div class="month">
-                                <h6>월</h6>
-                                <ul>
-                                    <li> 
-                                        <span>일</span>
-                                        <a href="#">블라블라</a>
-                                        </li>
-                                </ul>
-
-                            </div>
-                        </div>
-                        <div class="year">
-                            <h6>2021</h6>
-                            <div class="month">
-                                <h6>월</h6>
-                                <ul>
-                                    <li> 
-                                        <span>일</span>
-                                        <a href="#">블라블라</a>
-                                        </li>
-                                </ul>
-                                
-                            </div>
-                            
-                        </div>
-                        <div class="year">
-                            <h6>2020</h6>
-                            <div class="month">
-                                <h6>월</h6>
-                                <ul>
-                                    <li> 
-                                        <span>일</span>
-                                        <a href="#">블라블라</a>
-                                        </li>
-                                </ul>
-                                
-                            </div>
-                        </div>
-                        <div class="year">
-                            <h6>2019</h6>
-                            <div class="month">
-                                <h6>월</h6>
-                                <ul>
-                                    <li> 
-                                        <span>일</span>
-                                        <a href="#">블라블라</a>
-                                        </li>
-                                </ul>
-                                
-                            </div>
-                        </div>
-                        <div class="year">
-                            <h6>2018</h6>
-                            <div class="month">
-                                <h6>월</h6>
-                                <ul>
-                                    <li> 
-                                        <span>일</span>
-                                        <a href="#">블라블라</a>
-                                        </li>
-                                </ul>
-                                
-                            </div>
-                        </div>
-                        <div class="year">
-                            <h6>2017</h6>
-                            <div class="month">
-                                <h6>월</h6>
-                                <ul>
-                                    <li> 
-                                        <span>일</span>
-                                        <a href="#">블라블라</a>
-                                        </li>
-                                </ul>
-                                
-                            </div>
-                        </div>
+                       
                     </div>
                     <!-- Calender 끄읕 -->
                     
@@ -281,6 +203,7 @@
             <!-- <div class="section links-section">
                 links
             </div> -->
+            <!-- 프로필 -->
             <div class="section about-section">
                 <!-- About 프로필 -->
                 <div class="multipurpose-container about-container">
@@ -320,8 +243,10 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="about-msg markdown-style">
-                                <h3 id="hello">제모옥</h3>
-                                <p>블라블라</p>
+                                <h3 id="hello">My Skill</h3>
+                                <p>Python</p>
+                                <p>SQL</p>
+
                             </div>
                         </div>
                     </div>
@@ -500,8 +425,9 @@
                 $('.main-container .section').hide();
                 $('.main-container .' + section_name).show();
             })
-
+            
             let PostData = JSON.parse(JSON.stringify(POST))
+            // Peoject
             for (let blog of PostData.BLOG) {
                 let blog_contents = `
                                         <div class="thumbnails">
@@ -521,6 +447,68 @@
 
                 $('.blog-section .post-list-container').append(blog_contents)
             }
+            // Calender
+            let calendar_contents =""
+
+            for (let i in PostData.BLOG) {
+                let date = (PostData.BLOG[i].date).split(" ");
+                if (i == 0) {
+                    calendar_contents +=
+                        `
+                        <div class="year">
+                            <h6>${date[2]}</h6>
+
+                            <div class="month">
+                                <h6>${date[0]}</h6>
+                                <ul>
+                                    <li> 
+                                        <span>${date[1]} </span>
+                                        <a href="${PostData.BLOG[i].link}">${PostData.BLOG[i].title}</a>
+                                    </li>
+                                    
+                        `
+                } else if(date[2] == (PostData.BLOG[i-1].date).split(" ")[2]) {
+                    if (date[0] == (PostData.BLOG[i-1].date).split(" ")[0]) {
+                       calendar_contents +=  `
+                                    <li>
+                                        <span>${date[1]} </span>
+                                        <a href="${PostData.BLOG[i].link}">${PostData.BLOG[i].title}</a>
+                                    </li>
+                        `
+                    } else {
+                        calendar_contents +=  `
+                                </ul>
+                            </div>
+                            <div class="month">
+                                <h6>${date[0]}</h6>
+                                <ul>
+                                    <li> 
+                                        <span>${date[1]} </span>
+                                        <a href="${PostData.BLOG[i].link}">${PostData.BLOG[i].title}</a>
+                                    </li>
+                        `
+                    }
+                } else {
+                    calendar_contents += `
+                            </div>
+                        <div class="year">
+                            <h6>${date[2]}</h6>
+
+                            <div class="month">
+                                <h6>${date[0]}</h6>
+                                <ul>
+                                    <li> 
+                                        <span>${date[1]} </span>
+                                        <a href="${PostData.BLOG[i].link}">${PostData.BLOG[i].title}</a>
+                                    </li>
+                            `
+                }
+            }
+            calendar_contents += '</ul></div></div>'
+            $('.calendar-section .multipurpose-container .archives').append(calendar_contents)
+                
+
+
         });
     </script>
 </body>
