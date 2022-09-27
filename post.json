@@ -31,14 +31,14 @@ POST = {
         {
             link: "https://github.com/ryunada/self_blog",
             img: "",
-            title: "Title4",
+            title: "Title5",
             content:"Project4",
             date: "Mar 5 2021"
         },
         {
             link: "https://github.com/ryunada/self_blog",
             img: "",
-            title: "Title4",
+            title: "Title6",
             content:"Project4",
             date: "Mar 17 2017"
         }
