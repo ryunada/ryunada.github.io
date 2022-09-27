@@ -51,12 +51,12 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-    <link href=". /main.css" rel="stylesheet">
-    <link href=". /nav-media.css" rel="stylesheet">
+    <link href="./main.css" rel="stylesheet">
+    <link href="./nav-media.css" rel="stylesheet">
 </head>
 
 <body data-color-scheme="dark">
-    <script src=". /color-mode.js" data-mode="false"></script>
+    <script src="./color-mode.js" data-mode="false"></script>
     <nav class="navbar navbar-default top-nav">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed pull-left top-nav-menu-toggle" data-toggle="collapse"
@@ -78,17 +78,17 @@
 
     <nav id="side-nav-container">
         <div class="side-nav">
-            <div class="side-nav-brand"> <img src=". /profile_img.jfif" alt="프로필 사진">
+            <div class="side-nav-brand"> <img src="./profile_img.jfif" alt="프로필 사진">
                 <div class="brand-holder">
-                    <a href="https:/ /" translate="no">Ryu</a>
+                    <a href="https:ryunada.github.io" translate="no">Ryu</a>
                 </div>
                 <p>&nbsp;Sample</p><br>
                 <div class="lang-switch">
                     <p>[&nbsp;</p>
                     <ul translate="no">
-                        <li lang="en-US"><a href="https:/ /"
+                        <li lang="en-US"><a href="https:/ryunada.github.io/"
                                 class="active-page hover-effect">En&nbsp;</a></li>
-                        <li lang="ko-KR"><a href="https:/ /kr/" class="hover-effect">KR&nbsp;</a></li>
+                        <li lang="ko-KR"><a href="https:/ryunada.github.io/kr/" class="hover-effect">KR&nbsp;</a></li>
                     </ul>
                     <p>]</p>
                 </div>
@@ -158,7 +158,7 @@
             <div class="section home-section">
                 <div class="multipurpose-container home-heading-container">
                     <div class="home-heading"
-                        style="background-image: url('. /home-heading.jpg');">
+                        style="background-image: url('./home-heading.jpg');">
                         <div class="home-heading-message"> Welcome <br> Ryu</div>
                     </div>
                     <div class="home-intro-text markdown-style">
@@ -216,9 +216,9 @@
                             target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top"
                             data-tooltip-no-hide="" title=""
                             data-original-title="Except where otherwise noted, content on this web site is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.">
-                            <img src=". /cc.svg" alt="cc" width="12" height="12">&nbsp;
-                            <img src=". /by.svg" alt="by" width="12" height="12">&nbsp;
-                            <img src=". /sa.svg" alt="sa" width="12" height="12">&nbsp;
+                            <img src="./cc.svg" alt="cc" width="12" height="12">&nbsp;
+                            <img src="./by.svg" alt="by" width="12" height="12">&nbsp;
+                            <img src="./sa.svg" alt="sa" width="12" height="12">&nbsp;
                             <p>Some rights reserved.</p></a>
                     </div>
                     <p class="footer-powered"><span>Pwrd by </span><a
@@ -227,7 +227,7 @@
                 </footer>
             </div>
         </div>
-        <div class="scroll-to-top-container"> <a id="scroll-to-top" href="https:/ /#main-wrapper"
+        <div class="scroll-to-top-container"> <a id="scroll-to-top" href="https:/ryunada.github.io/#main-wrapper"
                 class="hover-effect"><i class="fa fa-angle-up"></i></a></div>
     </div>
     <!-- 
@@ -247,8 +247,8 @@
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 
-    <script src=" /main.js"></script>
-    <script src=" /simple-jekyll-search-1.9.2.min.js"></script>
+    <script src="/main.js"></script>
+    <script src="/simple-jekyll-search-1.9.2.min.js"></script>
     <!--
     <script> function loadSearch(jsonData, searchParam) { if (!jsonData) jsonData = '/query/search.json'; var searchInput = document.getElementById('search-box'); const simpleJekyllSearch = SimpleJekyllSearch({ searchInput: searchInput, resultsContainer: document.getElementById('search-results'), json: jsonData, searchResultTemplate: '<li> <a href="{url}"><div><div class="title">{title}</div><div class="date">{date}</div><div style="clear: both;"></div></div></a></li>', noResultsText: '<li>No results found.</li>', limit: 10, fuzzy: false, formSubmit: document.getElementById('searchbox-form') }); if (searchParam) { searchInput.value = searchParam; searchInput.focus(); searchInput.disabled = false; setTimeout(function () { simpleJekyllSearch.search(searchParam); }, 400); } } </script>
     <script> function isEmpty(value) { if (value === "" || value === null || typeof value === "undefined") return true; return false; } function getQueryParam(param, mach = true) { var queryString = window.location.search.substring(1); if (isEmpty(queryString)) return null; var queries = queryString.split("&"); for (var i in queries) { var pair = decodeURIComponent(queries[i]).split("="); if (mach == true) { if (pair[0] == param) { if (isEmpty(pair[1]) === false) return pair[1]; } } else { return pair; } break; } return null; } const searchParam = getQueryParam('search'); (async () => { let resp = await fetch('/query/search.json'); if (!resp.ok) return; let jsonData = await resp.json(); loadSearch(jsonData, searchParam); })(); </script>
@@ -357,7 +357,7 @@
         </div>
     </div>
     -->
-    <script src=" /post.json" type="text/javascript"></script>
+    <script src="/post.json" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
         $(document).ready(function () {
