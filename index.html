@@ -83,15 +83,6 @@
                     <a href="https:ryunada.github.io" translate="no">Ryu</a>
                 </div>
                 <p>&nbsp;Sample</p><br>
-                <div class="lang-switch">
-                    <p>[&nbsp;</p>
-                    <ul translate="no">
-                        <li lang="en-US"><a href="https:/ryunada.github.io/"
-                                class="active-page hover-effect">En&nbsp;</a></li>
-                        <li lang="ko-KR"><a href="https:/ryunada.github.io/kr/" class="hover-effect">KR&nbsp;</a></li>
-                    </ul>
-                    <p>]</p>
-                </div>
             </div>
 
             <br>
@@ -192,7 +183,93 @@
                 </div>
             </div>
             <div class="section projects-section">
-                Calendar
+                <div class = "multipurpose-container">
+                    <!-- Calendar 시작 -->
+                    <h1>Calendar</h1>
+                    <div class="archives">
+                        <div class="year">
+                            <h6>2022</h6>
+                            <div class="month">
+                                <h6>월</h6>
+                                <ul>
+                                    <li> 
+                                        <span>일</span>
+                                        <a href="#">블라블라</a>
+                                        </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="year">
+                            <h6>2021</h6>
+                            <div class="month">
+                                <h6>월</h6>
+                                <ul>
+                                    <li> 
+                                        <span>일</span>
+                                        <a href="#">블라블라</a>
+                                        </li>
+                                </ul>
+                                
+                            </div>
+                            
+                        </div>
+                        <div class="year">
+                            <h6>2020</h6>
+                            <div class="month">
+                                <h6>월</h6>
+                                <ul>
+                                    <li> 
+                                        <span>일</span>
+                                        <a href="#">블라블라</a>
+                                        </li>
+                                </ul>
+                                
+                            </div>
+                        </div>
+                        <div class="year">
+                            <h6>2019</h6>
+                            <div class="month">
+                                <h6>월</h6>
+                                <ul>
+                                    <li> 
+                                        <span>일</span>
+                                        <a href="#">블라블라</a>
+                                        </li>
+                                </ul>
+                                
+                            </div>
+                        </div>
+                        <div class="year">
+                            <h6>2018</h6>
+                            <div class="month">
+                                <h6>월</h6>
+                                <ul>
+                                    <li> 
+                                        <span>일</span>
+                                        <a href="#">블라블라</a>
+                                        </li>
+                                </ul>
+                                
+                            </div>
+                        </div>
+                        <div class="year">
+                            <h6>2017</h6>
+                            <div class="month">
+                                <h6>월</h6>
+                                <ul>
+                                    <li> 
+                                        <span>일</span>
+                                        <a href="#">블라블라</a>
+                                        </li>
+                                </ul>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Calender 끄읕 -->
+                    
+                </div>
             </div>
             <div class="section archive-section">
                 archive
@@ -212,18 +289,19 @@
             <div class="footer-container">
                 <footer translate="no">
                     <div class="footer-text footer-text-centered long-copyright">
-                        <p>© 2022 Ryu.</p><a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"
+                        <p>© 2022 Ryu.</p>
+                        <!-- <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"
                             target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top"
                             data-tooltip-no-hide="" title=""
                             data-original-title="Except where otherwise noted, content on this web site is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.">
                             <img src="./cc.svg" alt="cc" width="12" height="12">&nbsp;
                             <img src="./by.svg" alt="by" width="12" height="12">&nbsp;
                             <img src="./sa.svg" alt="sa" width="12" height="12">&nbsp;
-                            <p>Some rights reserved.</p></a>
+                            <p>Some rights reserved.</p></a> -->
                     </div>
-                    <p class="footer-powered"><span>Pwrd by </span><a
+                    <!-- <p class="footer-powered"><span>Pwrd by </span><a
                             href="https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme" target="_blank"
-                            rel="noopener noreferrer">Mr. Green</a></p>
+                            rel="noopener noreferrer">Mr. Green</a></p> -->
                 </footer>
             </div>
         </div>
@@ -357,6 +435,16 @@
         </div>
     </div>
     -->
+    <!-- 검색 기능 수정해야함 -->
+    <div class="searchbox-container">
+        <form id="searchbox-form" autocomplete="off"> <input type="search" id="search-box" placeholder="Search"
+                onkeyup="if(this.value!==&#39;&#39;){document.getElementById(&#39;search-results&#39;).style.display = &#39;block&#39;;}"
+                onfocusout="this.value=&#39;&#39;;"
+                onblur="setTimeout(function(){ document.getElementById(&#39;search-results&#39;).style.display = &#39;none&#39;; }, 100);">
+            <ul id="search-results"></ul>
+        </form>
+    </div>
+
     <script src="/post.json" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
