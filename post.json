@@ -3,30 +3,44 @@ POST = {
         {
             link: "https://github.com/ryunada/self_blog",
             img: "",
-            title:1,
-            content:"test1",
+            title: "Title1",
+            content:"Project1",
             date: "Sept 23 2022"
         },
         {
             link: "https://github.com/ryunada/self_blog",
             img: "",
-            title:2,
-            content:"text2",
-            date: "Mar 4 2022"
+            title: "Title2",
+            content:"Project2",
+            date: "Jun 4 2022"
         },
         {
             link: "https://github.com/ryunada/Bigdata_MiniProject3",
             img: "",
-            title:3,
-            content:"text2",
+            title: "Title3",
+            content:"Project3",
+            date: "Mar 6 2022"
+        },
+        {
+            link: "https://github.com/ryunada/self_blog",
+            img: "",
+            title: "Title4",
+            content:"Project4",
             date: "Mar 4 2022"
         },
         {
             link: "https://github.com/ryunada/self_blog",
             img: "",
-            title:4,
-            content:"text2",
-            date: "Mar 4 2022"
+            title: "Title4",
+            content:"Project4",
+            date: "Mar 5 2021"
+        },
+        {
+            link: "https://github.com/ryunada/self_blog",
+            img: "",
+            title: "Title4",
+            content:"Project4",
+            date: "Mar 17 2017"
         }
     ],
 
