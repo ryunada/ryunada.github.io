@@ -15,7 +15,7 @@ POST = {
             date: "Mar 4 2022"
         },
         {
-            link: "https://github.com/ryunada/self_blog",
+            link: "https://github.com/ryunada/Bigdata_MiniProject3",
             img: "",
             title:3,
             content:"text2",
