@@ -28,7 +28,6 @@ POST = {
             agency : "고용노동부 & 한국품질재단(KFQ)",
             date: "Aug 3 2022 ~ Aug 5 2022",
             type: "project"
-
         },
         {
             link: "#",
@@ -39,6 +38,15 @@ POST = {
             date: "Jun 27 2022 ~ ",
             type: "blog"
         },
+        // {
+        //     link: "#",
+        //     img: "",
+        //     title: "SQL개발자(SQLD자격)",
+        //     content:"certificate",
+        //     Agency : "한국데이터베이스진흥센터",
+        //     date: "Jun * 2022",
+        //     type: "blog"
+        // },
         {
             link: "#",
             img: "",
@@ -49,9 +57,18 @@ POST = {
             type: "blog"
 
         },
+        // {
+        //     link: "#",
+        //     img: "",
+        //     title: "정보처리기사(필기)",
+        //     content:"certificate",
+        //     Agency : "한국산업인력공단",
+        //     date: "Mar * 2022",
+        //     type: "blog"
+        // },
         {
             link: "https://github.com/ryunada/The-Seoul-Metropolitan-Government-s-Vulnerable-Project",
-            img: "",
+            img: "/img/Project_img/Seoul_Project.png",
             title: "서울시 취약계층 노인의 인구변화",
             content:"Competition",
             agency : "안동대학교 정보통계학과 동아리",
@@ -66,8 +83,26 @@ POST = {
             Agency : "Sw융합교육원",
             date: "Jan * 2022 ~ Jan * 2022",
             type: "blog"
-        },
+        }, 
         
+        // {
+        //     link: "#",
+        //     img: "",
+        //     title: "빅데이터 관리사",
+        //     content:"education completion",
+        //     Agency : "한국 품질재단",
+        //     date: "Apr * 2022",
+        //     type: "blog"
+        // },       
+        // {
+        //     link: "#",
+        //     img: "",
+        //     title: "GAIQ(Google Analytics Individual Qualification)",
+        //     content:"certificate",
+        //     Agency : "Google",
+        //     date: "Dec * 2021",
+        //     type: "blog"
+        // },
         {
             link: "#",
             img: "",
@@ -78,6 +113,15 @@ POST = {
             type: "blog"
         },
         {
+            link: "https://github.com/ryunada/Data_Analytic_-Crawling-Team_Project-",
+            img: "/img/Project_img/SW_BigData[Team_Project].jpg",
+            title: "[ 팀프로젝트 : 현재 4차 산업 혁명으로 빅데이터에 대한 관심 ]",
+            content:"Team Project",
+            Agency : "SW융합교육원",
+            date: "Sep * 2021 ~ Nov * 2021",
+            type: "project"
+        },
+        {
             link: "#",
             img: "",
             title: "SW비전공자를 위한 디지털 마케팅 데이터 분석 시각화 양성 과정[60시간]",
@@ -86,15 +130,7 @@ POST = {
             date: "Sep * 2021 ~ Nov * 2021",
             type: "blog"
         },
-        {
-            link: "https://github.com/ryunada/Data_Analytic_-Crawling-Team_Project-",
-            img: "",
-            title: "[ 팀프로젝트 : 현재 4차 산업 혁명으로 빅데이터에 대한 관심 ]",
-            content:"Competition",
-            Agency : "SW융합교육원",
-            date: "Sep * 2021 ~ Nov * 2021",
-            type: "project"
-        },
+        
         {
             link: "#",
             img: "/img/Project_img/Static_Promotion.png",
@@ -116,30 +152,58 @@ POST = {
         {
             link: "#",
             img: "",
-            title: "",
+            title: "통계청인턴",
             content:"Competition",
-            Agency : "",
-            date: "",
+            Agency : "동북지방통계청",
+            date: "Jul * 2021 ~ Aug * 2021",
+            type: "blog"
+        },
+        
+        // {
+        //     link: "#",
+        //     img: "",
+        //     title: "SAS Certified Base Programmer Credential",
+        //     content:"certificate",
+        //     Agency : "SAS Institute",
+        //     date: "Jun * 2021",
+        //     type: "blog"
+        // },
+        {
+            link: "#",
+            title: "홈쇼핑 사이트 만들기 Front-End[Team_Project]",
+            content:"Team Project",
+            Agency : "SW융합교육원",
+            date: "Jul * 2021 ~ Jul * 2021",
             type: "project"
         },
+        // {
+        //     link: "#",
+        //     img: "",
+        //     title: "사회조사분석사2급",
+        //     content:"certificate",
+        //     Agency : "한국산업인력공단",
+        //     date: "Jun * 2021",
+        //     type: "blog"
+        // },
         {
             link: "#",
             img: "",
-            title: "",
-            content:"Competition",
-            Agency : "",
-            date: "",
-            type: "project"
+            title: "2021 SW비전공자를 위한 웹개발 양성 과정[200시간]",
+            content:"Education Competition",
+            Agency : "SW융합교육원",
+            date: "Apr 12 2021 ~ Jul 31 2021",
+            type: "blog"
         },
         {
-            link: "#",
-            img: "",
-            title: "",
+            link: "https://github.com/ryunada/Weather_Competition",
+            img: "/img/Project_img/Weather_Competition.jpg",
+            title: "기상청 빅데이터 공모전",
             content:"Competition",
-            Agency : "",
-            date: "",
+            Agency : "기상청",
+            date: "Apr * 2021 ~ Jun * 2021",
             type: "project"
         },
+        
         {
             link: "#",
             img: "",
