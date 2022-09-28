@@ -7,7 +7,8 @@ POST = {
             content:"기업맞춤형 빅데이터 분석가 양성과정",
             agency : "고용노동부 & 한국품질재단(KFQ)",
             date: "Aug 18 2022 ~ Aug 19 2022",
-            type: "project"
+            type: "project",
+            Main: 3
 
         },
         {
@@ -28,6 +29,7 @@ POST = {
             agency : "고용노동부 & 한국품질재단(KFQ)",
             date: "Aug 3 2022 ~ Aug 5 2022",
             type: "project"
+            
         },
         {
             link: "#",
@@ -73,7 +75,8 @@ POST = {
             content:"Competition",
             agency : "안동대학교 정보통계학과 동아리",
             date: "Mar * 2022 ~ Apr * 2022",
-            type: "project"
+            type: "project",
+            Main : 2
         },
         {
             link: "#",
@@ -201,7 +204,8 @@ POST = {
             content:"Competition",
             Agency : "기상청",
             date: "Apr * 2021 ~ Jun * 2021",
-            type: "project"
+            type: "project",
+            Main : 1
         },
         
         {
