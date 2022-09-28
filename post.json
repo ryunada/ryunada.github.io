@@ -8,7 +8,6 @@ POST = {
             agency : "고용노동부 & 한국품질재단(KFQ)",
             date: "Aug 18 2022 ~ Aug 19 2022",
             type: "project",
-
         },
         {
             link: "https://github.com/ryunada/Bigdata_MiniProject2",
