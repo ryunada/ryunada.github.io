@@ -1,47 +1,154 @@
 POST = {
     "BLOG" : [
         {
-            link: "https://github.com/ryunada/self_blog",
-            img: "",
-            title: "Title1",
-            content:"Project1",
-            date: "Sept 23 2022"
-        },
-        {
-            link: "https://github.com/ryunada/self_blog",
-            img: "",
-            title: "Title2",
-            content:"Project2",
-            date: "Jun 4 2022"
-        },
-        {
             link: "https://github.com/ryunada/Bigdata_MiniProject3",
-            img: "",
-            title: "Title3",
-            content:"Project3",
-            date: "Mar 6 2022"
+            img: "/img/Project_img/Bigdata_Miniproject3.png",
+            title: "MiniProject3 [ Iowa 주류 판매 데이터 ]",
+            content:"기업맞춤형 빅데이터 분석가 양성과정",
+            agency : "고용노동부 & 한국품질재단(KFQ)",
+            date: "Aug 18 2022 ~ Aug 19 2022",
+            type: "project"
+
         },
         {
-            link: "https://github.com/ryunada/self_blog",
-            img: "",
-            title: "Title4",
-            content:"Project4",
-            date: "Mar 4 2022"
+            link: "https://github.com/ryunada/Bigdata_MiniProject2",
+            img: "/img/Project_img/Bigdata_Miniproject2.png",
+            title: "MiniProject2 [ COVID-19 확진자, 사망자 ]",
+            content:"기업맞춤형 빅데이터 분석가 양성과정",
+            agency : "고용노동부 & 한국품질재단(KFQ)",
+            date: "Aug 8 2022 ~ Aug 11 2022",
+            type: "project"
+
         },
         {
-            link: "https://github.com/ryunada/self_blog",
-            img: "",
-            title: "Title5",
-            content:"Project4",
-            date: "Mar 5 2021"
+            link: "https://github.com/ryunada/Bigdata_MiniProject1",
+            img: "/img/Project_img/Bigdata_Miniproject1.png",
+            title: "MiniProject1 [ 강수량 데이터 분석 및 시각화 ]",
+            content:"기업맞춤형 빅데이터 분석가 양성과정",
+            agency : "고용노동부 & 한국품질재단(KFQ)",
+            date: "Aug 3 2022 ~ Aug 5 2022",
+            type: "project"
+
         },
         {
-            link: "https://github.com/ryunada/self_blog",
+            link: "#",
             img: "",
-            title: "Title6",
-            content:"Project4",
-            date: "Mar 17 2017"
-        }
+            title: "기업맞춤형 빅데이터 분석가 양성과정(Start) [960H]",
+            content:"education completion",
+            agency : "고용노동부 & 한국품질재단(KFQ)",
+            date: "Jun 27 2022 ~ ",
+            type: "blog"
+        },
+        {
+            link: "#",
+            img: "",
+            title: "2022년도 1학기 비교과 강좌 심화 과정 : MySQL 데이터베이스 [24H]",
+            content:"education completion",
+            Agency : "Sw융합교육원",
+            date: "May 2 2022 ~ May 25 2022",
+            type: "blog"
+
+        },
+        {
+            link: "https://github.com/ryunada/The-Seoul-Metropolitan-Government-s-Vulnerable-Project",
+            img: "",
+            title: "서울시 취약계층 노인의 인구변화",
+            content:"Competition",
+            agency : "안동대학교 정보통계학과 동아리",
+            date: "Mar * 2022 ~ Apr * 2022",
+            type: "project"
+        },
+        {
+            link: "#",
+            img: "",
+            title: "2022년 겨울방학 인공지능 집중 캠프(파이썬+딥러닝)[21시간]",
+            content:"education completion",
+            Agency : "Sw융합교육원",
+            date: "Jan * 2022 ~ Jan * 2022",
+            type: "blog"
+        },
+        
+        {
+            link: "#",
+            img: "",
+            title: "구글 마케팅 플랫폼을 활용한 데이터 분석 및 시각화 입문",
+            content:"education completion",
+            Agency : "안동대학교 취업창업 진로본부",
+            date: "Dec * 2021 ~ Dec * 2021",
+            type: "blog"
+        },
+        {
+            link: "#",
+            img: "",
+            title: "SW비전공자를 위한 디지털 마케팅 데이터 분석 시각화 양성 과정[60시간]",
+            content:"education competition",
+            Agency : "SW융합교육원",
+            date: "Sep * 2021 ~ Nov * 2021",
+            type: "blog"
+        },
+        {
+            link: "https://github.com/ryunada/Data_Analytic_-Crawling-Team_Project-",
+            img: "",
+            title: "[ 팀프로젝트 : 현재 4차 산업 혁명으로 빅데이터에 대한 관심 ]",
+            content:"Competition",
+            Agency : "SW융합교육원",
+            date: "Sep * 2021 ~ Nov * 2021",
+            type: "project"
+        },
+        {
+            link: "#",
+            img: "/img/Project_img/Static_Promotion.png",
+            title: "학과 홍보 공모전(포스터)",
+            content:"Competition",
+            Agency : "안동대학교 정보통계학과",
+            date: "Sep * 2021 ~ Sep * 2021",
+            type: "blog"
+        },
+        {
+            link: "#",
+            img: "",
+            title: "경북 지역문제 해결 아이디어 공모전",
+            content:"Competition",
+            Agency : "안동대학교",
+            date: "Aug * 2021 ~ Aug * 2021",
+            type: "blog"
+        },
+        {
+            link: "#",
+            img: "",
+            title: "2021 SW비전공자를 위한 웹개발 양성 과정[200시간]",
+            content:"education competition",
+            Agency : "SW융합교육원",
+            date: "Apr 12 2021 ~ Jul 31 2021",
+            type: "blog"
+        },
+        {
+            link: "#",
+            img: "",
+            title: "",
+            content:"Competition",
+            Agency : "",
+            date: "",
+            type: "project"
+        },
+        {
+            link: "#",
+            img: "",
+            title: "",
+            content:"Competition",
+            Agency : "",
+            date: "",
+            type: "project"
+        },
+        {
+            link: "#",
+            img: "",
+            title: "",
+            content:"Competition",
+            Agency : "",
+            date: "",
+            type: "project"
+        },
     ],
 
     "PROJECT" : [
