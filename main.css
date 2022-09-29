@@ -2050,7 +2050,7 @@ footer {
 @media screen and (max-width: 500px) {
     .new-posts-container {
         margin-left: unset;
-        margin-right: unset
+        margin-right: unset;
     }
 }
 

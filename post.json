@@ -8,8 +8,6 @@ POST = {
             agency : "고용노동부 & 한국품질재단(KFQ)",
             date: "Aug 18 2022 ~ Aug 19 2022",
             type: "project",
-            Main: 3
-
         },
         {
             link: "https://github.com/ryunada/Bigdata_MiniProject2",
@@ -19,7 +17,6 @@ POST = {
             agency : "고용노동부 & 한국품질재단(KFQ)",
             date: "Aug 8 2022 ~ Aug 11 2022",
             type: "project"
-
         },
         {
             link: "https://github.com/ryunada/Bigdata_MiniProject1",
@@ -71,7 +68,7 @@ POST = {
         {
             link: "https://github.com/ryunada/The-Seoul-Metropolitan-Government-s-Vulnerable-Project",
             img: "/img/Project_img/Seoul_Project.png",
-            title: "서울시 취약계층 노인의 인구변화",
+            title: "팀프로젝트 [ 서울시 취약계층 노인의 인구변화 ]",
             content:"Competition",
             agency : "안동대학교 정보통계학과 동아리",
             date: "Mar * 2022 ~ Apr * 2022",
@@ -118,7 +115,7 @@ POST = {
         {
             link: "https://github.com/ryunada/Data_Analytic_-Crawling-Team_Project-",
             img: "/img/Project_img/SW_BigData[Team_Project].jpg",
-            title: "[ 팀프로젝트 : 현재 4차 산업 혁명으로 빅데이터에 대한 관심 ]",
+            title: " 팀프로젝트 [ 현재 4차 산업 혁명으로 빅데이터에 대한 관심 ]",
             content:"Team Project",
             Agency : "SW융합교육원",
             date: "Sep * 2021 ~ Nov * 2021",
@@ -173,7 +170,7 @@ POST = {
         // },
         {
             link: "#",
-            title: "홈쇼핑 사이트 만들기 Front-End[Team_Project]",
+            title: "팀프로젝트 [ 홈쇼핑 사이트 만들기 Front-End ]",
             content:"Team Project",
             Agency : "SW융합교육원",
             date: "Jul * 2021 ~ Jul * 2021",
@@ -200,12 +197,11 @@ POST = {
         {
             link: "https://github.com/ryunada/Weather_Competition",
             img: "/img/Project_img/Weather_Competition.jpg",
-            title: "기상청 빅데이터 공모전",
+            title: "팀프로젝트 [ 기상청 빅데이터 공모전 ]",
             content:"Competition",
             Agency : "기상청",
             date: "Apr * 2021 ~ Jun * 2021",
             type: "project",
-            Main : 1
         },
         
         {

@@ -84,7 +84,6 @@
                 </div>
                 <p>&nbsp;Sample</p><br>
             </div>
-
             <br>
             <a href="javascript:void(0);" class="side-nav-close">
                 <i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i>
@@ -92,18 +91,32 @@
             <hr> <br>
             <div class="side-nav-buttons">
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#" class="active-page hover-effect" name="home"><i class="fa-fw fa fa-home"
-                                aria-hidden="true"></i>Home</a></li>
-                    <li><a href="#" class="hover-effect" name="calendar"><i class="fa-fw fa fa-calendar"
-                                aria-hidden="true"></i>Calendar</a></li>
-                    <li><a href="#" class="hover-effect" name="archive"><i class="fa-fw fa fa-archive"
-                                aria-hidden="true"></i>Archive</a></li>
-                    <li><a href="#" class="hover-effect" name="blog"><i class="fa-fw fa fa-laptop"
-                        aria-hidden="true"></i>Project</a></li>
+                    <li>
+                        <a href="#" class="active-page hover-effect" name="home">
+                            <i class="fa-fw fa fa-home" aria-hidden="true"></i>Home
+                        </a>
+                    </li>
+                    <li><a href="#" class="hover-effect" name="calendar">
+                            <i class="fa-fw fa fa-calendar" aria-hidden="true"></i>Calendar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover-effect" name="archive">
+                            <i class="fa-fw fa fa-archive" aria-hidden="true"></i>archive
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover-effect" name="blog">
+                            <i class="fa-fw fa fa-laptop" aria-hidden="true"></i>Project
+                        </a>
+                    </li>
                     <!-- <li><a href="#" class="hover-effect" name="links"><i class="fa-fw fa fa-link"
                                 aria-hidden="true"></i>Links</a></li> -->
-                    <li><a href="#" class="hover-effect" name="about"><i class="fa-fw fa fa-user-o"
-                                aria-hidden="true"></i>About</a></li>
+                    <li>
+                        <a href="#" class="hover-effect" name="about">
+                            <i class="fa-fw fa fa-user-o" aria-hidden="true"></i>About
+                        </a>
+                    </li>
                 </ul>
             </div><br> <br>
             <div class="contact-container">
@@ -194,8 +207,9 @@
                 </div>
             </div>
             <div class="section archive-section">
-                <!--  9/28변경 -->
-                <h>&#127911;</h>
+                <div class="thumbnails">
+                    <a href="./Study/Bigdata.md"></a><h>&#127911;</h>
+                </div>
             </div>           
             <div class="section blog-section">
                 <div class="post-list-container">
@@ -406,14 +420,14 @@
     </div>
     -->
     <!-- 검색 기능 수정해야함 -->
-    <div class="searchbox-container">
+    <!-- <div class="searchbox-container">
         <form id="searchbox-form" autocomplete="off"> <input type="search" id="search-box" placeholder="Search"
                 onkeyup="if(this.value!==&#39;&#39;){document.getElementById(&#39;search-results&#39;).style.display = &#39;block&#39;;}"
                 onfocusout="this.value=&#39;&#39;;"
                 onblur="setTimeout(function(){ document.getElementById(&#39;search-results&#39;).style.display = &#39;none&#39;; }, 100);">
             <ul id="search-results"></ul>
         </form>
-    </div>
+    </div> -->
 
     <script src="/post.json" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
