@@ -202,7 +202,6 @@ POST = {
             Agency : "기상청",
             date: "Apr * 2021 ~ Jun * 2021",
             type: "project",
-            Main : 1
         },
         
         {
