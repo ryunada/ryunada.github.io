@@ -216,13 +216,14 @@
     --about-header-sub-title-color: #808080
 }
 
-.archives {
-    --archives-year-text-color: #3b3b3b;
-    --archives-month-text-color: #5f5e5e;
-    --archives-day-text-color: #989898;
-    --archives-dot-color: #d9d9d9;
-    --archives-line-color: #d9d9d9
+.calendars {
+    --calendars-year-text-color: #3b3b3b;
+    --calendars-month-text-color: #5f5e5e;
+    --calendars-day-text-color: #989898;
+    --calendars-dot-color: #d9d9d9;
+    --calendars-line-color: #d9d9d9
 }
+
 
 .links-heading-container .link-buttons {
     --links-button-text-color: #fff;
@@ -441,12 +442,12 @@
     --about-header-sub-title-color: #808080
 }
 
-[data-color-scheme="dark"] .archives {
-    --archives-year-text-color: #e0e0e0;
-    --archives-month-text-color: #adadad;
-    --archives-day-text-color: #888787;
-    --archives-dot-color: #aaaaaa;
-    --archives-line-color: #aaaaaa
+[data-color-scheme="dark"] .calendars {
+    --calendars-year-text-color: #e0e0e0;
+    --calendars-month-text-color: #adadad;
+    --calendars-day-text-color: #888787;
+    --calendars-dot-color: #aaaaaa;
+    --calendars-line-color: #aaaaaa
 }
 
 [data-color-scheme="dark"] .links-heading-container .link-buttons {
@@ -2491,133 +2492,133 @@ footer {
     }
 }
 
-.archives {
-    --archives-line-left-offset: 70px;
+.calendars {
+    --calendars-line-left-offset: 70px;
     margin-top: 15px
 }
 
-.archives .year>.month>ul:before {
+.calendars .year>.month>ul:before {
     content: "";
     width: 2px;
     position: absolute;
     bottom: 25px;
     top: -25px;
-    left: calc(var(--archives-line-left-offset) + 2.5px);
+    left: calc(var(--calendars-line-left-offset) + 2.5px);
     z-index: 1;
-    background: var(--archives-line-color)
+    background: var(--calendars-line-color)
 }
 
-.archives .year:last-of-type>.month:last-of-type>ul:before {
+.calendars .year:last-of-type>.month:last-of-type>ul:before {
     bottom: 9px
 }
 
-.archives .year>.month:last-of-type>ul:before {
+.calendars .year>.month:last-of-type>ul:before {
     bottom: -20px
 }
 
-.archives .year>h6 {
+.calendars .year>h6 {
     margin: 0;
     font-size: 1.8rem;
     font-weight: 400;
-    color: var(--archives-year-text-color);
+    color: var(--calendars-year-text-color);
     position: absolute;
-    right: calc(100% - (var(--archives-line-left-offset) - 10px));
+    right: calc(100% - (var(--calendars-line-left-offset) - 10px));
     white-space: nowrap;
     margin-top: -41px
 }
 
-.archives .year,
-.archives .year>.month {
+.calendars .year,
+.calendars .year>.month {
     position: relative
 }
 
-.archives .year>.month>h6 {
+.calendars .year>.month>h6 {
     margin: 0;
     font-size: 1.6rem;
     font-weight: 400;
-    color: var(--archives-month-text-color);
+    color: var(--calendars-month-text-color);
     position: absolute;
-    right: calc(100% - (var(--archives-line-left-offset) - 10px));
+    right: calc(100% - (var(--calendars-line-left-offset) - 10px));
     white-space: nowrap;
     margin-top: -38px
 }
 
-.archives .year>.month>ul {
+.calendars .year>.month>ul {
     list-style: none;
     padding: 0;
-    padding-left: calc(var(--archives-line-left-offset) + 5px);
+    padding-left: calc(var(--calendars-line-left-offset) + 5px);
     font-size: 1.6rem
 }
 
-.archives .year>.month>ul:last-child {
+.calendars .year>.month>ul:last-child {
     margin-bottom: 0
 }
 
-.archives .year:before,
-.archives .year>.month:before,
-.archives .year>.month>ul>li:before {
+.calendars .year:before,
+.calendars .year>.month:before,
+.calendars .year>.month>ul>li:before {
     content: "";
     display: block;
     z-index: 2;
     border-radius: 50%;
-    background-color: var(--archives-dot-color);
-    box-shadow: 0 0 3px 0 var(--archives-dot-color)
+    background-color: var(--calendars-dot-color);
+    box-shadow: 0 0 3px 0 var(--calendars-dot-color)
 }
 
-.archives .year:before {
+.calendars .year:before {
     border: 3px solid;
-    border-color: var(--archives-dot-color);
+    border-color: var(--calendars-dot-color);
     background-color: transparent;
     width: 12px;
     height: 12px;
-    margin-left: calc(var(--archives-line-left-offset) - 2.5px);
+    margin-left: calc(var(--calendars-line-left-offset) - 2.5px);
     margin-bottom: 25px
 }
 
-.archives .year>.month:before {
+.calendars .year>.month:before {
     width: 10px;
     height: 10px;
-    margin-left: calc(var(--archives-line-left-offset) - 1.5px);
+    margin-left: calc(var(--calendars-line-left-offset) - 1.5px);
     margin-bottom: 25px
 }
 
-.archives .year>.month>ul>li:before {
+.calendars .year>.month>ul>li:before {
     width: 7px;
     height: 7px;
     margin-left: -5px;
     margin-bottom: -15px
 }
 
-.archives .year>.month>ul>li>a {
+.calendars .year>.month>ul>li>a {
     display: block;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden
 }
 
-.archives .year>.month>ul>li>a {
+.calendars .year>.month>ul>li>a {
     margin-left: 13px
 }
 
-.archives .year>.month>ul>li>span {
+.calendars .year>.month>ul>li>span {
     font-size: 1.4rem;
     font-weight: 400;
-    color: var(--archives-day-text-color);
+    color: var(--calendars-day-text-color);
     position: absolute;
-    right: calc(100% - (var(--archives-line-left-offset) - 10px));
+    right: calc(100% - (var(--calendars-line-left-offset) - 10px));
     white-space: nowrap;
     margin-top: 1.5px
 }
 
-.archives .year:not(:last-child) {
+.calendars .year:not(:last-child) {
     padding-bottom: 20px
 }
 
-.archives .year>.month:not(:last-child) {
+.calendars .year>.month:not(:last-child) {
     padding-bottom: 15px
 }
 
-.archives .year>.month>ul>li:not(:last-child) {
+.calendars .year>.month>ul>li:not(:last-child) {
     padding-bottom: 20px
 }
 
