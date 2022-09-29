@@ -351,10 +351,11 @@
     --consent-settings-active-text-color: #3389de
 }
 
+/* 다크모드 버튼 */
 [data-color-scheme="dark"] .btn-base {
     --button-text-color: #c0c0c0;
-    --button-border-color: #373737;
-    --button-background-color: #1e1e1e;
+    --button-border-color: #2a2a2a;
+    --button-background-color: #2a2a2a;
     --button-shadow-color: #888b8b55;
     --button-hover-text-color: #c0c0c0;
     --button-hover-border-color: #555;

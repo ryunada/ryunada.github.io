@@ -53,6 +53,12 @@
 
     <link href="./main.css" rel="stylesheet">
     <link href="./nav-media.css" rel="stylesheet">
+
+    <style>
+        button {
+            background-color: --body-hr-color;
+        }
+    </style>
 </head>
 
 <body data-color-scheme="dark">
@@ -143,17 +149,7 @@
                         data-original-title="Color scheme"> <label class="color-scheme-switch hover-effect"> <input
                                 type="checkbox" class="checkbox_color_switch"> <span></span> </label></div>
                 </li>
-                <!-- 
-                <li>
-                    <div class="cookie-icon hover-effect" onclick="CookieConsent.showSettings();" data-toggle="tooltip"
-                        data-placement="top" title="" data-original-title="Cookie settings">
-                        <div class="cookie-wrapper"> <i class="fa fa-circle bitten-cookie" aria-hidden="true"></i> <i
-                                class="fa fa-circle small-ellipse-icon" aria-hidden="true"></i> <i
-                                class="fa fa-spinner inner-icon" aria-hidden="true"></i> <i
-                                class="fa fa-circle-thin outer-icon" aria-hidden="true"></i></div>
-                    </div>
-                </li>
-                -->
+                
             </ul>
         </div>
     </nav>
@@ -169,11 +165,18 @@
                         <h3 id="hello">명언</h3>
                         <div class="phrase_row row">
                             <p class="col-sm-10 Great" >이름</p>
-                            <button id="rand_phrase_btn" class="col-sm-2" style="width: 0px; background-color:#2a2a2a;">
+                            <div class="col-sm-2">
+                            <button type="button" id="rand_phrase_btn" class="btn-base" style="text-align: center; margin-right:3px">
                                 <a>
                                     <i class="fa fa-repeat" aria-hidden="true"></i>
                                 </a>
                             </button>
+                            <button type="button" id="change_btn" class="btn-base" style="text-align: center; margin-left:3px">
+                                <a>
+                                    <i class="fa fa-meh-o" ></i>
+                                </a>
+                            </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -223,9 +226,7 @@
 
                 </div>
             </div>
-            <!-- <div class="section links-section">
-                links
-            </div> -->
+            
             <!-- 프로필 -->
             <div class="section about-section">
                 <!-- About 프로필 -->
@@ -318,114 +319,10 @@
 
     <script src="/main.js"></script>
     <script src="/simple-jekyll-search-1.9.2.min.js"></script>
-    <!--
-    <script> function loadSearch(jsonData, searchParam) { if (!jsonData) jsonData = '/query/search.json'; var searchInput = document.getElementById('search-box'); const simpleJekyllSearch = SimpleJekyllSearch({ searchInput: searchInput, resultsContainer: document.getElementById('search-results'), json: jsonData, searchResultTemplate: '<li> <a href="{url}"><div><div class="title">{title}</div><div class="date">{date}</div><div style="clear: both;"></div></div></a></li>', noResultsText: '<li>No results found.</li>', limit: 10, fuzzy: false, formSubmit: document.getElementById('searchbox-form') }); if (searchParam) { searchInput.value = searchParam; searchInput.focus(); searchInput.disabled = false; setTimeout(function () { simpleJekyllSearch.search(searchParam); }, 400); } } </script>
-    <script> function isEmpty(value) { if (value === "" || value === null || typeof value === "undefined") return true; return false; } function getQueryParam(param, mach = true) { var queryString = window.location.search.substring(1); if (isEmpty(queryString)) return null; var queries = queryString.split("&"); for (var i in queries) { var pair = decodeURIComponent(queries[i]).split("="); if (mach == true) { if (pair[0] == param) { if (isEmpty(pair[1]) === false) return pair[1]; } } else { return pair; } break; } return null; } const searchParam = getQueryParam('search'); (async () => { let resp = await fetch('/query/search.json'); if (!resp.ok) return; let jsonData = await resp.json(); loadSearch(jsonData, searchParam); })(); </script>
-    <script> CookieConsent.consentSettingHtml = "<h5>Cookie settings</h5><br><p class=\"info-text\">This website uses cookies to optimize site functionality. It will be activated with your approval. Please click each item below for cookie policy. Check <a href=\"/privacy-policy.html\">Privacy policy</a>.</p><table><tr><td onclick=\"$('.info[data-consent-info=necessary]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i><p>Strictly necessary cookies</p></td><td> <span class=\"active_text\">Always active</span></td></tr></table><div class=\"info\" data-consent-info=\"necessary\"><p>These cookies are essential for the website function and cannot be disable. They are usually set when site function like color scheme etc. is changed. These cookies do not store any personally identifiable information. Enables storage related to security such as authentication functionality, fraud prevention, and other user protection.</p></div><table><tr><td onclick=\"$('.info[data-consent-info=analytics]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i><p>Performance cookies</p></td><td> <label class=\"slide-switch\"> <input type=\"checkbox\" class=\"checkbox_switch\" checked=\"checked\" data-consent=\"analytics\"> <span class=\"slider\"></span> </label></td></tr></table><div class=\"info\" data-consent-info=\"analytics\"><p>Enables storage (such as cookies) related to analytics e.g. visit duration.</p></div><table><tr><td onclick=\"$('.info[data-consent-info=preferences]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i><p>Functionality cookies</p></td><td> <label class=\"slide-switch\"> <input type=\"checkbox\" class=\"checkbox_switch\" data-consent=\"preferences\"> <span class=\"slider\"></span> </label></td></tr></table><div class=\"info\" data-consent-info=\"preferences\"><p>Enables storage that supports the functionality of the website or app e.g. language settings. Enables storage related to personalization e.g. video recommendations.</p></div><table><tr><td onclick=\"$('.info[data-consent-info=advertising]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i><p>Targeting and advertising cookies</p></td><td> <label class=\"slide-switch\"> <input type=\"checkbox\" class=\"checkbox_switch\" data-consent=\"advertising\"> <span class=\"slider\"></span> </label></td></tr></table><div class=\"info\" data-consent-info=\"advertising\"><p>Enables storage (such as cookies) related to advertising.</p></div><br><div class=\"button-holder\"> <a href=\"javascript:void(0);\" class=\"btn-base btn-left\" onclick=\"CookieConsent.consentSettingDone('deny');\" role=\"button\">Deny</a> <a href=\"javascript:void(0);\" class=\"btn-base btn-priority\" onclick=\"CookieConsent.consentSettingDone('accept');\" role=\"button\">Allow all</a> <a href=\"javascript:void(0);\" class=\"btn-base \" onclick=\"CookieConsent.consentSettingDone('save');\" role=\"button\">Allow selection</a></div>"; CookieConsent.consentBarHtml = "<div class=\"consent-bar\"> <a class=\"close-button\" href=\"javascript:void(0);\" onclick=\"CookieConsent.hideConsentBar();\"><i class=\"fa-fw fa fa-times\"></i></a><p>This website uses cookies to optimize site functionality. It will be activated with your approval. Check <a href=\"/privacy-policy.html\">Privacy policy</a>.</p><a href=\"javascript:void(0);\" class=\"btn-base \" onclick=\"CookieConsent.consentBarDone('deny');\" role=\"button\">Deny</a> <a href=\"javascript:void(0);\" class=\"btn-base \" onclick=\"CookieConsent.consentBarDone('settings');\" role=\"button\">Customize</a> <a href=\"javascript:void(0);\" class=\"btn-base btn-priority\" onclick=\"CookieConsent.consentBarDone('accept');\" role=\"button\">Allow all</a></div>"; CookieConsent.consent_items = JSON.parse('{"necessary":{"group":["security_storage"],"value":"granted","wait_for_update":500,"cookie_domain":"","no_check_box":true},"analytics":{"group":["analytics_storage"],"value":"denied"},"preferences":{"group":["functionality_storage","personalization_storage"],"value":"denied"},"advertising":{"group":["ad_storage"],"value":"denied"}}'); CookieConsent.hideConsentBarWithSaveButton = true; const consent_settings = CookieConsent.getConsentSettings(); const default_configs = JSON.parse('{"anonymize_ip":true,"ads_data_redaction":true,"cookie_flags":"SameSite=None;Secure"}'); </script>
-    -->
+    
     <script> SlidingMsgBox.html = "<div class=\"slideBox slideBoxTopToDown\"> <a class=\"close-button\" href=\"javascript:void(0);\"><i class=\"fa-fw fa fa-times\"></i></a></div>"; </script>
     <script> LangOfferMsgBox.currentPageLng = "en"; LangOfferMsgBox.supportedLngList = [["en", "En", "/", "View this page in English.", "To English home page", "Language"], ["kr", "KR", "/kr", "이 페이지를 한국어로 표시한다.", "한국어 홈으로", "언어"]]; LangOfferMsgBox.existLng = [["kr", "KR", "/kr/"]]; LangOfferMsgBox.disableExtTranslationOffer = true; </script>
-    <!-- 
-    <div>
-        <div class="consent-bar" style="bottom: 27px; display: inherit;"> <a class="close-button"
-                href="javascript:void(0);" onclick="CookieConsent.hideConsentBar();"><i
-                    class="fa-fw fa fa-times"></i></a>
-            <p>This website uses cookies to optimize site functionality. It will be activated with your approval. Check
-                <a href="https:/ /privacy-policy.html">Privacy policy</a>.</p><a
-                href="javascript:void(0);" class="btn-base " onclick="CookieConsent.consentBarDone(&#39;deny&#39;);"
-                role="button">Deny</a> <a href="javascript:void(0);" class="btn-base "
-                onclick="CookieConsent.consentBarDone(&#39;settings&#39;);" role="button">Customize</a> <a
-                href="javascript:void(0);" class="btn-base btn-priority"
-                onclick="CookieConsent.consentBarDone(&#39;accept&#39;);" role="button">Allow all</a>
-        </div>
-    </div>
-    <div id="consent-settings">
-        <div class="slideBox slideBoxTopToDown"> <a class="close-button" href="javascript:void(0);"><i
-                    class="fa-fw fa fa-times"></i></a>
-            <div class="msg">
-                <h5>Cookie settings</h5><br>
-                <p class="info-text">This website uses cookies to optimize site functionality. It will be activated with
-                    your approval. Please click each item below for cookie policy. Check <a
-                        href="https:/ /privacy-policy.html">Privacy policy</a>.</p>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td
-                                onclick="$(&#39;.info[data-consent-info=necessary]&#39;).slideToggle();$(this).children(&#39;i&#39;).toggleClass(&#39;fa-plus-square-o&#39;).toggleClass(&#39;fa-minus-square-o&#39;)">
-                                <i class="fa-fw fa fa-plus-square-o" aria-hidden="true"></i>
-                                <p>Strictly necessary cookies</p>
-                            </td>
-                            <td> <span class="active_text">Always active</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="info" data-consent-info="necessary">
-                    <p>These cookies are essential for the website function and cannot be disable. They are usually set
-                        when site function like color scheme etc. is changed. These cookies do not store any personally
-                        identifiable information. Enables storage related to security such as authentication
-                        functionality, fraud prevention, and other user protection.</p>
-                </div>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td
-                                onclick="$(&#39;.info[data-consent-info=analytics]&#39;).slideToggle();$(this).children(&#39;i&#39;).toggleClass(&#39;fa-plus-square-o&#39;).toggleClass(&#39;fa-minus-square-o&#39;)">
-                                <i class="fa-fw fa fa-plus-square-o" aria-hidden="true"></i>
-                                <p>Performance cookies</p>
-                            </td>
-                            <td> <label class="slide-switch"> <input type="checkbox" class="checkbox_switch"
-                                        checked="checked" data-consent="analytics"> <span class="slider"></span>
-                                </label></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="info" data-consent-info="analytics">
-                    <p>Enables storage (such as cookies) related to analytics e.g. visit duration.</p>
-                </div>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td
-                                onclick="$(&#39;.info[data-consent-info=preferences]&#39;).slideToggle();$(this).children(&#39;i&#39;).toggleClass(&#39;fa-plus-square-o&#39;).toggleClass(&#39;fa-minus-square-o&#39;)">
-                                <i class="fa-fw fa fa-plus-square-o" aria-hidden="true"></i>
-                                <p>Functionality cookies</p>
-                            </td>
-                            <td> <label class="slide-switch"> <input type="checkbox" class="checkbox_switch"
-                                        data-consent="preferences"> <span class="slider"></span> </label></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="info" data-consent-info="preferences">
-                    <p>Enables storage that supports the functionality of the website or app e.g. language settings.
-                        Enables storage related to personalization e.g. video recommendations.</p>
-                </div>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td
-                                onclick="$(&#39;.info[data-consent-info=advertising]&#39;).slideToggle();$(this).children(&#39;i&#39;).toggleClass(&#39;fa-plus-square-o&#39;).toggleClass(&#39;fa-minus-square-o&#39;)">
-                                <i class="fa-fw fa fa-plus-square-o" aria-hidden="true"></i>
-                                <p>Targeting and advertising cookies</p>
-                            </td>
-                            <td> <label class="slide-switch"> <input type="checkbox" class="checkbox_switch"
-                                        data-consent="advertising"> <span class="slider"></span> </label></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="info" data-consent-info="advertising">
-                    <p>Enables storage (such as cookies) related to advertising.</p>
-                </div><br>
-                <div class="button-holder"> <a href="javascript:void(0);" class="btn-base btn-left"
-                        onclick="CookieConsent.consentSettingDone(&#39;deny&#39;);" role="button">Deny</a> <a
-                        href="javascript:void(0);" class="btn-base btn-priority"
-                        onclick="CookieConsent.consentSettingDone(&#39;accept&#39;);" role="button">Allow all</a> <a
-                        href="javascript:void(0);" class="btn-base "
-                        onclick="CookieConsent.consentSettingDone(&#39;save&#39;);" role="button">Allow selection</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    -->
+    
     <!-- 검색 기능 수정해야함 -->
     <!-- <div class="searchbox-container">
         <form id="searchbox-form" autocomplete="off"> <input type="search" id="search-box" placeholder="Search"
@@ -440,6 +337,8 @@
     <script src="/phrase.json" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
+        let is_phrase = true;
+
         $(document).ready(function () {
             $('.nav li a').click(function () {
                 $('.nav li a').removeClass('active-page');
@@ -542,7 +441,18 @@
             phraseMaker()
             // 명언 버튼
             $('#rand_phrase_btn').click(function() {
-                phraseMaker()
+                if(is_phrase) {
+                    phraseMaker()
+                } else {
+                    ConsolationMaker()
+                }
+            })
+            $('#change_btn').click(function() {
+                if(is_phrase) {
+                    ConsolationMaker()
+                } else {
+                    phraseMaker()
+                }
             })
         });
 
@@ -558,6 +468,18 @@
             let Num = getRandomInt(0, Phrase.SAYING.length-1)
             $('#phrase h3').text(Phrase.SAYING[Num][0])
             $('#phrase .phrase_row .Great').text(Phrase.SAYING[Num][1])
+            is_phrase = true
+        }
+
+        function ConsolationMaker() {
+            let Phrase = JSON.parse(JSON.stringify(PHRASE))
+            let Num = getRandomInt(0, Phrase.CONSOLATION.length-1)
+            $('#phrase h3').text(Phrase.CONSOLATION[Num][0])
+            $('#phrase .phrase_row .Great').text('')
+            is_phrase = false
+        }
+        function ChangeWrite() {
+            
         }
     </script>
 </body>
