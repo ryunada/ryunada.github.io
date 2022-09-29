@@ -165,9 +165,16 @@
                         style="background-image: url('./home-heading.jpg');">
                         <div class="home-heading-message"> Welcome <br> Ryu</div>
                     </div>
-                    <div class="home-intro-text markdown-style">
-                        <h3 id="hello">Hello</h3>
-                        <p>Sample Sample Sample Sample Sample</p>
+                    <div id='phrase' class="home-intro-text markdown-style">
+                        <h3 id="hello">명언</h3>
+                        <div class="phrase_row row">
+                            <p class="col-sm-10 Great" >이름</p>
+                            <button id="rand_phrase_btn" class="col-sm-2" style="width: 0px; background-color:#2a2a2a;">
+                                <a>
+                                    <i class="fa fa-repeat" aria-hidden="true"></i>
+                                </a>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="multipurpose-container new-posts-container">
@@ -430,6 +437,7 @@
     </div> -->
 
     <script src="/post.json" type="text/javascript"></script>
+    <script src="/phrase.json" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -530,7 +538,27 @@
             }
             calendar_contents += '</ul></div></div>'
             $('.calendar-section .multipurpose-container .calendars').append(calendar_contents)
+            
+            phraseMaker()
+            // 명언 버튼
+            $('#rand_phrase_btn').click(function() {
+                phraseMaker()
+            })
         });
+
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
+        }
+
+        // 명언 함수
+        function phraseMaker() {
+            let Phrase = JSON.parse(JSON.stringify(PHRASE))
+            let Num = getRandomInt(0, Phrase.SAYING.length-1)
+            $('#phrase h3').text(Phrase.SAYING[Num][0])
+            $('#phrase .phrase_row .Great').text(Phrase.SAYING[Num][1])
+        }
     </script>
 </body>
 
