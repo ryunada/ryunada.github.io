@@ -197,7 +197,13 @@
                 </div>
             </div>           
             <div class="section blog-section">
-                <div class="post-list-container">
+                <!-- 검색 기능 수정해야함 -->
+                <div class="searchbox-container">
+                    <input type="search" id="search-box" placeholder="Search">
+                </div>
+                <div class="post-list-container">  
+                </div>
+                <div class="post-list-search">
 
                 </div>
             </div>
@@ -298,15 +304,7 @@
     <script> SlidingMsgBox.html = "<div class=\"slideBox slideBoxTopToDown\"> <a class=\"close-button\" href=\"javascript:void(0);\"><i class=\"fa-fw fa fa-times\"></i></a></div>"; </script>
     <script> LangOfferMsgBox.currentPageLng = "en"; LangOfferMsgBox.supportedLngList = [["en", "En", "/", "View this page in English.", "To English home page", "Language"], ["kr", "KR", "/kr", "이 페이지를 한국어로 표시한다.", "한국어 홈으로", "언어"]]; LangOfferMsgBox.existLng = [["kr", "KR", "/kr/"]]; LangOfferMsgBox.disableExtTranslationOffer = true; </script>
     
-    <!-- 검색 기능 수정해야함 -->
-    <!-- <div class="searchbox-container">
-        <form id="searchbox-form" autocomplete="off"> <input type="search" id="search-box" placeholder="Search"
-                onkeyup="if(this.value!==&#39;&#39;){document.getElementById(&#39;search-results&#39;).style.display = &#39;block&#39;;}"
-                onfocusout="this.value=&#39;&#39;;"
-                onblur="setTimeout(function(){ document.getElementById(&#39;search-results&#39;).style.display = &#39;none&#39;; }, 100);">
-            <ul id="search-results"></ul>
-        </form>
-    </div> -->
+    
 
     <script src="/post.json" type="text/javascript"></script>
     <script src="/phrase.json" type="text/javascript"></script>
@@ -429,6 +427,40 @@
                     phraseMaker()
                 }
             })
+
+            $('#search-box').keydown(function(e) {
+                let search_result = []
+                if(e.keyCode == 13) {
+                    $('.post-list-container').html("")
+                    $('.post-list-search').html("")
+                    let search_keyword = $('#search-box').val();
+                    for (let index in PostData.BLOG) {
+                        if(PostData.BLOG[index].title.includes(search_keyword)) {
+                            search_result.push(PostData.BLOG[index])
+                        }
+                    }
+                    for (let index in search_result) {
+                        if(search_result[index].type = 'project'){
+                            let blog_contents = `
+                                            <div class="thumbnails">
+                                                <a href=${search_result[index].link}></a>
+                                                <div class="image-holder" style="background-image:url(${search_result[index].img});"></div>
+                                                <div class="excerpt-holder">
+                                                    <div class="post-title">${search_result[index].title}</div>
+                                                    <p>${search_result[index].content}</p>
+                                                    <div class="meta">
+                                                        <small> &nbsp;
+                                                            <i class="fa fa-calendar"></i>&nbsp;&nbsp;${search_result[index].date}
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        `
+                            $('.post-list-search').append(blog_contents)
+                        }
+                    }
+                }
+            })
         });
 
         function getRandomInt(min, max) {
@@ -456,6 +488,7 @@
         function ChangeWrite() {
             
         }
+
     </script>
 </body>
 
