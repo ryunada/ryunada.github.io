@@ -328,29 +328,33 @@
                 $('.main-container .blog-section').show();
             })
             let PostData = JSON.parse(JSON.stringify(POST))
-           
+            
+            load_project()
             // Peoject
-            for (let blog of PostData.BLOG) {
-                if (blog.type == 'project') {
-                    let blog_contents = `
-                                        <div class="thumbnails">
-                                            <a href=${blog.link}></a>
-                                            <div class="image-holder" style="background-image:url(${blog.img});"></div>
-                                            <div class="excerpt-holder">
-                                                <div class="post-title">${blog.title}</div>
-                                                <p>${blog.content}</p>
-                                                <div class="meta">
-                                                    <small> &nbsp;
-                                                        <i class="fa fa-calendar"></i>&nbsp;&nbsp;${blog.date}
-                                                    </small>
+            function load_project() {
+                for (let blog of PostData.BLOG) {
+                    if (blog.type == 'project') {
+                        let blog_contents = `
+                                            <div class="thumbnails">
+                                                <a href=${blog.link}></a>
+                                                <div class="image-holder" style="background-image:url(${blog.img});"></div>
+                                                <div class="excerpt-holder">
+                                                    <div class="post-title">${blog.title}</div>
+                                                    <p>${blog.content}</p>
+                                                    <div class="meta">
+                                                        <small> &nbsp;
+                                                            <i class="fa fa-calendar"></i>&nbsp;&nbsp;${blog.date}
+                                                        </small>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    `
-
-                $('.blog-section .post-list-container').append(blog_contents)
+                                        `
+    
+                    $('.blog-section .post-list-container').append(blog_contents)
+                    }
                 }
             }
+            
             // Calender
             let calendar_contents =""
 
@@ -431,33 +435,40 @@
             $('#search-box').keydown(function(e) {
                 let search_result = []
                 if(e.keyCode == 13) {
-                    $('.post-list-container').html("")
-                    $('.post-list-search').html("")
+                    
                     let search_keyword = $('#search-box').val();
-                    for (let index in PostData.BLOG) {
-                        if(PostData.BLOG[index].title.includes(search_keyword)) {
-                            search_result.push(PostData.BLOG[index])
+                    if (search_keyword) {
+                        $('.post-list-container').html("")
+                        $('.post-list-search').html("")
+                        for (let index in PostData.BLOG) {
+                            if(PostData.BLOG[index].title.includes(search_keyword)) {
+                                search_result.push(PostData.BLOG[index])
+                            }
                         }
-                    }
-                    for (let index in search_result) {
-                        if(search_result[index].type = 'project'){
-                            let blog_contents = `
-                                            <div class="thumbnails">
-                                                <a href=${search_result[index].link}></a>
-                                                <div class="image-holder" style="background-image:url(${search_result[index].img});"></div>
-                                                <div class="excerpt-holder">
-                                                    <div class="post-title">${search_result[index].title}</div>
-                                                    <p>${search_result[index].content}</p>
-                                                    <div class="meta">
-                                                        <small> &nbsp;
-                                                            <i class="fa fa-calendar"></i>&nbsp;&nbsp;${search_result[index].date}
-                                                        </small>
+                        for (let index in search_result) {
+                            if(search_result[index].type = 'project'){
+                                let blog_contents = `
+                                                <div class="thumbnails">
+                                                    <a href=${search_result[index].link}></a>
+                                                    <div class="image-holder" style="background-image:url(${search_result[index].img});"></div>
+                                                    <div class="excerpt-holder">
+                                                        <div class="post-title">${search_result[index].title}</div>
+                                                        <p>${search_result[index].content}</p>
+                                                        <div class="meta">
+                                                            <small> &nbsp;
+                                                                <i class="fa fa-calendar"></i>&nbsp;&nbsp;${search_result[index].date}
+                                                            </small>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        `
-                            $('.post-list-search').append(blog_contents)
+                                            `
+                                $('.post-list-search').append(blog_contents)
+                            }
                         }
+                    } else {
+                        $('.post-list-container').html("")
+                        $('.post-list-search').html("")
+                        load_project()
                     }
                 }
             })
