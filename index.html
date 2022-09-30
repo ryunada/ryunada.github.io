@@ -197,15 +197,17 @@
                 </div>
             </div>           
             <div class="section blog-section">
-                <!-- 검색 버튼 -->
+                <!-- 검색 버튼  -->
                 <div class="searchbox-container">
                     <input type="search" id="search-box" placeholder="Search">
                 </div>
                 <div class="post-list-container">  
                 </div>
                 <div class="post-list-search">
+
                 </div>
             </div>
+            
             <!-- 프로필 -->
             <div class="section about-section">
                 <!-- About 프로필 -->
@@ -433,7 +435,6 @@
             $('#search-box').keydown(function(e) {
                 let search_result = []
                 if(e.keyCode == 13) {
-                    
                     let search_keyword = $('#search-box').val();
                     if (search_keyword) {
                         $('.post-list-container').html("")
@@ -444,7 +445,7 @@
                             }
                         }
                         for (let index in search_result) {
-                            if(search_result[index].type = 'project'){
+                            if(search_result[index].type == "project"){
                                 let blog_contents = `
                                                 <div class="thumbnails">
                                                     <a href=${search_result[index].link}></a>
