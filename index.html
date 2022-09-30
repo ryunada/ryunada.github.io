@@ -197,17 +197,15 @@
                 </div>
             </div>           
             <div class="section blog-section">
-                <!-- 검색 기능 수정해야함 -->
+                <!-- 검색 버튼 -->
                 <div class="searchbox-container">
                     <input type="search" id="search-box" placeholder="Search">
                 </div>
                 <div class="post-list-container">  
                 </div>
                 <div class="post-list-search">
-
                 </div>
             </div>
-            
             <!-- 프로필 -->
             <div class="section about-section">
                 <!-- About 프로필 -->
@@ -430,8 +428,8 @@
                 } else {
                     phraseMaker()
                 }
-            })
-
+            }) 
+            /* 검색기능 */
             $('#search-box').keydown(function(e) {
                 let search_result = []
                 if(e.keyCode == 13) {
