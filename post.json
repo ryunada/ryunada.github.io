@@ -1,6 +1,15 @@
 POST = {
     "BLOG" : [
         {
+            link: "https://github.com/ryunada/Machine_Learning_Project1",
+            img: "",
+            title: "Machine_Learning_Project1",
+            content:"기업맞춤형 빅데이터 분석가 양성과정",
+            agency : "고용노동부 & 한국품질재단(KFQ)",
+            date: "Oct 7 2022",
+            type: "project",
+        },
+        {
             link: "https://github.com/ryunada/Bigdata_MiniProject3",
             img: "/img/Project_img/Bigdata_Miniproject3.png",
             title: "MiniProject3 [ Iowa 주류 판매 데이터 ]",
