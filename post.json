@@ -2,7 +2,7 @@ POST = {
     "BLOG" : [
         {
             link: "https://github.com/ryunada/Machine_Learning_Project1",
-            img: "",
+            img: "/img/Project_img/Machine_Learning_Project1.png",
             title: "Machine_Learning_Project1",
             content:"기업맞춤형 빅데이터 분석가 양성과정",
             agency : "고용노동부 & 한국품질재단(KFQ)",
