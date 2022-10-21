@@ -1,6 +1,24 @@
 POST = {
     "BLOG" : [
         {
+            link: "https://github.com/ryunada/TIL-Today-I-Learned-/tree/main/October(10Months)/MiniProject/news_project",
+            img: "/img/Project_img/MachinLearning_DeepLearning_Project(News).png",
+            title: "DeepLearning_Project(News Topic Analysis)",
+            content:"기업맞춤형 빅데이터 분석가 양성과정",
+            agency : "고용노동부 & 한국품질재단(KFQ)",
+            date: "Oct 19 2022 ~ Oct 21 2022",
+            type: "project",
+        },
+        {
+            link: "https://github.com/ryunada/TIL-Today-I-Learned-/tree/main/October(10Months)/MiniProject",
+            img: "/img/Project_img/Lotto_Result",
+            title: "Machine_Learning_Project1",
+            content:"기업맞춤형 빅데이터 분석가 양성과정",
+            agency : "고용노동부 & 한국품질재단(KFQ)",
+            date: "Oct 14 2022",
+            type: "project",
+        },
+        {
             link: "https://github.com/ryunada/Machine_Learning_Project1",
             img: "/img/Project_img/Machine_Learning_Project1.png",
             title: "Machine_Learning_Project1",
