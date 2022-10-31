@@ -10,7 +10,7 @@ POST = {
             type: "project",
         },
         {
-            link: "https://github.com/ryunada/TIL-Today-I-Learned-/tree/main/October(10Months)/MiniProject",
+            link: "https://github.com/ryunada/Project/tree/main/BigData_Training_Course/Machine_Learning_Project1-main",
             img: "/img/Project_img/Lotto_Result",
             title: "Machine_Learning_Project1",
             content:"기업맞춤형 빅데이터 분석가 양성과정",
@@ -37,7 +37,7 @@ POST = {
             type: "project",
         },
         {
-            link: "https://github.com/ryunada/Bigdata_MiniProject2",
+            link: "https://github.com/ryunada/Project/tree/main/BigData_Training_Course/Bigdata_MiniProject2-main",
             img: "/img/Project_img/Bigdata_Miniproject2.png",
             title: "MiniProject2 [ COVID-19 확진자, 사망자 ]",
             content:"기업맞춤형 빅데이터 분석가 양성과정",
@@ -46,7 +46,7 @@ POST = {
             type: "project"
         },
         {
-            link: "https://github.com/ryunada/Bigdata_MiniProject1",
+            link: "https://github.com/ryunada/Project/tree/main/BigData_Training_Course/Bigdata_MiniProject1-main",
             img: "/img/Project_img/Bigdata_Miniproject1.png",
             title: "MiniProject1 [ 강수량 데이터 분석 및 시각화 ]",
             content:"기업맞춤형 빅데이터 분석가 양성과정",
