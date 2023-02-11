@@ -1,4 +1,458 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-11T23:04:49+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nada</title><subtitle>An amazing website.</subtitle><author><name>Your Name</name></author><entry><title type="html">MachineLearning</title><link href="http://localhost:4000/machinelearning/MachineLearning/" rel="alternate" type="text/html" title="MachineLearning" /><published>2023-02-07T00:00:00+09:00</published><updated>2023-02-07T00:00:00+09:00</updated><id>http://localhost:4000/machinelearning/MachineLearning</id><content type="html" xml:base="http://localhost:4000/machinelearning/MachineLearning/">&lt;h4 id=&quot;머신러닝의-개념&quot;&gt;머신러닝의 개념.&lt;/h4&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-11T23:05:54+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nada</title><subtitle>An amazing website.</subtitle><author><name>Your Name</name></author><entry><title type="html">Pandas</title><link href="http://localhost:4000/machinelearning/Pandas/" rel="alternate" type="text/html" title="Pandas" /><published>2023-02-10T00:00:00+09:00</published><updated>2023-02-10T00:00:00+09:00</updated><id>http://localhost:4000/machinelearning/Pandas</id><content type="html" xml:base="http://localhost:4000/machinelearning/Pandas/">&lt;h1 id=&quot;pandas&quot;&gt;Pandas&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;데이터 처리와 분석을 위한 라이브러리&lt;/li&gt;
+  &lt;li&gt;행과 열로 이루어진 데이터 객체를 만들어 다룰 수 있음&lt;/li&gt;
+  &lt;li&gt;대용량의 데이터들을 처리하는데 매우 편리&lt;/li&gt;
+  &lt;li&gt;Pandas 자료구조
+    &lt;ul&gt;
+      &lt;li&gt;시리즈(Series) : 1차원&lt;/li&gt;
+      &lt;li&gt;데이터프레임(DataFrame) : 2차원&lt;/li&gt;
+      &lt;li&gt;패널(Panel) : 3차원&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;1-pandas정의&quot;&gt;1. Pandas정의&lt;/h2&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# conda install pandas
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;2-pandas-다루기&quot;&gt;2. Pandas 다루기&lt;/h2&gt;
+
+&lt;h3 id=&quot;--read_csv경로&quot;&gt;- &lt;strong&gt;read_csv(‘경로’)&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;파일 불러오기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# pd.read_csc(&apos;경로&apos;)
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;titanic_df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;./titanic_train.csv&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;titanic 변수 type : &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;titanic_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;titanic 변수 type : &amp;lt;class &apos;pandas.core.frame.DataFrame&apos;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;--dfheadn&quot;&gt;- &lt;strong&gt;DF.head(N)&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;DataFrame의 상위 N개의 row를 반환&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Df.head(N)
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;titanic_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt; &lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;PassengerId&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Survived&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Pclass&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Name&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Sex&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Age&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;SibSp&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Parch&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Ticket&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Fare&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Cabin&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Embarked&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Braund, Mr. Owen Harris&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;male&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;22.0&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;A/5 21171&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;7.2500&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;NaN&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;S&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Cumings, Mrs. John Bradley (Florence Briggs Th…&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;female&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;38.0&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;PC 17599&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;71.2833&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;C85&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;C&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Heikkinen, Miss. Laina&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;female&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;26.0&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;STON/O2. 3101282&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;7.9250&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;NaN&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;S&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;--dftailn&quot;&gt;- DF.tail(N)&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;DataFrame의 하위 N개의 row를 반환&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Df.tail(N)
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;titanic_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt; &lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;PassengerId&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Survived&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Pclass&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Name&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Sex&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Age&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;SibSp&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Parch&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Ticket&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Fare&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Cabin&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Embarked&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;888&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;889&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Johnston, Miss. Catherine Helen “Carrie”&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;female&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;NaN&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;W./C. 6607&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;23.45&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;NaN&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;S&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;889&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;890&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Behr, Mr. Karl Howell&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;male&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;26.0&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;111369&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;30.00&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;C148&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;C&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;890&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;891&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Dooley, Mr. Patrick&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;male&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;32.0&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;370376&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;7.75&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;NaN&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Q&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;--dfshape&quot;&gt;- &lt;strong&gt;DF.shape&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;DataFrame 크기 확인&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# DF.shape()
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;DataFrame 크기 : &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;titanic_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;DataFrame 크기 : (891, 12)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;--dfinfo-&quot;&gt;- &lt;strong&gt;DF.info( )&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;DataFrame의 총 데이터 건수와 데이터 타입, Null 건수&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Df.info()
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;titanic_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;class &apos;pandas.core.frame.DataFrame&apos;&amp;gt;
+RangeIndex: 891 entries, 0 to 890
+Data columns (total 12 columns):
+ #   Column       Non-Null Count  Dtype  
+---  ------       --------------  -----  
+ 0   PassengerId  891 non-null    int64  
+ 1   Survived     891 non-null    int64  
+ 2   Pclass       891 non-null    int64  
+ 3   Name         891 non-null    object 
+ 4   Sex          891 non-null    object 
+ 5   Age          714 non-null    float64
+ 6   SibSp        891 non-null    int64  
+ 7   Parch        891 non-null    int64  
+ 8   Ticket       891 non-null    object 
+ 9   Fare         891 non-null    float64
+ 10  Cabin        204 non-null    object 
+ 11  Embarked     889 non-null    object 
+dtypes: float64(2), int64(5), object(5)
+memory usage: 83.7+ KB
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;--dfdescribe-&quot;&gt;- &lt;strong&gt;DF.describe( )&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;칼러별 숫자형 데이터값의 n-percentile분포도, 평균값, 최댓값, 최솟값&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# DF.describe()
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;titanic_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt; &lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;PassengerId&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Survived&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Pclass&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Age&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;SibSp&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Parch&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Fare&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;count&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;891.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;891.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;891.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;714.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;891.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;891.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;891.000000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;mean&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;446.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.383838&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2.308642&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;29.699118&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.523008&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.381594&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;32.204208&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;std&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;257.353842&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.486592&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.836071&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;14.526497&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1.102743&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.806057&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;49.693429&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;min&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.420000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.000000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;25%&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;223.500000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;20.125000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;7.910400&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;50%&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;446.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;28.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;14.454200&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;75%&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;668.500000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;38.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;31.000000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;max&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;891.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;80.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;8.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;6.000000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;512.329200&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;--dfc_n&quot;&gt;- Df[‘C_N’]&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;특정 컬럼을 추출&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;[&lt;a href=&quot;Series로 출력&quot;&gt;  &lt;/a&gt;] : DataFrame으로 추출&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Df[&apos;C_N&apos;] 
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;one&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;titanic_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Age&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;one : &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;one&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;one type: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;one&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# DF[[&apos;C_N&apos;]]
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;two&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;titanic_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Age&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;two : &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;two&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;two type: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;two&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;one : 
+0      22.0
+1      38.0
+2      26.0
+3      35.0
+4      35.0
+       ... 
+886    27.0
+887    19.0
+888     NaN
+889    26.0
+890    32.0
+Name: Age, Length: 891, dtype: float64
+
+one type: &amp;lt;class &apos;pandas.core.series.Series&apos;&amp;gt;
+two : 
+      Age
+0    22.0
+1    38.0
+2    26.0
+3    35.0
+4    35.0
+..    ...
+886  27.0
+887  19.0
+888   NaN
+889  26.0
+890  32.0
+
+[891 rows x 1 columns]
+
+two type: &amp;lt;class &apos;pandas.core.frame.DataFrame&apos;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;--dfc_nvalue_counts-&quot;&gt;- &lt;strong&gt;DF[‘C_N’].value_counts( )&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;메서드를 호출하면 해당 칼럼값의 유형과 건수를 확인 가능&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;dropna&lt;/strong&gt; : 결측값 포함(False) or 제외(True[default])&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# DF[&apos;Column_Name&apos;].value_counts()
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value_counts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;titanic_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Pclass&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value_counts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;value_counts&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;3    491
+1    216
+2    184
+Name: Pclass, dtype: int64
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;print(f&quot;titanic_df[&apos;Embarked&apos;]의 전체 데이터 건수 : {titanic_df[&apos;Embarked&apos;].shape[0]}&quot;)
+print(f&quot;dropna = True : \n{titanic_df[&apos;Embarked&apos;].value_counts()}&quot;)
+print(f&quot;dropna = False : \n{titanic_df[&apos;Embarked&apos;].value_counts(dropna=False)}&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;titanic_df[&apos;Embarked&apos;] 데이터 건수 : 891
+dropna = True : 
+S    644
+C    168
+Q     77
+Name: Embarked, dtype: int64
+dropna = False : 
+S      644
+C      168
+Q       77
+NaN      2
+Name: Embarked, dtype: int64
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;--series&quot;&gt;- &lt;strong&gt;Series&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Index와 단 하나의 칼럼으로 구성된 데이터 셋&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;titanic_pclass&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;titanic_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Pclass&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;titanic_pclass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Series의 Index | Series의 데이터값&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;titanic_pclass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;class &apos;pandas.core.series.Series&apos;&amp;gt;
+Series의 Index | Series의 데이터값
+0    3
+1    1
+2    3
+3    1
+4    3
+Name: Pclass, dtype: int64
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;3-넘파이-ndarray-리스트-딕셔너리를-dataframe으로-변환하기&quot;&gt;3. 넘파이 ndarray, 리스트, 딕셔너리를 DataFrame으로 변환하기&lt;/h2&gt;</content><author><name>Your Name</name></author><category term="MachineLearning" /><summary type="html">Pandas 데이터 처리와 분석을 위한 라이브러리 행과 열로 이루어진 데이터 객체를 만들어 다룰 수 있음 대용량의 데이터들을 처리하는데 매우 편리 Pandas 자료구조 시리즈(Series) : 1차원 데이터프레임(DataFrame) : 2차원 패널(Panel) : 3차원</summary></entry><entry><title type="html">MachineLearning</title><link href="http://localhost:4000/machinelearning/MachineLearning/" rel="alternate" type="text/html" title="MachineLearning" /><published>2023-02-07T00:00:00+09:00</published><updated>2023-02-07T00:00:00+09:00</updated><id>http://localhost:4000/machinelearning/MachineLearning</id><content type="html" xml:base="http://localhost:4000/machinelearning/MachineLearning/">&lt;h4 id=&quot;머신러닝의-개념&quot;&gt;머신러닝의 개념.&lt;/h4&gt;
 &lt;h2 id=&quot;머신러닝&quot;&gt;머신러닝&lt;/h2&gt;
 &lt;blockquote&gt;
   &lt;p&gt;규칙을 일일이 프로그래밍하지 않아도 자동으로 데이터에서 규칙을 학습하는 알고리즘을 연구하는 분야
