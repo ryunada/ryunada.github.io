@@ -1,0 +1,1067 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Numpy - Nada</title>
+<meta name="description" content="Numpy -&gt; 파이썬의 대표적인 배열(array) 라이브러리 -&gt; 벡터 및 행렬 연산에 있어 매우 편리한 기능을 제공">
+
+
+  <meta name="author" content="Your Name">
+  
+  <meta property="article:author" content="Your Name">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Nada">
+<meta property="og:title" content="Numpy">
+<meta property="og:url" content="http://localhost:4000/machinelearning/Numpy/">
+
+
+  <meta property="og:description" content="Numpy -&gt; 파이썬의 대표적인 배열(array) 라이브러리 -&gt; 벡터 및 행렬 연산에 있어 매우 편리한 기능을 제공">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2023-02-07T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/machinelearning/Numpy/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Ryu SeungHo",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Nada Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Nada
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/">Quick-Start Guide</a>
+            </li><li class="masthead__menu-item">
+              <a href="/category/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://github.com/ryunada/">Github</a>
+            </li><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/archive/">Pages</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Your Name</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an <strong>amazing</strong> person.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Somewhere</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Numpy">
+    <meta itemprop="description" content="Numpy-&gt; 파이썬의 대표적인 배열(array) 라이브러리-&gt; 벡터 및 행렬 연산에 있어 매우 편리한 기능을 제공">
+    <meta itemprop="datePublished" content="2023-02-07T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/machinelearning/Numpy/" class="u-url" itemprop="url">Numpy
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <h1 id="numpy">Numpy</h1>
+<p>-&gt; 파이썬의 대표적인 배열(array) 라이브러리<br />
+-&gt; 벡터 및 행렬 연산에 있어 매우 편리한 기능을 제공</p>
+
+<h3 id="1-numpy-정의">1. Numpy 정의</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
+
+<h3 id="2-array-정의-및-형태-확인">2. Array 정의 및 형태 확인</h3>
+<ul>
+  <li>type 확인 : type(~)</li>
+  <li>배열 구조 확인 : ~.shape</li>
+  <li>배열 차원 확인하기 : ~.ndim</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># array정의 
+</span><span class="n">array1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array1 type : </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">array1</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>      <span class="c1"># type 확인
+</span><span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array1 array 형태 : </span><span class="si">{</span><span class="n">array1</span><span class="p">.</span><span class="n">shape</span><span class="si">}</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span> <span class="c1"># 배열 형태 확인
+</span>
+<span class="n">array2</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array2 type : </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">array2</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array2 array 형태 : </span><span class="si">{</span><span class="n">array2</span><span class="p">.</span><span class="n">shape</span><span class="si">}</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+
+<span class="n">array3</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array3 type : </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">array3</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array3 array 형태 : </span><span class="si">{</span><span class="n">array3</span><span class="p">.</span><span class="n">shape</span><span class="si">}</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+
+<span class="c1"># 차원 확인
+</span><span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array1 : </span><span class="si">{</span><span class="n">array1</span><span class="p">.</span><span class="n">ndim</span><span class="si">}</span><span class="s">차원, array2 : </span><span class="si">{</span><span class="n">array2</span><span class="p">.</span><span class="n">ndim</span><span class="si">}</span><span class="s">차원, array3 : </span><span class="si">{</span><span class="n">array3</span><span class="p">.</span><span class="n">ndim</span><span class="si">}</span><span class="s">차원"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array1 type : &lt;class 'numpy.ndarray'&gt;
+array1 array 형태 : (3,)
+
+array2 type : &lt;class 'numpy.ndarray'&gt;
+array2 array 형태 : (2, 3)
+
+array3 type : &lt;class 'numpy.ndarray'&gt;
+array3 array 형태 : (1, 3)
+
+array1 : 1차원, array2 : 2차원, array3 : 2차원
+</code></pre></div></div>
+
+<h3 id="3-ndarray의-데이터-타입">3. ndarray의 데이터 타입</h3>
+<ul>
+  <li>ndarray는 데이터값이 모두 같은 데이터 타입이어야 한다.</li>
+  <li>데이터 타입 확인 하기 : ~.dtype</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># list -&gt; ndarray로 변환
+</span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">list1</span><span class="p">))</span>
+
+<span class="n">array1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">array1</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">array1</span><span class="p">,</span> <span class="n">array1</span><span class="p">.</span><span class="n">dtype</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;class 'list'&gt;
+&lt;class 'numpy.ndarray'&gt;
+[1 2 3] int64
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 하나의 문자열로 인하여 모두 문자열로 변환
+</span><span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s">'test'</span><span class="p">]</span>
+<span class="n">array2</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">array2</span><span class="p">,</span> <span class="n">array2</span><span class="p">.</span><span class="n">dtype</span><span class="p">)</span>
+
+<span class="c1"># 하나의 실수로 인하여 전부 실수형으로 변환
+</span><span class="n">list3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]</span>
+<span class="n">array3</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">list3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">array3</span><span class="p">,</span> <span class="n">array3</span><span class="p">.</span><span class="n">dtype</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['1' '2' 'test'] &lt;U21
+[1. 2. 3.] float64
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># int64 -&gt; float64로 형 변환
+</span><span class="n">array_int</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">array_float</span> <span class="o">=</span> <span class="n">array_int</span><span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="s">'float64'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">array_float</span><span class="p">,</span> <span class="n">array_float</span><span class="p">.</span><span class="n">dtype</span><span class="p">)</span>
+
+<span class="c1"># float64 -&gt; int32로 형 변환
+</span><span class="n">array_int1</span> <span class="o">=</span> <span class="n">array_float</span><span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="s">'int32'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">array_int1</span><span class="p">,</span> <span class="n">array_int1</span><span class="p">.</span><span class="n">dtype</span><span class="p">)</span>
+
+<span class="c1"># float63 -&gt; int32로 형 변환 | 소수점 아래 사라짐
+</span><span class="n">array_float1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">])</span>
+<span class="n">array_int2</span> <span class="o">=</span> <span class="n">array_float1</span><span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="s">'int32'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">array_int2</span><span class="p">,</span> <span class="n">array_int2</span><span class="p">.</span><span class="n">dtype</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1. 2. 3.] float64
+[1 2 3] int32
+[1 2 3] int32
+</code></pre></div></div>
+
+<h3 id="4-ndarray-생성하기---arange-zeros-ones">4. ndarray 생성하기 - arange, zeros, ones</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># arange() : 0부터 함수 인자 값 -1 까지 값을 순차적으로 ndarray의 데이터값으로 변환
+</span><span class="n">sequence_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sequence_array</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"dtype: </span><span class="si">{</span><span class="n">sequence_array</span><span class="p">.</span><span class="n">dtype</span><span class="si">}</span><span class="s"> | shape: </span><span class="si">{</span><span class="n">sequence_array</span><span class="p">.</span><span class="n">shape</span><span class="si">}</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+
+<span class="c1"># zeros() : 모든 값을 0으로 채운 해당 shape를 가진 ndarray를 반환
+</span><span class="n">zero_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s">'int32'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">zero_array</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"dtype: </span><span class="si">{</span><span class="n">zero_array</span><span class="p">.</span><span class="n">dtype</span><span class="si">}</span><span class="s"> | shape : </span><span class="si">{</span><span class="n">zero_array</span><span class="p">.</span><span class="n">shape</span><span class="si">}</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+
+<span class="c1"># ones() : 모든 값을 1으로 채운 ndarray를 반환
+</span><span class="n">one_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">one_array</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"dtype: </span><span class="si">{</span><span class="n">one_array</span><span class="p">.</span><span class="n">dtype</span><span class="si">}</span><span class="s"> | shape : </span><span class="si">{</span><span class="n">one_array</span><span class="p">.</span><span class="n">shape</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0 1 2 3 4 5 6 7 8 9]
+dtype: int64 | shape: (10,)
+
+[[0 0]
+ [0 0]
+ [0 0]]
+dtype: int32 | shape : (3, 2)
+
+[[1. 1.]
+ [1. 1.]
+ [1. 1.]]
+dtype: float64 | shape : (3, 2)
+</code></pre></div></div>
+
+<h3 id="5-ndarray의-차원과-크기를-변경하는-reshape">5. ndarray의 차원과 크기를 변경하는 reshape()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 배열 정의 
+</span><span class="n">array1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array1:</span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">array1</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+<span class="c1"># 1*10 -&gt; 2*5
+</span><span class="n">array2</span> <span class="o">=</span> <span class="n">array1</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array2:</span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">array2</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+<span class="c1"># 1*10 -&gt; 5*2
+</span><span class="n">array3</span> <span class="o">=</span> <span class="n">array1</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array3:</span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">array3</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array1:
+ [0 1 2 3 4 5 6 7 8 9]
+array2:
+ [[0 1 2 3 4]
+ [5 6 7 8 9]]
+array3:
+ [[0 1]
+ [2 3]
+ [4 5]
+ [6 7]
+ [8 9]]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># error 지정된 사이즈로 변경이 불가능 하면 오류 발생
+</span><span class="n">array1</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+
+ValueError                                Traceback (most recent call last)
+
+Cell In[8], line 2
+      1 # error 지정된 사이즈로 변경이 불가능 하면 오류 발생
+----&gt; 2 array1.reshape(4,3)
+
+
+ValueError: cannot reshape array of size 10 into shape (4,3)
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># -1을 인자로 사용하면 원래 ndarray와 호환되는 새로운 shape로 변환
+</span><span class="n">array1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">array1</span><span class="p">)</span>
+<span class="n">array2</span> <span class="o">=</span> <span class="n">array1</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array2 shape: </span><span class="si">{</span><span class="n">array2</span><span class="p">.</span><span class="n">shape</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="n">array3</span> <span class="o">=</span> <span class="n">array1</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array3 shape: </span><span class="si">{</span><span class="n">array3</span><span class="p">.</span><span class="n">shape</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0 1 2 3 4 5 6 7 8 9]
+array2 shape: (2, 5)
+array3 shape: (5, 2)
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 호환될 수 없는 형태라 error
+</span><span class="n">array1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">array3</span> <span class="o">=</span> <span class="n">array1</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+
+ValueError                                Traceback (most recent call last)
+
+Cell In[10], line 3
+      1 # 호환될 수 없는 형태라 error
+      2 array1 = np.arange(10)
+----&gt; 3 array3 = array1.reshape(-1,4)
+
+
+ValueError: cannot reshape array of size 10 into shape (4)
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">array1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">array3d</span> <span class="o">=</span><span class="n">array1</span><span class="p">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array3:</span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">array3d</span><span class="p">.</span><span class="n">tolist</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+
+<span class="c1"># 3차원 ndarray를 2차원 ndarray로 변환
+</span><span class="n">array5</span> <span class="o">=</span> <span class="n">array3d</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array5:</span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">array5</span><span class="p">.</span><span class="n">tolist</span><span class="p">()</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array5 shape: </span><span class="si">{</span><span class="n">array5</span><span class="p">.</span><span class="n">shape</span><span class="si">}</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+
+<span class="c1"># 1차원 ndarray를 2차원 ndarray로 변환
+</span><span class="n">array6</span> <span class="o">=</span> <span class="n">array1</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array6:</span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">array6</span><span class="p">.</span><span class="n">tolist</span><span class="p">()</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array6 shape: </span><span class="si">{</span><span class="n">array6</span><span class="p">.</span><span class="n">shape</span><span class="si">}</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array3:
+ [[[0, 1], [2, 3]], [[4, 5], [6, 7]]]
+
+array5:
+ [[0], [1], [2], [3], [4], [5], [6], [7]]
+array5 shape: (8, 1)
+
+array6:
+ [[0], [1], [2], [3], [4], [5], [6], [7]]
+array6 shape: (8, 1)
+</code></pre></div></div>
+
+<h3 id="6-넘파이의-ndarray의-데이터-세트-선택하기---인덱싱indexing">6. 넘파이의 ndarray의 데이터 세트 선택하기 - 인덱싱(Indexing)</h3>
+<ol>
+  <li>특정한 데이터만 추출 : 원하는 위치의 인덱스 값을 지정하면 해당 위치의 데이터가 반환됩니다.</li>
+  <li>슬라이싱(Slicing) : 슬라이싱은 연속된 인덱스상의 ndarray를 추출하는 방식</li>
+  <li>팬시 인덱싱(Fancy Indexing) : 일정한 인덱싱 집합을 리스트 또는 ndarray형태로 지정해 해당 위치에 있는 데이터의 ndarray를 반환</li>
+  <li>불린 인덱싱(Boolean Indexing) : 특정 조건에 해당하는지 여부인 True/False 값 인덱싱 집한을 기반으로 True에 해당하는 인덱스 위치에 있는 데이터의 ndarray를 반환</li>
+</ol>
+
+<h4 id="1-단일-값-추출">1. 단일 값 추출</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 1부터 9까지의 1차원 ndarray 생성
+</span><span class="n">array1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'array1: </span><span class="si">{</span><span class="n">array1</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+
+<span class="c1"># index는 0부터 시작하므로 array1[2]는 3번째 index 위치의 데이터값을 의미
+</span><span class="n">value</span> <span class="o">=</span> <span class="n">array1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"value: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array1: [1 2 3 4 5 6 7 8 9]
+value: 3
+&lt;class 'numpy.int64'&gt;
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"맨 뒤의 값: </span><span class="si">{</span><span class="n">array1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s"> 맨뒤에서 두 번째 값: </span><span class="si">{</span><span class="n">array1</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>맨 뒤의 값: 9 맨뒤에서 두 번째 값: 8
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ndarray내의 데이터 값 수정
+</span><span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array1 : </span><span class="si">{</span><span class="n">array1</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="n">array1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">array1</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"변경된 array1 : </span><span class="si">{</span><span class="n">array1</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array1 : [1 2 3 4 5 6 7 8 9]
+변경된 array1 : [9 2 3 4 5 6 7 8 0]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">array1d</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">array2d</span> <span class="o">=</span> <span class="n">array1d</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">array2d</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"(row = 0, col = 0) index 가리키는 값: </span><span class="si">{</span><span class="n">array2d</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"(row = 0, col = 1) index 가리키는 값: </span><span class="si">{</span><span class="n">array2d</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"(row = 1, col = 0) index 가리키는 값: </span><span class="si">{</span><span class="n">array2d</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"(row = 2, col = 2) index 가리키는 값: </span><span class="si">{</span><span class="n">array2d</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+(row = 0, col = 0) index 가리키는 값: 1
+(row = 0, col = 1) index 가리키는 값: 2
+(row = 1, col = 0) index 가리키는 값: 4
+(row = 2, col = 2) index 가리키는 값: 9
+</code></pre></div></div>
+
+<h4 id="2-슬라이싱">2. 슬라이싱</h4>
+<ul>
+  <li>’;’ 기호 앞에 시작 인덱스를 생략하면 자동으로 맨 처음 인덱스인 0으로 간주</li>
+  <li>’:’ 기호 뒤에 종료 인덱스를 생략하면 자동으롬 맨 마지막 인덱스로 간주</li>
+  <li>’:’ 기호 앞/뒤에 시작/종료 인덱스를 생략하면 자동으로 맨 처음/맨 마지막 인덱스로 간주</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">array1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">array3</span> <span class="o">=</span> <span class="n">array1</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">array3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">array3</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1 2 3]
+&lt;class 'numpy.ndarray'&gt;
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">array1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">array4</span> <span class="o">=</span> <span class="n">array1</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">array4</span><span class="p">)</span>
+
+<span class="n">array5</span> <span class="o">=</span> <span class="n">array1</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">array5</span><span class="p">)</span>
+
+<span class="n">array6</span> <span class="o">=</span> <span class="n">array1</span><span class="p">[:]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">array6</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1 2 3]
+[4 5 6 7 8 9]
+[1 2 3 4 5 6 7 8 9]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">array1d</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">array2d</span> <span class="o">=</span> <span class="n">array1d</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array2d:</span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">array2d</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array2d[0:2, 0:2]:</span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">array2d</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array2d[1:3, 0:3]:</span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">array2d</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array2d[1:3, :]:</span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">array2d</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array2d[: , :]:</span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">array2d</span><span class="p">[:,</span> <span class="p">:]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array2d[:2, 1:]:</span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">array2d</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array2d[:2, 0]:</span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">array2d</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array2d:
+ [[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+array2d[0:2, 0:2]:
+ [[1 2]
+ [4 5]]
+array2d[1:3, 0:3]:
+ [[4 5 6]
+ [7 8 9]]
+array2d[1:3, :]:
+ [[4 5 6]
+ [7 8 9]]
+array2d[: , :]:
+ [[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+array2d[:2, 1:]:
+ [[2 3]
+ [5 6]]
+array2d[:2, 0]:
+ [1 4]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">array2d</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">array2d</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array2d[0] shape : </span><span class="si">{</span><span class="n">array2d</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">shape</span><span class="si">}</span><span class="s"> | array2d[1] shape: </span><span class="si">{</span><span class="n">array2d</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">shape</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1 2 3]
+[4 5 6]
+array2d[0] shape : (3,) | array2d[1] shape: (3,)
+</code></pre></div></div>
+
+<h4 id="3-팬시-인덱싱fancy-indexing">3. 팬시 인덱싱(Fancy Indexing)</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">array1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">array2d</span> <span class="o">=</span> <span class="n">array1d</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">array3</span> <span class="o">=</span> <span class="n">array2d</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array2d[[0, 1],2] =&gt; </span><span class="si">{</span><span class="n">array3</span><span class="p">.</span><span class="n">tolist</span><span class="p">()</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+<span class="n">array4</span> <span class="o">=</span> <span class="n">array2d</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array2d[[0, 1], 0:2] =&gt; </span><span class="si">{</span><span class="n">array4</span><span class="p">.</span><span class="n">tolist</span><span class="p">()</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+<span class="n">array5</span> <span class="o">=</span> <span class="n">array2d</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array2d[[0, 1],2] =&gt; </span><span class="si">{</span><span class="n">array5</span><span class="p">.</span><span class="n">tolist</span><span class="p">()</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array2d[[0, 1],2] =&gt; [3, 6]
+array2d[[0, 1], 0:2] =&gt; [[1, 2], [4, 5]]
+array2d[[0, 1],2] =&gt; [[1, 2, 3], [4, 5, 6]]
+</code></pre></div></div>
+
+<h4 id="4-불린-인덱싱boolean-indexing">4. 불린 인덱싱(Boolean Indexing)</h4>
+<ul>
+  <li>조건 필터링과 검색을 동시에 할 수 있음</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">array1d</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="c1"># [ ]안에 array1d &gt; 5 Boolean Indexing을 적용
+</span><span class="n">array3</span> <span class="o">=</span> <span class="n">array1d</span><span class="p">[</span><span class="n">array1d</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array1d &gt; 5 불린 인덱싱 결과 값: </span><span class="si">{</span><span class="n">array3</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array1d &gt; 5 불린 인덱싱 결과 값: [6 7 8 9]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">array1d</span> <span class="o">&gt;</span> <span class="mi">5</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False, False, False, False, False,  True,  True,  True,  True])
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">boolean_indexes</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span>  <span class="bp">True</span><span class="p">,</span>  <span class="bp">True</span><span class="p">,</span>  <span class="bp">True</span><span class="p">,</span>  <span class="bp">True</span><span class="p">])</span>
+<span class="n">array3</span> <span class="o">=</span> <span class="n">array1d</span><span class="p">[</span><span class="n">boolean_indexes</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"불린 인덱스로 필터링 결과 : </span><span class="si">{</span><span class="n">array3</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>불린 인덱스로 필터링 결과 : [6 7 8 9]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">indexes</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+<span class="n">array4</span> <span class="o">=</span> <span class="n">array1d</span><span class="p">[</span><span class="n">indexes</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"일반 인덱스로 필터링 결과: </span><span class="si">{</span><span class="n">array4</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>일반 인덱스로 필터링 결과: [6 7 8 9]
+</code></pre></div></div>
+
+<h3 id="7-행렬의-정렬---sort-와-argsort-">7. 행렬의 정렬 - sort( )와 argsort( )</h3>
+<ul>
+  <li><strong>np.sort( )</strong>의 경우 원 행렬은 그대로 유지한 채 원 행렬의 정렬된 행렬을 반환</li>
+  <li><strong>ndarray.sort( )</strong>는 원 행렬 자체를 정렬한 형태로 변환하며 반환 값은 None</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">org_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"원본 행렬: </span><span class="si">{</span><span class="n">org_array</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+<span class="c1"># np.sort( )로 정렬
+</span><span class="n">sort_array1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sort</span><span class="p">(</span><span class="n">org_array</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"np.sort() 호출 후 반환된 정렬 행렬: </span><span class="si">{</span><span class="n">sort_array1</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"np.sort() 호출 후 원본 행렬: </span><span class="si">{</span><span class="n">org_array</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+<span class="c1"># ndarray.sort( )로 정렬
+</span><span class="n">sort_array2</span> <span class="o">=</span> <span class="n">org_array</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"np.sort() 호출 후 반환된 정렬 행렬: </span><span class="si">{</span><span class="n">sort_array2</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"np.sort() 호출 후 원본 행렬: </span><span class="si">{</span><span class="n">org_array</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>원본 행렬: [3 1 9 5]
+np.sort() 호출 후 반환된 정렬 행렬: [1 3 5 9]
+np.sort() 호출 후 원본 행렬: [3 1 9 5]
+np.sort() 호출 후 반환된 정렬 행렬: None
+np.sort() 호출 후 원본 행렬: [1 3 5 9]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 내림차순 정렬 [::-1]
+</span><span class="n">sort_array1_desc</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sort</span><span class="p">(</span><span class="n">org_array</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"내림차순으로 정렬: </span><span class="si">{</span><span class="n">sort_array1_desc</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>내림차순으로 정렬: [9 5 3 1]
+</code></pre></div></div>
+
+<ul>
+  <li>2차원 정렬</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">array2d</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span>
+                   <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">sort_array2d_axis0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sort</span><span class="p">(</span><span class="n">array2d</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"로우 방향으로 정렬:</span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">sort_array2d_axis0</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+<span class="n">sort_array2d_axis1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sort</span><span class="p">(</span><span class="n">array2d</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"칼럼 방향으로 정렬:</span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">sort_array2d_axis1</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>로우 방향으로 정렬:
+ [[ 7  1]
+ [ 8 12]]
+칼럼 방향으로 정렬:
+ [[ 8 12]
+ [ 1  7]]
+</code></pre></div></div>
+
+<ul>
+  <li>정렬된 행렬의 <strong>인덱스</strong> 반환하기</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">org_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">sort_indices</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">org_array</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">sort_indices</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'행렬 정렬 시 원본 행렬의 인덱스: </span><span class="si">{</span><span class="n">sort_indices</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;class 'numpy.ndarray'&gt;
+행렬 정렬 시 원본 행렬의 인덱스: [1 0 3 2]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">org_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">sort_indices_desc</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">org_array</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># 내림차순 정렬
+</span><span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"행렬 내림차순 정렬 시 원본 행렬의 인덱스: </span><span class="si">{</span><span class="n">sort_indices_desc</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>행렬 내림차순 정렬 시 원본 행렬의 인덱스: [2 3 0 1]
+</code></pre></div></div>
+
+<h3 id="8-선형대수-연산---행렬-내적과-전치-행렬-구하기">8. 선형대수 연산 - 행렬 내적과 전치 행렬 구하기</h3>
+
+<ul>
+  <li>행렬 내적(행렬 곱) : np.dot()</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+             <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span>
+             <span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span>
+             <span class="p">[</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]])</span>
+<span class="n">Multi_result</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"행렬 내적 결과 : </span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">Multi_result</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>행렬 내적 결과 : 
+ [[ 58  64]
+ [139 154]]
+</code></pre></div></div>
+
+<ul>
+  <li>전치 행렬 : 원 행렬에서 행, 열 위치를 교환한 원소로 구성한 행렬</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
+             <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+<span class="n">transpose_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"A의 전치 행렬: </span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">transpose_array</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A의 전치 행렬: 
+ [[1 3]
+ [2 4]]
+</code></pre></div></div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#machinelearning" class="page__taxonomy-item p-category" rel="tag">MachineLearning</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-02-07T00:00:00+09:00">February 7, 2023</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Numpy%20http%3A%2F%2Flocalhost%3A4000%2Fmachinelearning%2FNumpy%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fmachinelearning%2FNumpy%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fmachinelearning%2FNumpy%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/machinelearning/MachineLearning/" class="pagination--pager" title="MachineLearning
+">Previous</a>
+    
+    
+      <a href="/machinelearning/Pandas/" class="pagination--pager" title="Pandas
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/machinelearning/Pandas/" rel="permalink">Pandas
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Pandas
+
+  데이터 처리와 분석을 위한 라이브러리
+  행과 열로 이루어진 데이터 객체를 만들어 다룰 수 있음
+  대용량의 데이터들을 처리하는데 매우 편리
+  Pandas 자료구조
+    
+      시리즈(Series) : 1차원
+      데이터프레임(DataFrame) :...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/machinelearning/MachineLearning/" rel="permalink">MachineLearning
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">머신러닝의 개념.
+머신러닝
+
+  규칙을 일일이 프로그래밍하지 않아도 자동으로 데이터에서 규칙을 학습하는 알고리즘을 연구하는 분야
+대표적인 머신러닝 라이브러리 : 사이킷런(Scikit-learn)
+
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Ryu SeungHo. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
