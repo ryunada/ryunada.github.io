@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Pandas - Nada</title>
-<meta name="description" content="Pandas    데이터 처리와 분석을 위한 라이브러리   행과 열로 이루어진 데이터 객체를 만들어 다룰 수 있음   대용량의 데이터들을 처리하는데 매우 편리   Pandas 자료구조            시리즈(Series) : 1차원       데이터프레임(DataFrame) : 2차원       패널(Panel) : 3차원">
+<meta name="description" content="Pandas">
 
 
   <meta name="author" content="Nada">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="http://localhost:4000/machinelearning/Pandas/">
 
 
-  <meta property="og:description" content="Pandas    데이터 처리와 분석을 위한 라이브러리   행과 열로 이루어진 데이터 객체를 만들어 다룰 수 있음   대용량의 데이터들을 처리하는데 매우 편리   Pandas 자료구조            시리즈(Series) : 1차원       데이터프레임(DataFrame) : 2차원       패널(Panel) : 3차원">
+  <meta property="og:description" content="Pandas">
 
 
 
@@ -267,7 +267,7 @@
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Pandas">
-    <meta itemprop="description" content="Pandas  데이터 처리와 분석을 위한 라이브러리  행과 열로 이루어진 데이터 객체를 만들어 다룰 수 있음  대용량의 데이터들을 처리하는데 매우 편리  Pandas 자료구조          시리즈(Series) : 1차원      데이터프레임(DataFrame) : 2차원      패널(Panel) : 3차원      ">
+    <meta itemprop="description" content="Pandas">
     <meta itemprop="datePublished" content="2023-02-10T00:00:00+09:00">
     
 
@@ -292,7 +292,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          3 minute read
+          10 minute read
         
       </span>
     
@@ -305,6 +305,9 @@
       <section class="page__content e-content" itemprop="text">
         
         <h1 id="pandas">Pandas</h1>
+
+<h2 id="1-pandas란">1. Pandas란?</h2>
+
 <ul>
   <li>데이터 처리와 분석을 위한 라이브러리</li>
   <li>행과 열로 이루어진 데이터 객체를 만들어 다룰 수 있음</li>
@@ -318,21 +321,19 @@
   </li>
 </ul>
 
-<h2 id="1-pandas정의">1. Pandas정의</h2>
-
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># conda install pandas
 </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 </code></pre></div></div>
 
 <h2 id="2-pandas-다루기">2. Pandas 다루기</h2>
 
-<h3 id="--read_csv경로">- <strong>read_csv(‘경로’)</strong></h3>
+<h3 id="1-파일-불러오기">1. 파일 불러오기</h3>
 
 <ul>
-  <li>파일 불러오기</li>
+  <li><strong>read_csv(‘경로’)</strong></li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># pd.read_csc('경로')
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># pd.read_csv('경로')
 </span><span class="n">titanic_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'./titanic_train.csv'</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'titanic 변수 type : </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">titanic_df</span><span class="p">)</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
 </code></pre></div></div>
@@ -340,10 +341,92 @@
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>titanic 변수 type : &lt;class 'pandas.core.frame.DataFrame'&gt;
 </code></pre></div></div>
 
-<h3 id="--dfheadn">- <strong>DF.head(N)</strong></h3>
+<h3 id="2-pandas-dataframe-만들기">2. Pandas DataFrame 만들기</h3>
 
 <ul>
-  <li>DataFrame의 상위 N개의 row를 반환</li>
+  <li>pd.DataFrame()</li>
+</ul>
+
+<h4 id="--넘파이-ndarray-리스트-딕셔너리를-dataframe으로-변환하기">- 넘파이 ndarray, 리스트, 딕셔너리를 DataFrame으로 변환하기</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">col_name</span> <span class="o">=</span> <span class="p">[</span><span class="s">'col1'</span><span class="p">]</span>
+<span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"array shape: </span><span class="si">{</span><span class="n">array</span><span class="p">.</span><span class="n">shape</span><span class="si">}</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+
+<span class="c1"># 리스트를 이용해 DataFrame 생성
+</span><span class="n">df_list</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">col_name</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"1차원 리스트로 만든 DataFrame:</span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">df_list</span><span class="si">}</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+
+<span class="c1"># 넘파이 ndarray를 이용해 DataFrame 생성
+</span><span class="n">df_array</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">col_name</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"1차원 ndarray로 만든 DataFrame: </span><span class="se">\n</span><span class="si">{</span><span class="n">df_array</span><span class="si">}</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+
+<span class="c1"># 딕셔너리를 이용해 DataFrame 생성
+</span><span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span><span class="s">'col1'</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="s">'col2'</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">22</span><span class="p">],</span> <span class="s">'col3'</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">33</span><span class="p">]}</span>
+<span class="n">df_dict</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"딕셔너리로 만든 DataFrame:</span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">df_dict</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array1 shape: (3,)
+
+1차원 리스트로 만든 DataFrame:
+    col1
+0     1
+1     2
+2     3
+
+1차원 ndarray로 만든 DataFrame: 
+   col1
+0     1
+1     2
+2     3
+
+딕셔너리로 만든 DataFrame:
+    col1  col2  col3
+0     1     2     3
+1    11    22    33
+</code></pre></div></div>
+
+<h4 id="--dataframe을-넘파이-ndarray-리스트-딕셔너리로-변환하기">- DataFrame을 넘파이 ndarray, 리스트, 딕셔너리로 변환하기</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"DataFrame : </span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">df</span><span class="si">}</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+
+<span class="c1"># DataFrame을 ndarray로 변환
+</span><span class="n">array</span> <span class="o">=</span> <span class="n">df_dict</span><span class="p">.</span><span class="n">values</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"df_dict.values type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">array</span><span class="p">)</span><span class="si">}</span><span class="s"> df_dict.values shape: </span><span class="si">{</span><span class="n">array</span><span class="p">.</span><span class="n">shape</span><span class="si">}</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+
+<span class="c1"># DataFrame을 리스트로 변환
+</span><span class="nb">list</span> <span class="o">=</span> <span class="n">df_dict</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"df_dict.values.tolist() type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"list: </span><span class="si">{</span><span class="nb">list</span><span class="si">}</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+
+<span class="c1"># DataFrame을 딕셔너리로 변환
+</span><span class="nb">dict</span> <span class="o">=</span> <span class="n">df_dict</span><span class="p">.</span><span class="n">to_dict</span><span class="p">(</span><span class="s">'list'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"df_dict.to_dict() type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"dict: </span><span class="si">{</span><span class="nb">dict</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DataFrame : 
+    col1  col2  col3
+0     1     2     3
+1    11    22    33
+
+df_dict.values type: &lt;class 'numpy.ndarray'&gt; df_dict.values shape: (2, 3)
+
+df_dict.values.tolist() type: &lt;class 'list'&gt;
+list: [[1, 2, 3], [11, 22, 33]]
+
+df_dict.to_dict() type: &lt;class 'dict'&gt;
+dict: {'col1': [1, 11], 'col2': [2, 22], 'col3': [3, 33]}
+</code></pre></div></div>
+
+<h3 id="3-dataframe의-상위-n개의-row를-반환">3. DataFrame의 상위 N개의 row를 반환</h3>
+
+<ul>
+  <li><strong>DF.head(N)</strong></li>
 </ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Df.head(N)
@@ -412,15 +495,15 @@
       <td style="text-align: right">STON/O2. 3101282</td>
       <td style="text-align: right">7.9250</td>
       <td style="text-align: right">NaN</td>
-      <td style="text-align: right">S</td>
+      <td style="text-align: right">S4.</td>
     </tr>
   </tbody>
 </table>
 
-<h3 id="--dftailn">- DF.tail(N)</h3>
+<h3 id="4-dataframe의-하위-n개의-row를-반환">4. DataFrame의 하위 N개의 row를 반환</h3>
 
 <ul>
-  <li>DataFrame의 하위 N개의 row를 반환</li>
+  <li>DF.tail(N)</li>
 </ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Df.tail(N)
@@ -494,10 +577,10 @@
   </tbody>
 </table>
 
-<h3 id="--dfshape">- <strong>DF.shape</strong></h3>
+<h3 id="5-dataframe-크기-확인">5. DataFrame 크기 확인</h3>
 
 <ul>
-  <li>DataFrame 크기 확인</li>
+  <li><strong>DF.shape</strong></li>
 </ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># DF.shape()
@@ -507,10 +590,10 @@
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DataFrame 크기 : (891, 12)
 </code></pre></div></div>
 
-<h3 id="--dfinfo-">- <strong>DF.info( )</strong></h3>
+<h3 id="6-dataframe의-총-데이터-건수와-데이터-타입-null-건수">6. DataFrame의 총 데이터 건수와 데이터 타입, Null 건수</h3>
 
 <ul>
-  <li>DataFrame의 총 데이터 건수와 데이터 타입, Null 건수</li>
+  <li><strong>DF.info( )</strong></li>
 </ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Df.info()
@@ -538,10 +621,10 @@ dtypes: float64(2), int64(5), object(5)
 memory usage: 83.7+ KB
 </code></pre></div></div>
 
-<h3 id="--dfdescribe-">- <strong>DF.describe( )</strong></h3>
+<h3 id="7-칼러별-숫자형-데이터값의-n-percentile분포도-평균값-최댓값-최솟값">7. 칼러별 숫자형 데이터값의 n-percentile분포도, 평균값, 최댓값, 최솟값</h3>
 
 <ul>
-  <li>칼러별 숫자형 데이터값의 n-percentile분포도, 평균값, 최댓값, 최솟값</li>
+  <li><strong>DF.describe( )</strong></li>
 </ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># DF.describe()
@@ -645,10 +728,10 @@ memory usage: 83.7+ KB
   </tbody>
 </table>
 
-<h3 id="--dfc_n">- Df[‘C_N’]</h3>
+<h3 id="8-특정-컬럼을-추출">8. 특정 컬럼을 추출</h3>
 
 <ul>
-  <li>특정 컬럼을 추출</li>
+  <li>Df[‘C_N’]</li>
   <li></li>
   <li>[<a href="Series로 출력">  </a>] : DataFrame으로 추출</li>
 </ul>
@@ -698,11 +781,14 @@ two :
 two type: &lt;class 'pandas.core.frame.DataFrame'&gt;
 </code></pre></div></div>
 
-<h3 id="--dfc_nvalue_counts-">- <strong>DF[‘C_N’].value_counts( )</strong></h3>
+<h3 id="9-메서드를-호출하면-해당-칼럼값의-유형과-건수를-확인-가능">9. 메서드를 호출하면 해당 칼럼값의 유형과 건수를 확인 가능</h3>
 
 <ul>
-  <li>메서드를 호출하면 해당 칼럼값의 유형과 건수를 확인 가능</li>
-  <li><strong>dropna</strong> : 결측값 포함(False) or 제외(True[default])</li>
+  <li><strong>DF[‘C_N’].value_counts( )</strong>
+    <ul>
+      <li><strong>dropna</strong> : 결측값 포함(False) or 제외(True[default])</li>
+    </ul>
+  </li>
 </ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># DF['Column_Name'].value_counts()
@@ -735,7 +821,7 @@ NaN      2
 Name: Embarked, dtype: int64
 </code></pre></div></div>
 
-<h3 id="--series">- <strong>Series</strong></h3>
+<h3 id="10-series">10. <strong>Series</strong></h3>
 
 <ul>
   <li>Index와 단 하나의 칼럼으로 구성된 데이터 셋</li>
@@ -758,8 +844,1173 @@ Series의 Index | Series의 데이터값
 Name: Pclass, dtype: int64
 </code></pre></div></div>
 
-<h2 id="3-넘파이-ndarray-리스트-딕셔너리를-dataframe으로-변환하기">3. 넘파이 ndarray, 리스트, 딕셔너리를 DataFrame으로 변환하기</h2>
+<ul>
+  <li>
+    <p>연산</p>
 
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Series_Age</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="p">[</span><span class="s">'Age'</span><span class="p">]</span>
+  
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Age_Max : </span><span class="si">{</span><span class="n">Series_Age</span><span class="p">.</span><span class="nb">max</span><span class="p">()</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Age_Min : </span><span class="si">{</span><span class="n">Series_Age</span><span class="p">.</span><span class="nb">min</span><span class="p">()</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Age_Sum : </span><span class="si">{</span><span class="n">Series_Age</span><span class="p">.</span><span class="nb">sum</span><span class="p">()</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Age_Max : 80.0
+Age_Min : 0.42
+Age_Sum : 21205.17
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="11-index-객체">11. Index 객체</h3>
+
+<ul>
+  <li>DataFrame, Series의 레코드를 고유하게 식별하는 객체</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Index 객체 추출
+</span><span class="n">indexes</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="p">.</span><span class="n">index</span>
+<span class="k">print</span><span class="p">(</span><span class="n">indexes</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RangeIndex(start=0, stop=891, step=1)
+</code></pre></div></div>
+
+<h2 id="3-dataframe의-칼럼-데이터-세트-생성과-수정">3. DataFrame의 칼럼 데이터 세트 생성과 수정</h2>
+
+<ul>
+  <li>
+    <p>Column 데이터 생성</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">titanic_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: right"> </th>
+          <th style="text-align: right">PassengerId</th>
+          <th style="text-align: right">Survived</th>
+          <th style="text-align: right">Pclass</th>
+          <th style="text-align: right">Name</th>
+          <th style="text-align: right">Sex</th>
+          <th style="text-align: right">Age</th>
+          <th style="text-align: right">SibSp</th>
+          <th style="text-align: right">Parch</th>
+          <th style="text-align: right">Ticket</th>
+          <th style="text-align: right">Fare</th>
+          <th style="text-align: right">Cabin</th>
+          <th style="text-align: right">Embarked</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">Braund, Mr. Owen Harris</td>
+          <td style="text-align: right">male</td>
+          <td style="text-align: right">22.0</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">A/5 21171</td>
+          <td style="text-align: right">7.2500</td>
+          <td style="text-align: right">NaN</td>
+          <td style="text-align: right">S</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">2</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">Cumings, Mrs. John Bradley (Florence Briggs Th…</td>
+          <td style="text-align: right">female</td>
+          <td style="text-align: right">38.0</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">PC 17599</td>
+          <td style="text-align: right">71.2833</td>
+          <td style="text-align: right">C85</td>
+          <td style="text-align: right">C</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">2</td>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">Heikkinen, Miss. Laina</td>
+          <td style="text-align: right">female</td>
+          <td style="text-align: right">26.0</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">STON/O2. 3101282</td>
+          <td style="text-align: right">7.9250</td>
+          <td style="text-align: right">NaN</td>
+          <td style="text-align: right">S</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">4</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+          <td style="text-align: right">female</td>
+          <td style="text-align: right">35.0</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">113803</td>
+          <td style="text-align: right">53.1000</td>
+          <td style="text-align: right">C123</td>
+          <td style="text-align: right">S</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">4</td>
+          <td style="text-align: right">5</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">Allen, Mr. William Henry</td>
+          <td style="text-align: right">male</td>
+          <td style="text-align: right">35.0</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">373450</td>
+          <td style="text-align: right">8.0500</td>
+          <td style="text-align: right">NaN</td>
+          <td style="text-align: right">S</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># [Age_0] column 추가
+</span><span class="n">titanic_df</span><span class="p">[</span><span class="s">'Age_0'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">titanic_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: right"> </th>
+          <th style="text-align: right">PassengerId</th>
+          <th style="text-align: right">Survived</th>
+          <th style="text-align: right">Pclass</th>
+          <th style="text-align: right">Name</th>
+          <th style="text-align: right">Sex</th>
+          <th style="text-align: right">Age</th>
+          <th style="text-align: right">SibSp</th>
+          <th style="text-align: right">Parch</th>
+          <th style="text-align: right">Ticket</th>
+          <th style="text-align: right">Fare</th>
+          <th style="text-align: right">Cabin</th>
+          <th style="text-align: right">Embarked</th>
+          <th style="text-align: right">Age_0</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">Braund, Mr. Owen Harris</td>
+          <td style="text-align: right">male</td>
+          <td style="text-align: right">22.0</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">A/5 21171</td>
+          <td style="text-align: right">7.2500</td>
+          <td style="text-align: right">NaN</td>
+          <td style="text-align: right">S</td>
+          <td style="text-align: right">0</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">2</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">Cumings, Mrs. John Bradley (Florence Briggs Th…</td>
+          <td style="text-align: right">female</td>
+          <td style="text-align: right">38.0</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">PC 17599</td>
+          <td style="text-align: right">71.2833</td>
+          <td style="text-align: right">C85</td>
+          <td style="text-align: right">C</td>
+          <td style="text-align: right">0</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">2</td>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">Heikkinen, Miss. Laina</td>
+          <td style="text-align: right">female</td>
+          <td style="text-align: right">26.0</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">STON/O2. 3101282</td>
+          <td style="text-align: right">7.9250</td>
+          <td style="text-align: right">NaN</td>
+          <td style="text-align: right">S</td>
+          <td style="text-align: right">0</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">4</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+          <td style="text-align: right">female</td>
+          <td style="text-align: right">35.0</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">113803</td>
+          <td style="text-align: right">53.1000</td>
+          <td style="text-align: right">C123</td>
+          <td style="text-align: right">S</td>
+          <td style="text-align: right">0</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">4</td>
+          <td style="text-align: right">5</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">Allen, Mr. William Henry</td>
+          <td style="text-align: right">male</td>
+          <td style="text-align: right">35.0</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">373450</td>
+          <td style="text-align: right">8.0500</td>
+          <td style="text-align: right">NaN</td>
+          <td style="text-align: right">S</td>
+          <td style="text-align: right">0DataFrame 데이터 삭제</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>DataFrame 데이터 삭제</p>
+
+    <ul>
+      <li>
+        <p>DataFrame.drop(labels=None, axis=0, index=None, columns=None, level=None, inplace=False, errors=’raise’)</p>
+
+        <ul>
+          <li>
+            <p>label : column name</p>
+          </li>
+          <li>
+            <table>
+              <tbody>
+                <tr>
+                  <td>axis : 0은 row 방향</td>
+                  <td>1은 column 방향</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p><img src="https://www.sharpsightlabs.com/wp-content/uploads/2018/12/numpy-arrays-have-axes_updated_v2.png" width="50%" /></p>
+          </li>
+          <li>
+            <p>inplace :</p>
+
+            <ul>
+              <li>True : 자기 자신의 DataFrame의 데이터는 삭제</li>
+              <li>Fales : 자기 자신의 DataFrame의 데이터 삭제하지 않는다.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="4-데이터-셀렉션-및-필터링">4. 데이터 셀렉션 및 필터링</h2>
+
+<h3 id="1-dataframe의---연산자">1. DataFrame의 <a href="Series로 출력"> </a> 연산자</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"단일 컬럼 데이터 추출:</span><span class="se">\n</span><span class="si">{</span><span class="n">titanic_df</span><span class="p">[</span><span class="s">'Pclass'</span><span class="p">].</span><span class="n">head</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"여러 칼럼의 데이터 추출:</span><span class="se">\n</span><span class="si">{</span><span class="n">titanic_df</span><span class="p">[[</span><span class="s">'Survived'</span><span class="p">,</span> <span class="s">'Pclass'</span><span class="p">]].</span><span class="n">head</span><span class="p">()</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>단일 컬럼 데이터 추출:
+0    3
+1    1
+2    3
+3    1
+4    3
+Name: Pclass, dtype: int64
+
+여러 칼럼의 데이터 추출:
+   Survived  Pclass
+0         0       3
+1         1       1
+2         1       3
+3         1       1
+4         0       3
+</code></pre></div></div>
+
+<h3 id="2-data-선택">2. Data 선택</h3>
+
+<ul>
+  <li>
+    <p>슬라이싱</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">titanic_df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: right"> </th>
+          <th style="text-align: right">PassengerId</th>
+          <th style="text-align: right">Survived</th>
+          <th style="text-align: right">Pclass</th>
+          <th style="text-align: right">Name</th>
+          <th style="text-align: right">Sex</th>
+          <th style="text-align: right">Age</th>
+          <th style="text-align: right">SibSp</th>
+          <th style="text-align: right">Parch</th>
+          <th style="text-align: right">Ticket</th>
+          <th style="text-align: right">Fare</th>
+          <th style="text-align: right">Cabin</th>
+          <th style="text-align: right">Embarked</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">Braund, Mr. Owen Harris</td>
+          <td style="text-align: right">male</td>
+          <td style="text-align: right">22.0</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">A/5 21171</td>
+          <td style="text-align: right">7.2500</td>
+          <td style="text-align: right">NaN</td>
+          <td style="text-align: right">S</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">2</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">Cumings, Mrs. John Bradley (Florence Briggs Th…</td>
+          <td style="text-align: right">female</td>
+          <td style="text-align: right">38.0</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">PC 17599</td>
+          <td style="text-align: right">71.2833</td>
+          <td style="text-align: right">C85</td>
+          <td style="text-align: right">C</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>특정 데이터 추출</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># titanic_df 중 Pclass 컬럼이 3인 데이터 추출
+</span><span class="n">titanic_df</span><span class="p">[</span><span class="n">titanic_df</span><span class="p">[</span><span class="s">'Pclass'</span><span class="p">]</span><span class="o">==</span><span class="mi">3</span><span class="p">].</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: right"> </th>
+          <th style="text-align: right">PassengerId</th>
+          <th style="text-align: right">Survived</th>
+          <th style="text-align: right">Pclass</th>
+          <th style="text-align: right">Name</th>
+          <th style="text-align: right">Sex</th>
+          <th style="text-align: right">Age</th>
+          <th style="text-align: right">SibSp</th>
+          <th style="text-align: right">Parch</th>
+          <th style="text-align: right">Ticket</th>
+          <th style="text-align: right">Fare</th>
+          <th style="text-align: right">Cabin</th>
+          <th style="text-align: right">Embarked</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">Braund, Mr. Owen Harris</td>
+          <td style="text-align: right">male</td>
+          <td style="text-align: right">22.0</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">A/5 21171</td>
+          <td style="text-align: right">7.2500</td>
+          <td style="text-align: right">NaN</td>
+          <td style="text-align: right">S</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">2</td>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">Heikkinen, Miss. Laina</td>
+          <td style="text-align: right">female</td>
+          <td style="text-align: right">26.0</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">STON/O2. 3101282</td>
+          <td style="text-align: right">7.9250</td>
+          <td style="text-align: right">NaN</td>
+          <td style="text-align: right">S</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">4</td>
+          <td style="text-align: right">5</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">Allen, Mr. William Henry</td>
+          <td style="text-align: right">male</td>
+          <td style="text-align: right">35.0</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">373450</td>
+          <td style="text-align: right">8.0500</td>
+          <td style="text-align: right">NaN</td>
+          <td style="text-align: right">S</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">5</td>
+          <td style="text-align: right">6</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">Moran, Mr. James</td>
+          <td style="text-align: right">male</td>
+          <td style="text-align: right">NaN</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">330877</td>
+          <td style="text-align: right">8.4583</td>
+          <td style="text-align: right">NaN</td>
+          <td style="text-align: right">Q</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">7</td>
+          <td style="text-align: right">8</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">Palsson, Master. Gosta Leonard</td>
+          <td style="text-align: right">male</td>
+          <td style="text-align: right">2.0</td>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">349909</td>
+          <td style="text-align: right">21.0750</td>
+          <td style="text-align: right">NaN</td>
+          <td style="text-align: right">S</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h3 id="3-dataframeiloc--연산자">3. DataFrame.iloc<a href="Series로 출력"> </a> 연산자</h3>
+
+<ul>
+  <li>
+    <p>DF.iloc[row_index, column_index]</p>
+  </li>
+  <li>
+    <p>위치(Location) 기반 인덱싱 방식</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data_df</span>
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: right"> </th>
+          <th style="text-align: right">Name</th>
+          <th style="text-align: right">Year</th>
+          <th style="text-align: right">Gender</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: right">one</td>
+          <td style="text-align: right">Kim</td>
+          <td style="text-align: right">2016</td>
+          <td style="text-align: right">Female</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">two</td>
+          <td style="text-align: right">Ryu</td>
+          <td style="text-align: right">2017</td>
+          <td style="text-align: right">Male</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">three</td>
+          <td style="text-align: right">Nam</td>
+          <td style="text-align: right">2019</td>
+          <td style="text-align: right">Female</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">four</td>
+          <td style="text-align: right">Kang</td>
+          <td style="text-align: right">2011</td>
+          <td style="text-align: right">Male</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># DF.iloc[행, 열]
+</span><span class="n">data_df</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div>    </div>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Kim'
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>iloc<a href="Series로 출력"> </a> 연산 유형</th>
+      <th>설명 및 반환 값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>titanic_df.iloc[1, 0]</td>
+      <td>두 번째 행의 첫 번째 열의 위치에 있는 단일 값 반환<br />반환 값: Ryu</td>
+    </tr>
+    <tr>
+      <td>titanic_df.iloc[2,1]</td>
+      <td>세 번째 행의 두 번째 열 위치에 있는 단일 값 반환<br />반환 값 :  2019</td>
+    </tr>
+    <tr>
+      <td>data_df.iloc[0:2, [0,1]]</td>
+      <td><img src="/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.22.42.png" alt="스크린샷 2023-02-12 오후 8.22.42" style="zoom:50%;" /></td>
+    </tr>
+    <tr>
+      <td>data_df.iloc[:]<br />== data_df.iloc[:,:]</td>
+      <td><img src="/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.28.15.png" alt="스크린샷 2023-02-12 오후 8.28.15" style="zoom:50%;" /></td>
+    </tr>
+    <tr>
+      <td>data_df.iloc[:, -1]</td>
+      <td>맨 마지막 칼럼 데이터<br /><img src="/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.30.07.png" alt="스크린샷 2023-02-12 오후 8.30.07" style="zoom:50%;" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="4-dataframeloc--연산자">4. DataFrame.loc<a href="Series로 출력"> </a> 연산자</h3>
+
+<ul>
+  <li>DF.loc[인덱스값, 컬럼명]</li>
+  <li>명칭(Label) 기반 인덱싱 방식</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'one'</span><span class="p">,</span><span class="s">'Name'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Kim'
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>loc<a href="Series로 출력"> </a> 연산 유형</th>
+      <th>설명 및 반환 값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>data_df.loc[‘three’,’Name’]</td>
+      <td>인덱스 값 three인 행의 Name 칼럼의 단일 값 반환<br />반환 값 : Nam</td>
+    </tr>
+    <tr>
+      <td>data_df.loc[‘one’:’two’,[‘Name’,’Year’]]</td>
+      <td>인덱스 값 one 부터 two까지의 행의 Name과 Year 칼럼에 해당하는 DataFrame 반환<br /><img src="/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.41.24.png" alt="스크린샷 2023-02-12 오후 8.41.24" style="zoom:50%;" /></td>
+    </tr>
+    <tr>
+      <td>data_df.loc[‘one’:’three’,’Name’:’Gender’]</td>
+      <td>인덱스 값 one부터 three까지 행의 Name부터 Gender 칼럼까지의 DataFrame 반환<br />반환 값: <br /><img src="/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.43.29.png" alt="스크린샷 2023-02-12 오후 8.43.29" style="zoom:50%;" /></td>
+    </tr>
+    <tr>
+      <td>data_df.loc[:]</td>
+      <td>모든 데이터 값 : <br /><img src="/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.44.09.png" alt="스크린샷 2023-02-12 오후 8.44.09" style="zoom:50%;" /></td>
+    </tr>
+    <tr>
+      <td>data_df.loc[data_df.Year &gt;= 2017]</td>
+      <td>iloc<a href="Series로 출력"> </a>와 다르게 loc<a href="Series로 출력"> </a>은 불린 인덱싱 가능.<br />Year이 2017보다 이상인 모든 데이터<br /><img src="/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.45.49.png" alt="스크린샷 2023-02-12 오후 8.45.49" style="zoom:50%;" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="5-불린-인덱싱">5. 불린 인덱싱</h3>
+
+<ul>
+  <li>and 조건일 때는 &amp;</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>or 조건일 때는</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Not 조건일 때는 ~</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">titanic_boolean</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="p">[</span><span class="n">titanic_df</span><span class="p">[</span><span class="s">'Age'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">60</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">titanic_boolean</span><span class="p">))</span>
+<span class="n">titanic_boolean</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+</code></pre></div></div>
+
+<p>Out[126]:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right"> </th>
+      <th style="text-align: right">PassengerId</th>
+      <th style="text-align: right">Survived</th>
+      <th style="text-align: right">Pclass</th>
+      <th style="text-align: right">Name</th>
+      <th style="text-align: right">Sex</th>
+      <th style="text-align: right">Age</th>
+      <th style="text-align: right">SibSp</th>
+      <th style="text-align: right">Parch</th>
+      <th style="text-align: right">Ticket</th>
+      <th style="text-align: right">Fare</th>
+      <th style="text-align: right">Cabin</th>
+      <th style="text-align: right">Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">33</td>
+      <td style="text-align: right">34</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">Wheadon, Mr. Edward H</td>
+      <td style="text-align: right">male</td>
+      <td style="text-align: right">66.0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">C.A. 24579</td>
+      <td style="text-align: right">10.5000</td>
+      <td style="text-align: right">NaN</td>
+      <td style="text-align: right">S</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">54</td>
+      <td style="text-align: right">55</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">Ostby, Mr. Engelhart Cornelius</td>
+      <td style="text-align: right">male</td>
+      <td style="text-align: right">65.0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">113509</td>
+      <td style="text-align: right">61.9792</td>
+      <td style="text-align: right">B30</td>
+      <td style="text-align: right">C</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">96</td>
+      <td style="text-align: right">97</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">Goldschmidt, Mr. George B</td>
+      <td style="text-align: right">male</td>
+      <td style="text-align: right">71.0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">PC 17754</td>
+      <td style="text-align: right">34.6542</td>
+      <td style="text-align: right">A5</td>
+      <td style="text-align: right">C</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">116</td>
+      <td style="text-align: right">117</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">Connors, Mr. Patrick</td>
+      <td style="text-align: right">male</td>
+      <td style="text-align: right">70.5</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">370369</td>
+      <td style="text-align: right">7.7500</td>
+      <td style="text-align: right">NaN</td>
+      <td style="text-align: right">Q</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">170</td>
+      <td style="text-align: right">171</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">Van der hoef, Mr. Wyckoff</td>
+      <td style="text-align: right">male</td>
+      <td style="text-align: right">61.0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">111240</td>
+      <td style="text-align: right">33.5000</td>
+      <td style="text-align: right">B19</td>
+      <td style="text-align: right">S</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">titanic_df</span><span class="p">[</span> <span class="p">(</span><span class="n">titanic_df</span><span class="p">[</span><span class="s">'Age'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">60</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">titanic_df</span><span class="p">[</span><span class="s">'Pclass'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">titanic_df</span><span class="p">[</span><span class="s">'Sex'</span><span class="p">]</span><span class="o">==</span><span class="s">'female'</span><span class="p">)</span> <span class="p">]</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right"> </th>
+      <th style="text-align: right">PassengerId</th>
+      <th style="text-align: right">Survived</th>
+      <th style="text-align: right">Pclass</th>
+      <th style="text-align: right">Name</th>
+      <th style="text-align: right">Sex</th>
+      <th style="text-align: right">Age</th>
+      <th style="text-align: right">SibSp</th>
+      <th style="text-align: right">Parch</th>
+      <th style="text-align: right">Ticket</th>
+      <th style="text-align: right">Fare</th>
+      <th style="text-align: right">Cabin</th>
+      <th style="text-align: right">Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">275</td>
+      <td style="text-align: right">276</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">Andrews, Miss. Kornelia Theodosia</td>
+      <td style="text-align: right">female</td>
+      <td style="text-align: right">63.0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">13502</td>
+      <td style="text-align: right">77.9583</td>
+      <td style="text-align: right">D7</td>
+      <td style="text-align: right">S</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">829</td>
+      <td style="text-align: right">830</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">Stone, Mrs. George Nelson (Martha Evelyn)</td>
+      <td style="text-align: right">female</td>
+      <td style="text-align: right">62.0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">113572</td>
+      <td style="text-align: right">80.0000</td>
+      <td style="text-align: right">B28</td>
+      <td style="text-align: right">NaN</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="6-정렬-aggregation-함수-groupby-함수">6. 정렬, Aggregation 함수, GroupBy 함수</h3>
+
+<ul>
+  <li>DataFrame, Series의 정렬 - sort_values()
+    <ul>
+      <li>by : 특정 column</li>
+      <li>ascending
+        <ul>
+          <li>True : 오름차순(Default 값)</li>
+          <li>False : 내림차순</li>
+        </ul>
+      </li>
+      <li>inplace
+        <ul>
+          <li>True : DataFrame의 정렬 결과를 그대로 적용</li>
+          <li>False : sort_values()를 호출한 DataFrame은 그대로 유지하며 정렬된 DataFrame의 결과를 반환</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">titanic_sorted</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Name'</span><span class="p">])</span>
+<span class="n">titanic_sorted</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right"> </th>
+      <th style="text-align: right">PassengerId</th>
+      <th style="text-align: right">Survived</th>
+      <th style="text-align: right">Pclass</th>
+      <th style="text-align: right">Name</th>
+      <th style="text-align: right">Sex</th>
+      <th style="text-align: right">Age</th>
+      <th style="text-align: right">SibSp</th>
+      <th style="text-align: right">Parch</th>
+      <th style="text-align: right">Ticket</th>
+      <th style="text-align: right">Fare</th>
+      <th style="text-align: right">Cabin</th>
+      <th style="text-align: right">Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">845</td>
+      <td style="text-align: right">846</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">Abbing, Mr. Anthony</td>
+      <td style="text-align: right">male</td>
+      <td style="text-align: right">42.0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">C.A. 5547</td>
+      <td style="text-align: right">7.55</td>
+      <td style="text-align: right">NaN</td>
+      <td style="text-align: right">S</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">746</td>
+      <td style="text-align: right">747</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">Abbott, Mr. Rossmore Edward</td>
+      <td style="text-align: right">male</td>
+      <td style="text-align: right">16.0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">C.A. 2673</td>
+      <td style="text-align: right">20.25</td>
+      <td style="text-align: right">NaN</td>
+      <td style="text-align: right">S</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">279</td>
+      <td style="text-align: right">280</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">Abbott, Mrs. Stanton (Rosa Hunt)</td>
+      <td style="text-align: right">female</td>
+      <td style="text-align: right">35.0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">C.A. 2673</td>
+      <td style="text-align: right">20.25</td>
+      <td style="text-align: right">NaN</td>
+      <td style="text-align: right">S</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">308</td>
+      <td style="text-align: right">309</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">Abelson, Mr. Samuel</td>
+      <td style="text-align: right">male</td>
+      <td style="text-align: right">30.0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">P/PP 3381</td>
+      <td style="text-align: right">24.00</td>
+      <td style="text-align: right">NaN</td>
+      <td style="text-align: right">C</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">874</td>
+      <td style="text-align: right">875</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">Abelson, Mrs. Samuel (Hannah Wizosky)</td>
+      <td style="text-align: right">female</td>
+      <td style="text-align: right">28.0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">P/PP 3381</td>
+      <td style="text-align: right">24.00</td>
+      <td style="text-align: right">NaN</td>
+      <td style="text-align: right">C</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>Aggregation 함수 적용
+    <ul>
+      <li>min( ) : 최소 값</li>
+      <li>max( ) : 최대 값</li>
+      <li>sum( ) : 합계</li>
+      <li>count( ) : 개수</li>
+      <li>mean( ) : 평균</li>
+    </ul>
+  </li>
+  <li>groupby( ) 적용</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">titanic_groupby</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s">'Pclass'</span><span class="p">).</span><span class="n">count</span><span class="p">()</span>
+<span class="n">titanic_groupby</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right"> </th>
+      <th style="text-align: right">PassengerId</th>
+      <th style="text-align: right">Survived</th>
+      <th style="text-align: right">Name</th>
+      <th style="text-align: right">Sex</th>
+      <th style="text-align: right">Age</th>
+      <th style="text-align: right">SibSp</th>
+      <th style="text-align: right">Parch</th>
+      <th style="text-align: right">Ticket</th>
+      <th style="text-align: right">Fare</th>
+      <th style="text-align: right">Cabin</th>
+      <th style="text-align: right">Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">Pclass</td>
+      <td style="text-align: right"> </td>
+      <td style="text-align: right"> </td>
+      <td style="text-align: right"> </td>
+      <td style="text-align: right"> </td>
+      <td style="text-align: right"> </td>
+      <td style="text-align: right"> </td>
+      <td style="text-align: right"> </td>
+      <td style="text-align: right"> </td>
+      <td style="text-align: right"> </td>
+      <td style="text-align: right"> </td>
+      <td style="text-align: right"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">216</td>
+      <td style="text-align: right">216</td>
+      <td style="text-align: right">216</td>
+      <td style="text-align: right">216</td>
+      <td style="text-align: right">186</td>
+      <td style="text-align: right">216</td>
+      <td style="text-align: right">216</td>
+      <td style="text-align: right">216</td>
+      <td style="text-align: right">216</td>
+      <td style="text-align: right">176</td>
+      <td style="text-align: right">214</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">184</td>
+      <td style="text-align: right">184</td>
+      <td style="text-align: right">184</td>
+      <td style="text-align: right">184</td>
+      <td style="text-align: right">173</td>
+      <td style="text-align: right">184</td>
+      <td style="text-align: right">184</td>
+      <td style="text-align: right">184</td>
+      <td style="text-align: right">184</td>
+      <td style="text-align: right">16</td>
+      <td style="text-align: right">184</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">491</td>
+      <td style="text-align: right">491</td>
+      <td style="text-align: right">491</td>
+      <td style="text-align: right">491</td>
+      <td style="text-align: right">355</td>
+      <td style="text-align: right">491</td>
+      <td style="text-align: right">491</td>
+      <td style="text-align: right">491</td>
+      <td style="text-align: right">491</td>
+      <td style="text-align: right">12</td>
+      <td style="text-align: right">491</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">titanic_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Pclass'</span><span class="p">)[</span><span class="s">'Age'</span><span class="p">].</span><span class="n">agg</span><span class="p">([</span><span class="nb">max</span><span class="p">,</span><span class="nb">min</span><span class="p">])</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right"> </th>
+      <th style="text-align: right">max</th>
+      <th style="text-align: right">min</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">Pclass</td>
+      <td style="text-align: right"> </td>
+      <td style="text-align: right"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">80.0</td>
+      <td style="text-align: right">0.92</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">70.0</td>
+      <td style="text-align: right">0.67</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">74.0</td>
+      <td style="text-align: right">0.42</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="5-결손-데이터-처리하기">5. 결손 데이터 처리하기</h2>
+
+<ul>
+  <li>결손 데이터 : 칼럼에 값이 없는, 즉 NULL인 경우(NAN)</li>
+</ul>
+
+<h3 id="--isna로-결손-데이터-여부-확인">- isna()로 결손 데이터 여부 확인</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">titanic_df</span><span class="p">.</span><span class="n">isna</span><span class="p">().</span><span class="nb">sum</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PassengerId      0
+Survived         0
+Pclass           0
+Name             0
+Sex              0
+Age            177
+SibSp            0
+Parch            0
+Ticket           0
+Fare             0
+Cabin          687
+Embarked         2
+dtype: int64
+</code></pre></div></div>
+
+<h3 id="--fillna로-결손-데이터-대체하기">- fillna()로 결손 데이터 대체하기</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 결측값 =&gt; C000 로 대체
+</span><span class="n">titanic_df</span><span class="p">[</span><span class="s">'Cabin'</span><span class="p">]</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="p">[</span><span class="s">'Cabin'</span><span class="p">].</span><span class="n">fillna</span><span class="p">(</span><span class="s">'C000'</span><span class="p">)</span>
+<span class="n">titanic_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right"> </th>
+      <th style="text-align: right">PassengerId</th>
+      <th style="text-align: right">Survived</th>
+      <th style="text-align: right">Pclass</th>
+      <th style="text-align: right">Name</th>
+      <th style="text-align: right">Sex</th>
+      <th style="text-align: right">Age</th>
+      <th style="text-align: right">SibSp</th>
+      <th style="text-align: right">Parch</th>
+      <th style="text-align: right">Ticket</th>
+      <th style="text-align: right">Fare</th>
+      <th style="text-align: right">Cabin</th>
+      <th style="text-align: right">Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">Braund, Mr. Owen Harris</td>
+      <td style="text-align: right">male</td>
+      <td style="text-align: right">22.0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">A/5 21171</td>
+      <td style="text-align: right">7.2500</td>
+      <td style="text-align: right">C000</td>
+      <td style="text-align: right">S</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">Cumings, Mrs. John Bradley (Florence Briggs Th…</td>
+      <td style="text-align: right">female</td>
+      <td style="text-align: right">38.0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">PC 17599</td>
+      <td style="text-align: right">71.2833</td>
+      <td style="text-align: right">C85</td>
+      <td style="text-align: right">C</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">Heikkinen, Miss. Laina</td>
+      <td style="text-align: right">female</td>
+      <td style="text-align: right">26.0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">STON/O2. 3101282</td>
+      <td style="text-align: right">7.9250</td>
+      <td style="text-align: right">C000</td>
+      <td style="text-align: right">S</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">4</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+      <td style="text-align: right">female</td>
+      <td style="text-align: right">35.0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">113803</td>
+      <td style="text-align: right">53.1000</td>
+      <td style="text-align: right">C123</td>
+      <td style="text-align: right">S</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">4</td>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">Allen, Mr. William Henry</td>
+      <td style="text-align: right">male</td>
+      <td style="text-align: right">35.0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">373450</td>
+      <td style="text-align: right">8.0500</td>
+      <td style="text-align: right">C000</td>
+      <td style="text-align: right">S</td>
+    </tr>
+  </tbody>
+</table>
 
         
       </section>

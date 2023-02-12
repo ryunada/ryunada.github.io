@@ -12,7 +12,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Pandas",
-        "excerpt":"Pandas 데이터 처리와 분석을 위한 라이브러리 행과 열로 이루어진 데이터 객체를 만들어 다룰 수 있음 대용량의 데이터들을 처리하는데 매우 편리 Pandas 자료구조 시리즈(Series) : 1차원 데이터프레임(DataFrame) : 2차원 패널(Panel) : 3차원 1. Pandas정의 # conda install pandas import pandas as pd 2. Pandas 다루기 - read_csv(‘경로’) 파일 불러오기 # pd.read_csc('경로')...","categories": ["MachineLearning"],
+        "excerpt":"Pandas 1. Pandas란? 데이터 처리와 분석을 위한 라이브러리 행과 열로 이루어진 데이터 객체를 만들어 다룰 수 있음 대용량의 데이터들을 처리하는데 매우 편리 Pandas 자료구조 시리즈(Series) : 1차원 데이터프레임(DataFrame) : 2차원 패널(Panel) : 3차원 # conda install pandas import pandas as pd 2. Pandas 다루기 1. 파일 불러오기 read_csv(‘경로’) # pd.read_csv('경로')...","categories": ["MachineLearning"],
         "tags": [],
         "url": "/machinelearning/Pandas/",
         "teaser": null
