@@ -119,6 +119,8 @@
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/">Quick-Start Guide</a>
             </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li><li class="masthead__menu-item">
               <a href="https://github.com/ryunada/">Github</a>
             </li><li class="masthead__menu-item">
               <a href="/posts/">Posts</a>
@@ -1395,15 +1397,15 @@ Name: Pclass, dtype: int64
     </tr>
     <tr>
       <td>data_df.iloc[0:2, [0,1]]</td>
-      <td><img src="/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.22.42.png" alt="스크린샷 2023-02-12 오후 8.22.42" style="zoom:50%;" /></td>
+      <td><img src="./assets/Images/pandas/pandas_1.png" width="50%" /></td>
     </tr>
     <tr>
       <td>data_df.iloc[:]<br />== data_df.iloc[:,:]</td>
-      <td><img src="/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.28.15.png" alt="스크린샷 2023-02-12 오후 8.28.15" style="zoom:50%;" /></td>
+      <td><img src="./assets/Images/pandas/pandas_2.png" width="50%" /></td>
     </tr>
     <tr>
       <td>data_df.iloc[:, -1]</td>
-      <td>맨 마지막 칼럼 데이터<br /><img src="/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.30.07.png" alt="스크린샷 2023-02-12 오후 8.30.07" style="zoom:50%;" /></td>
+      <td>맨 마지막 칼럼 데이터<br /><img src="./assets/Images/pandas/pandas_3.png" width="50%" /></td>
     </tr>
   </tbody>
 </table>
@@ -1435,19 +1437,19 @@ Name: Pclass, dtype: int64
     </tr>
     <tr>
       <td>data_df.loc[‘one’:’two’,[‘Name’,’Year’]]</td>
-      <td>인덱스 값 one 부터 two까지의 행의 Name과 Year 칼럼에 해당하는 DataFrame 반환<br /><img src="/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.41.24.png" alt="스크린샷 2023-02-12 오후 8.41.24" style="zoom:50%;" /></td>
+      <td>인덱스 값 one 부터 two까지의 행의 Name과 Year 칼럼에 해당하는 DataFrame 반환<br /><img src="./assets/Images/pandas/pandas_4.png" width="50%" /></td>
     </tr>
     <tr>
       <td>data_df.loc[‘one’:’three’,’Name’:’Gender’]</td>
-      <td>인덱스 값 one부터 three까지 행의 Name부터 Gender 칼럼까지의 DataFrame 반환<br />반환 값: <br /><img src="/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.43.29.png" alt="스크린샷 2023-02-12 오후 8.43.29" style="zoom:50%;" /></td>
+      <td>인덱스 값 one부터 three까지 행의 Name부터 Gender 칼럼까지의 DataFrame 반환<br />반환 값: <br /><img src="./assets/Images/pandas/pandas_5.png" width="50%" /></td>
     </tr>
     <tr>
       <td>data_df.loc[:]</td>
-      <td>모든 데이터 값 : <br /><img src="/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.44.09.png" alt="스크린샷 2023-02-12 오후 8.44.09" style="zoom:50%;" /></td>
+      <td>모든 데이터 값 : <br /><img src="./assets/Images/pandas/pandas_6.png" width="50%" /></td>
     </tr>
     <tr>
       <td>data_df.loc[data_df.Year &gt;= 2017]</td>
-      <td>iloc<a href="Series로 출력"> </a>와 다르게 loc<a href="Series로 출력"> </a>은 불린 인덱싱 가능.<br />Year이 2017보다 이상인 모든 데이터<br /><img src="/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.45.49.png" alt="스크린샷 2023-02-12 오후 8.45.49" style="zoom:50%;" /></td>
+      <td>iloc<a href="Series로 출력"> </a>와 다르게 loc<a href="Series로 출력"> </a>은 불린 인덱싱 가능.<br />Year이 2017보다 이상인 모든 데이터<br /><img src="./assets/Images/pandas/pandas_7.png" width="50%" /></td>
     </tr>
   </tbody>
 </table>

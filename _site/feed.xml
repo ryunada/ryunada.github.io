@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-12T21:18:23+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nada</title><subtitle>To be DataScientist</subtitle><author><name>Nada</name></author><entry><title type="html">Pandas</title><link href="http://localhost:4000/machinelearning/Pandas/" rel="alternate" type="text/html" title="Pandas" /><published>2023-02-10T00:00:00+09:00</published><updated>2023-02-10T00:00:00+09:00</updated><id>http://localhost:4000/machinelearning/Pandas</id><content type="html" xml:base="http://localhost:4000/machinelearning/Pandas/">&lt;h1 id=&quot;pandas&quot;&gt;Pandas&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-13T16:04:00+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nada</title><subtitle>To be DataScientist</subtitle><author><name>Nada</name></author><entry><title type="html">Pandas</title><link href="http://localhost:4000/machinelearning/Pandas/" rel="alternate" type="text/html" title="Pandas" /><published>2023-02-10T00:00:00+09:00</published><updated>2023-02-10T00:00:00+09:00</updated><id>http://localhost:4000/machinelearning/Pandas</id><content type="html" xml:base="http://localhost:4000/machinelearning/Pandas/">&lt;h1 id=&quot;pandas&quot;&gt;Pandas&lt;/h1&gt;
 
 &lt;h2 id=&quot;1-pandas란&quot;&gt;1. Pandas란?&lt;/h2&gt;
 
@@ -1089,15 +1089,15 @@ Name: Pclass, dtype: int64
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.iloc[0:2, [0,1]]&lt;/td&gt;
-      &lt;td&gt;&lt;img src=&quot;/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.22.42.png&quot; alt=&quot;스크린샷 2023-02-12 오후 8.22.42&quot; style=&quot;zoom:50%;&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;./assets/Images/pandas/pandas_1.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.iloc[:]&lt;br /&gt;== data_df.iloc[:,:]&lt;/td&gt;
-      &lt;td&gt;&lt;img src=&quot;/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.28.15.png&quot; alt=&quot;스크린샷 2023-02-12 오후 8.28.15&quot; style=&quot;zoom:50%;&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;./assets/Images/pandas/pandas_2.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.iloc[:, -1]&lt;/td&gt;
-      &lt;td&gt;맨 마지막 칼럼 데이터&lt;br /&gt;&lt;img src=&quot;/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.30.07.png&quot; alt=&quot;스크린샷 2023-02-12 오후 8.30.07&quot; style=&quot;zoom:50%;&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;맨 마지막 칼럼 데이터&lt;br /&gt;&lt;img src=&quot;./assets/Images/pandas/pandas_3.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1129,19 +1129,19 @@ Name: Pclass, dtype: int64
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.loc[‘one’:’two’,[‘Name’,’Year’]]&lt;/td&gt;
-      &lt;td&gt;인덱스 값 one 부터 two까지의 행의 Name과 Year 칼럼에 해당하는 DataFrame 반환&lt;br /&gt;&lt;img src=&quot;/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.41.24.png&quot; alt=&quot;스크린샷 2023-02-12 오후 8.41.24&quot; style=&quot;zoom:50%;&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;인덱스 값 one 부터 two까지의 행의 Name과 Year 칼럼에 해당하는 DataFrame 반환&lt;br /&gt;&lt;img src=&quot;./assets/Images/pandas/pandas_4.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.loc[‘one’:’three’,’Name’:’Gender’]&lt;/td&gt;
-      &lt;td&gt;인덱스 값 one부터 three까지 행의 Name부터 Gender 칼럼까지의 DataFrame 반환&lt;br /&gt;반환 값: &lt;br /&gt;&lt;img src=&quot;/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.43.29.png&quot; alt=&quot;스크린샷 2023-02-12 오후 8.43.29&quot; style=&quot;zoom:50%;&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;인덱스 값 one부터 three까지 행의 Name부터 Gender 칼럼까지의 DataFrame 반환&lt;br /&gt;반환 값: &lt;br /&gt;&lt;img src=&quot;./assets/Images/pandas/pandas_5.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.loc[:]&lt;/td&gt;
-      &lt;td&gt;모든 데이터 값 : &lt;br /&gt;&lt;img src=&quot;/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.44.09.png&quot; alt=&quot;스크린샷 2023-02-12 오후 8.44.09&quot; style=&quot;zoom:50%;&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;모든 데이터 값 : &lt;br /&gt;&lt;img src=&quot;./assets/Images/pandas/pandas_6.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.loc[data_df.Year &amp;gt;= 2017]&lt;/td&gt;
-      &lt;td&gt;iloc&lt;a href=&quot;Series로 출력&quot;&gt; &lt;/a&gt;와 다르게 loc&lt;a href=&quot;Series로 출력&quot;&gt; &lt;/a&gt;은 불린 인덱싱 가능.&lt;br /&gt;Year이 2017보다 이상인 모든 데이터&lt;br /&gt;&lt;img src=&quot;/Users/ryu/Library/Application Support/typora-user-images/스크린샷 2023-02-12 오후 8.45.49.png&quot; alt=&quot;스크린샷 2023-02-12 오후 8.45.49&quot; style=&quot;zoom:50%;&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;iloc&lt;a href=&quot;Series로 출력&quot;&gt; &lt;/a&gt;와 다르게 loc&lt;a href=&quot;Series로 출력&quot;&gt; &lt;/a&gt;은 불린 인덱싱 가능.&lt;br /&gt;Year이 2017보다 이상인 모든 데이터&lt;br /&gt;&lt;img src=&quot;./assets/Images/pandas/pandas_7.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
