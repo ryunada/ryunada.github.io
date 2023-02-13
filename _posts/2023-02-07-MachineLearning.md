@@ -3,6 +3,9 @@ title : MachineLearning
 categories:
     - MachineLearning
 date: 2023-02-07
+toc: true
+toc_label: "MachineLeanring"
+toc_sticky: True
 ---
 
 #### 머신러닝의 개념. 
