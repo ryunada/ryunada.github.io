@@ -2,8 +2,8 @@
 main:
   - title: "Quick-Start Guide"
     url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-  # - title: "Category"
-  #   url: /categories/
+  - title: "Category"
+    url: /categories/
   - title: "Github"
     url: https://github.com/ryunada/
   - title: "Posts"
