@@ -8,7 +8,6 @@ toc_label: "Scikit-Learn"
 toc_sticky: True
 # toc_icon: ""
 ---
-
 ## 1. Scikit-learn 정의
 
 -> 파이썬 머신러닝 라이브러리 중 가장 많이 사용되는 라이브러리
@@ -59,15 +58,21 @@ import sklearn
 
     - 원 핫 인코딩(One Hot encoding)
 
-      - 피처 값의 유ㅜ형에 따라 새로운 피처를 추가해 고유 값에 해당하는 칼럼에만 1을 하고 나머지 컬럼에는 0을 표시하는 방식
+      - 피처 값의 유형에 따라 새로운 피처를 추가해 고유 값에 해당하는 칼럼에만 1을 하고 나머지 컬럼에는 0을 표시하는 방식
         <img src="/assets/Images/Scikit-Learn/Scikit-Learn_3.png" width=50%>
 
   - 피처 스케일링과 정규화
 
     - Feature Scaling
-      - 표준화(Standardization)
+      - 표준화(Standardization) 
         - StandardScaler
+          - 데이터의 피처 각각이 평균이고 0이고 분산이 1인 가우시안 정규 분포를 가진 값으로 변환하는 것
+          - 사이킷런에서 구현한 RBF커널을 이용하는 서포트 벡터 머신(Support Vector Machine) or 선형 회귀(Linear Regression) or 로지스틱 회귀(Logistic Regression)는 가우시안 분포를 가지고 있다고 구현되었기 때문에 사전에 표준화를 적용하는 것은 예측 성능 향상에 중요한 요소가 될 수 있음
+        - MinMaxScaler
+          - 데이터값을 0과 1사이의 범위 값으로 변환(음수 값이 있으면 -1에서 1값으로 변환)
+          - 데이터의 분포가 가우시안 분포가 아닌 경우에는 Min, Max Scale 을 적용해 볼 수 있음
       - 정규화(Normalization)
+        - 서로 다른 피처의 크기를 통일하기 위해서 크기를 변환하는 것
 
 - sklearn.feature_selection : 중요한 feature를 우선순위로 선택하기 위한 수행 기능 제공
 
@@ -96,10 +101,17 @@ import sklearn
 
 ### 5. 평가 ( Evaluation )
 
-- sklearn.ensemble
-- sklearn
+- sklearn.metrics: Classification, Regression, Clustering etc 성능 측정방법
 
+### 6.  MachineLearning  Algorithm
 
+- sklearn.ensemble : 앙상블
+- sklearn.linear_model : Regression(선형 회귀 및 로지스틱 회귀)
+- sklearn.naive_bayes : 나이브 베이지안
+- sklearn.neighbors : 최근접 법
+- sklaern.svm : 서포트 벡터 머신(Support Vector Machine)
+- sklearn.tree : 의사결정 나무
+- sklearn.cluster : 클러스터링
 
 ## 3. Estimator
 
@@ -119,9 +131,11 @@ Estimator = 분류(Classifier) + 회귀(Regressor)
 - Ridge
 - Lasso
 - RandomForsetRegressor
-- GradientBoostingRegressor 
+- GradientBoostingRegressor  
 
-## 4. 모델 구축 순서
+## 4. 예제를 통한 모델 구축
+
+### ■ 모델 구축 순서
 
 I. 데이터 세트 분리
 
@@ -131,3 +145,4 @@ III. 예측 수행
 
 IV. 평가
 
+/assets/Images/Scikit-Learn/Scikit-Learn_3.png
