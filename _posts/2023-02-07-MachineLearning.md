@@ -77,3 +77,6 @@ toc_sticky: True
   - Matplotlib
   - Seaborn
 
+> 참고
+> 파이썬 머신러닝 완벽 가이드
+
