@@ -24,8 +24,7 @@ toc_sticky: True
 
 <details>
 <summary> 함수 </summary>
-<div markdown = "1"></div>
-<div> 
+<div markdown = "1">
 ```python
 from sklearn import preprocessing
 
