@@ -8,7 +8,6 @@ toc_label: "Evaluation"
 toc_sticky: True
 # toc_icon: ""
 ---
-
 # 성능 평가 지표(Evaluation Metric)
 
 - 분류 성능 평가 지표
@@ -25,9 +24,10 @@ toc_sticky: True
 
 <details>
 <summary> 함수 </summary>
-<div markdown = "1">
+<div markdown = "1"></div>
+<div> 
 ```python
-  from sklearn import preprocessing
+from sklearn import preprocessing
 
 def fillna(df):
     df['Age'].fillna(df['Age'].mean(), inplace = True)
@@ -56,7 +56,7 @@ def transform_features(df):
     return df
 
 ```
-  
 </div>
 </details>
 
+  
