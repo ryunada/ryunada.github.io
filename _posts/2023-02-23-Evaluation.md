@@ -20,11 +20,10 @@ toc_sticky: True
 
 ## 1. 정확도
 
-<img src="/Users/ryu/ryunada.github.io/assets/images/machinelearning/evaluation/evaluation_1.png" width = "50%">
+<img src="./assets/images/machinelearning/evaluation/evaluation_1.png" width = "50%">
 
 <details>
 <summary> 함수 </summary>
-<div markdown = "1">
 ```python
 from sklearn import preprocessing
 
