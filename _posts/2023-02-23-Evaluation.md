@@ -20,7 +20,7 @@ toc_sticky: True
 
 ## 1. 정확도
 
-<img src="./assets/images/machinelearning/evaluation/evaluation_1.png" width = "50%">
+<img src="/assets/images/machinelearning/evaluation/evaluation_1.png" width = "50%">
 
 <details>
 <summary> 함수 </summary>
