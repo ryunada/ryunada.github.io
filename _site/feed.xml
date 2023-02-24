@@ -1,6 +1,269 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-13T16:53:50+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nada</title><subtitle>To be DataScientist</subtitle><author><name>Nada</name></author><entry><title type="html">Pandas</title><link href="http://localhost:4000/machinelearning/Pandas/" rel="alternate" type="text/html" title="Pandas" /><published>2023-02-10T00:00:00+09:00</published><updated>2023-02-10T00:00:00+09:00</updated><id>http://localhost:4000/machinelearning/Pandas</id><content type="html" xml:base="http://localhost:4000/machinelearning/Pandas/">&lt;h1 id=&quot;pandas&quot;&gt;Pandas&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-24T21:50:11+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nada</title><subtitle>To be DataScientist</subtitle><author><name>Nada</name></author><entry><title type="html">Evaluation</title><link href="http://localhost:4000/machinelearning/Evaluation/" rel="alternate" type="text/html" title="Evaluation" /><published>2023-02-24T00:00:00+09:00</published><updated>2023-02-24T00:00:00+09:00</updated><id>http://localhost:4000/machinelearning/Evaluation</id><content type="html" xml:base="http://localhost:4000/machinelearning/Evaluation/">&lt;h1 id=&quot;성능-평가-지표evaluation-metric&quot;&gt;성능 평가 지표(Evaluation Metric)&lt;/h1&gt;
 
-&lt;h2 id=&quot;1-pandas란&quot;&gt;1. Pandas란?&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;분류 성능 평가 지표
+    &lt;ul&gt;
+      &lt;li&gt;정확도(Accuracy)&lt;/li&gt;
+      &lt;li&gt;오차행렬(Confusion Matrix)&lt;/li&gt;
+      &lt;li&gt;정밀도(Precision)&lt;/li&gt;
+      &lt;li&gt;재현율(Recall)&lt;/li&gt;
+      &lt;li&gt;F1 Score&lt;/li&gt;
+      &lt;li&gt;ROC AUC&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;1-정확도&quot;&gt;1. 정확도&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;./assets/images/machinelearning/evaluation/evaluation_1.png&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;details&gt;
+&lt;summary&gt; 함수 &lt;/summary&gt;
+```python
+from sklearn import preprocessing
+
+def fillna(df):
+    df[&apos;Age&apos;].fillna(df[&apos;Age&apos;].mean(), inplace = True)
+    df[&apos;Cabin&apos;].fillna(&apos;N&apos;, inplace = True)
+    df[&apos;Embarked&apos;].fillna(&apos;N&apos;, inplace = True)
+    df[&apos;Fare&apos;].fillna(0, inplace = True)
+    return df
+
+def drop_features(df):
+    df.drop([&apos;PassengerId&apos;,&apos;Name&apos;,&apos;Ticket&apos;], axis = 1, inplace = True)
+    return df
+
+def format_features(df):
+    df[&apos;Cabin&apos;] = df[&apos;Cabin&apos;].str[:1]
+    features = [&apos;Cabin&apos;,&apos;Sex&apos;,&apos;Embarked&apos;]
+    for feature in features:
+        le = preprocessing.LabelEncoder()
+        le = le.fit(df[feature])
+        df[feature] = le.transform(df[feature])
+    return df
+
+def transform_features(df):
+    df = fillna(df)
+    df = drop_features(df)
+    df = format_features(df)
+    return df
+
+```
+&amp;lt;/div&amp;gt;
+&lt;/details&gt;</content><author><name>Nada</name></author><category term="MachineLearning" /><summary type="html">성능 평가 지표(Evaluation Metric)</summary></entry><entry><title type="html">Scikit-Learn</title><link href="http://localhost:4000/machinelearning/Scikit-Learn/" rel="alternate" type="text/html" title="Scikit-Learn" /><published>2023-02-21T00:00:00+09:00</published><updated>2023-02-21T00:00:00+09:00</updated><id>http://localhost:4000/machinelearning/Scikit-Learn</id><content type="html" xml:base="http://localhost:4000/machinelearning/Scikit-Learn/">&lt;h2 id=&quot;1-scikit-learn-정의&quot;&gt;1. Scikit-learn 정의&lt;/h2&gt;
+
+&lt;p&gt;-&amp;gt; 파이썬 머신러닝 라이브러리 중 가장 많이 사용되는 라이브러리&lt;/p&gt;
+
+&lt;h3 id=&quot;특징&quot;&gt;특징&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;개발을 위한 편리한 프레임워크와 API를 제공&lt;/li&gt;
+  &lt;li&gt;머신러닝을 위한 다양한 알고리즘 존재&lt;/li&gt;
+  &lt;li&gt;Easy&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;conda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scikit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;learn&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;2-scikit-learn의-주요-기능&quot;&gt;2. Scikit-learn의 주요 기능&lt;/h2&gt;
+
+&lt;p&gt;&amp;lt;img src=”/assets/images/machinelearning/scikit-Learn/scikit-Learn_1.png” width=50%&amp;gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;1-example-data&quot;&gt;1. Example Data&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;sklean.datasets : 사이킷런에 내장되어 예제로 제공하는 데이터 세트
+    &lt;ul&gt;
+      &lt;li&gt;datasets.load_boston( ) : 미국 보스턴의 집 피처들과 가격에 대한 데이터 셋 [ 회귀 ]&lt;/li&gt;
+      &lt;li&gt;datasets.load_breast_cancer( ) : 위스콘신 유방암 피처들과 악성/음성 레이블 데이터 셋 [ 분류 ]&lt;/li&gt;
+      &lt;li&gt;datasets.load_diabets( ) : 당뇨 데이터 셋 [ 회귀 ]&lt;/li&gt;
+      &lt;li&gt;datasets.load_digits( ) : 0에서 9까지 숫자의 이미지 픽셀 데이터 셋 [ 분류 ]&lt;/li&gt;
+      &lt;li&gt;datasets.load_iris( ) : 붓꽃 용도이며, 붗꽃에 대한 피처를 가진 데이터 셋 [ 분류 ]&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Key
+    &lt;ul&gt;
+      &lt;li&gt;data : 피처의 데이터 셋&lt;/li&gt;
+      &lt;li&gt;target : 분류 시 레이블 값, 회귀 일때는 숫자 결과 값 데이터 셋&lt;/li&gt;
+      &lt;li&gt;target_names : 개별 레이블 이름&lt;/li&gt;
+      &lt;li&gt;feature_names : 피처의 이름&lt;/li&gt;
+      &lt;li&gt;DESCR : 데이터 셋트에 대한 설명과 각 피처의 설명&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-feature-처리&quot;&gt;2. Feature 처리&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;skelarn.preprocessing : 데이터 전처리에 필요한 다양한 가공 기능 제공&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;데이터 인코딩&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;p&gt;레이블 인코딩(LabelEncoding)&lt;/p&gt;
+
+            &lt;ul&gt;
+              &lt;li&gt;
+                &lt;p&gt;간단하게 문자열 값을 숫자형 카테고리 값으로 변환하는 것&lt;/p&gt;
+              &lt;/li&gt;
+              &lt;li&gt;
+                &lt;p&gt;카테고리가 많을 수록 숫자가 커짐 -&amp;gt; &lt;span style=&quot;color: red&quot;&gt;가중치 문제&lt;/span&gt;&lt;/p&gt;
+
+                &lt;p&gt;&lt;img src=&quot;/assets/Images/machinelearning/scikit-Learn/scikit-Learn_2.png&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;p&gt;원 핫 인코딩(One Hot encoding)&lt;/p&gt;
+
+            &lt;ul&gt;
+              &lt;li&gt;피처 값의 유형에 따라 새로운 피처를 추가해 고유 값에 해당하는 칼럼에만 1을 하고 나머지 컬럼에는 0을 표시하는 방식
+&amp;lt;img src=”/assets/Images/machinelearning/scikit-Learn/scikit-Learn_3.png” width=50%&amp;gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;피처 스케일링과 정규화&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;Feature Scaling
+            &lt;ul&gt;
+              &lt;li&gt;표준화(Standardization)
+                &lt;ul&gt;
+                  &lt;li&gt;StandardScaler
+                    &lt;ul&gt;
+                      &lt;li&gt;데이터의 피처 각각이 평균이고 0이고 분산이 1인 가우시안 정규 분포를 가진 값으로 변환하는 것&lt;/li&gt;
+                      &lt;li&gt;사이킷런에서 구현한 RBF커널을 이용하는 서포트 벡터 머신(Support Vector Machine) or 선형 회귀(Linear Regression) or 로지스틱 회귀(Logistic Regression)는 가우시안 분포를 가지고 있다고 구현되었기 때문에 사전에 표준화를 적용하는 것은 예측 성능 향상에 중요한 요소가 될 수 있음&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/li&gt;
+                  &lt;li&gt;MinMaxScaler
+                    &lt;ul&gt;
+                      &lt;li&gt;데이터값을 0과 1사이의 범위 값으로 변환(음수 값이 있으면 -1에서 1값으로 변환)&lt;/li&gt;
+                      &lt;li&gt;데이터의 분포가 가우시안 분포가 아닌 경우에는 Min, Max Scale 을 적용해 볼 수 있음&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+              &lt;li&gt;정규화(Normalization)
+                &lt;ul&gt;
+                  &lt;li&gt;서로 다른 피처의 크기를 통일하기 위해서 크기를 변환하는 것&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;sklearn.feature_selection : 중요한 feature를 우선순위로 선택하기 위한 수행 기능 제공&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;learn.feature_extraction : 데이터의 벡터화된 feature 추출 기능 제공&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3-feature-처리--차원-축소&quot;&gt;3. Feature 처리 &amp;amp; 차원 축소&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;sklearn.decomposition : 차원 축소와 관련된 알고리즘 제공&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;4-데이터-셋-분리-파라미터-튜닝&quot;&gt;4. 데이터 셋 분리, 파라미터 튜닝&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;sklearn.model_selection
+    &lt;ul&gt;
+      &lt;li&gt;train_test_split( )
+        &lt;ul&gt;
+          &lt;li&gt;test_size : 전체 데이터에서 테스트 데이터 세트 크기 [ Default : 0.25(25%) ]&lt;/li&gt;
+          &lt;li&gt;train_size : 전체 데이터에서 학습 데이터 셋 크기&lt;/li&gt;
+          &lt;li&gt;shuffle : 데이터를 분리하기 전에 데이터를 미리 섞을지를 결정 [ Default : True ]&lt;/li&gt;
+          &lt;li&gt;random_state : 난수 값&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;GridSearchCV
+        &lt;ul&gt;
+          &lt;li&gt;estimator : classifier, regressor, pipeline, etc&lt;/li&gt;
+          &lt;li&gt;param_grid : key + 리스트 값을 가지는 딕셔너리
+            &lt;ul&gt;
+              &lt;li&gt;estimator의 튜닝을 위해 파라미터명과 사용될 여러 파라미터 값을 지정&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;scoring : 예측 성능을 측정할 평가 방법을 지정
+            &lt;ul&gt;
+              &lt;li&gt;accuracy&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;cv : 교차 검증을 위해 분할되는 학습/테스트 세트의 개수를 지정&lt;/li&gt;
+          &lt;li&gt;refit : [ Default : True ] 생성 시 가장 최적의 하이퍼 파라미터를 찾은 뒤 입력된 estimator 객체를 해당 하이퍼파라미터로 재학습 시킴&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;5-평가--evaluation-&quot;&gt;5. 평가 ( Evaluation )&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;sklearn.metrics: Classification, Regression, Clustering etc 성능 측정방법&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;6--machinelearning--algorithm&quot;&gt;6.  MachineLearning  Algorithm&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;sklearn.ensemble : 앙상블&lt;/li&gt;
+  &lt;li&gt;sklearn.linear_model : Regression(선형 회귀 및 로지스틱 회귀)&lt;/li&gt;
+  &lt;li&gt;sklearn.naive_bayes : 나이브 베이지안&lt;/li&gt;
+  &lt;li&gt;sklearn.neighbors : 최근접 법&lt;/li&gt;
+  &lt;li&gt;sklaern.svm : 서포트 벡터 머신(Support Vector Machine)&lt;/li&gt;
+  &lt;li&gt;sklearn.tree : 의사결정 나무&lt;/li&gt;
+  &lt;li&gt;sklearn.cluster : 클러스터링&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;3-estimator&quot;&gt;3. Estimator&lt;/h2&gt;
+
+&lt;p&gt;Estimator = 분류(Classifier) + 회귀(Regressor)&lt;/p&gt;
+
+&lt;h4 id=&quot;i-분류classifier&quot;&gt;I. 분류(Classifier)&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;DecisionTreeClassifier&lt;/li&gt;
+  &lt;li&gt;RandomForestClassifier&lt;/li&gt;
+  &lt;li&gt;GradientBoostingClassifier&lt;/li&gt;
+  &lt;li&gt;GasussianNB&lt;/li&gt;
+  &lt;li&gt;SVC(Stochastic gradient descent)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;ii-회귀regressor&quot;&gt;II. 회귀(Regressor)&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;LinearRegression&lt;/li&gt;
+  &lt;li&gt;Ridge&lt;/li&gt;
+  &lt;li&gt;Lasso&lt;/li&gt;
+  &lt;li&gt;RandomForsetRegressor&lt;/li&gt;
+  &lt;li&gt;GradientBoostingRegressor&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;4-예제를-통한-모델-구축&quot;&gt;4. 예제를 통한 모델 구축&lt;/h2&gt;
+
+&lt;h3 id=&quot;-모델-구축-순서&quot;&gt;■ 모델 구축 순서&lt;/h3&gt;
+
+&lt;p&gt;I. 데이터 세트 분리&lt;/p&gt;
+
+&lt;p&gt;II. 모델 학습&lt;/p&gt;
+
+&lt;p&gt;III. 예측 수행&lt;/p&gt;
+
+&lt;p&gt;IV. 평가&lt;/p&gt;
+
+&lt;p&gt;/assets/Images/Scikit-Learn/Scikit-Learn_3.png&lt;/p&gt;</content><author><name>Nada</name></author><category term="MachineLearning" /><summary type="html">1. Scikit-learn 정의</summary></entry><entry><title type="html">Pandas</title><link href="http://localhost:4000/machinelearning/Pandas/" rel="alternate" type="text/html" title="Pandas" /><published>2023-02-10T00:00:00+09:00</published><updated>2023-02-10T00:00:00+09:00</updated><id>http://localhost:4000/machinelearning/Pandas</id><content type="html" xml:base="http://localhost:4000/machinelearning/Pandas/">&lt;h2 id=&quot;1-pandas란&quot;&gt;1. Pandas란?&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;데이터 처리와 분석을 위한 라이브러리&lt;/li&gt;
@@ -1089,15 +1352,15 @@ Name: Pclass, dtype: int64
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.iloc[0:2, [0,1]]&lt;/td&gt;
-      &lt;td&gt;&lt;img src=&quot;/assets/Images/pandas/pandas_1.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;./assets/Images/machinelearning/pandas/pandas_1.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.iloc[:]&lt;br /&gt;== data_df.iloc[:,:]&lt;/td&gt;
-      &lt;td&gt;&lt;img src=&quot;/assets/Images/pandas/pandas_2.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;/assets/Images/machinelearning/pandas/pandas_2.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.iloc[:, -1]&lt;/td&gt;
-      &lt;td&gt;맨 마지막 칼럼 데이터&lt;br /&gt;&lt;img src=&quot;/assets/Images/pandas/pandas_3.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;맨 마지막 칼럼 데이터&lt;br /&gt;&lt;img src=&quot;/assets/Images/machinelearning/pandas/pandas_3.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1129,19 +1392,19 @@ Name: Pclass, dtype: int64
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.loc[‘one’:’two’,[‘Name’,’Year’]]&lt;/td&gt;
-      &lt;td&gt;인덱스 값 one 부터 two까지의 행의 Name과 Year 칼럼에 해당하는 DataFrame 반환&lt;br /&gt;&lt;img src=&quot;/assets/Images/pandas/pandas_4.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;인덱스 값 one 부터 two까지의 행의 Name과 Year 칼럼에 해당하는 DataFrame 반환&lt;br /&gt;&lt;img src=&quot;/assets/Images/machinelearning/pandas/pandas_4.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.loc[‘one’:’three’,’Name’:’Gender’]&lt;/td&gt;
-      &lt;td&gt;인덱스 값 one부터 three까지 행의 Name부터 Gender 칼럼까지의 DataFrame 반환&lt;br /&gt;반환 값: &lt;br /&gt;&lt;img src=&quot;/assets/Images/pandas/pandas_5.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;인덱스 값 one부터 three까지 행의 Name부터 Gender 칼럼까지의 DataFrame 반환&lt;br /&gt;반환 값: &lt;br /&gt;&lt;img src=&quot;/assets/Images/machinelearning/pandas/pandas_5.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.loc[:]&lt;/td&gt;
-      &lt;td&gt;모든 데이터 값 : &lt;br /&gt;&lt;img src=&quot;/assets/Images/pandas/pandas_6.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;모든 데이터 값 : &lt;br /&gt;&lt;img src=&quot;/assets/Images/machinelearning/pandas/pandas_6.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.loc[data_df.Year &amp;gt;= 2017]&lt;/td&gt;
-      &lt;td&gt;iloc&lt;a href=&quot;Series로 출력&quot;&gt; &lt;/a&gt;와 다르게 loc&lt;a href=&quot;Series로 출력&quot;&gt; &lt;/a&gt;은 불린 인덱싱 가능.&lt;br /&gt;Year이 2017보다 이상인 모든 데이터&lt;br /&gt;&lt;img src=&quot;/assets/Images/pandas/pandas_7.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;iloc&lt;a href=&quot;Series로 출력&quot;&gt; &lt;/a&gt;와 다르게 loc&lt;a href=&quot;Series로 출력&quot;&gt; &lt;/a&gt;은 불린 인덱싱 가능.&lt;br /&gt;Year이 2017보다 이상인 모든 데이터&lt;br /&gt;&lt;img src=&quot;/assets/Images/machinelearning/pandas/pandas_7.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1704,7 +1967,12 @@ dtype: int64
       &lt;td style=&quot;text-align: right&quot;&gt;S&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>Nada</name></author><category term="MachineLearning" /><summary type="html">Pandas</summary></entry><entry><title type="html">MachineLearning</title><link href="http://localhost:4000/machinelearning/MachineLearning/" rel="alternate" type="text/html" title="MachineLearning" /><published>2023-02-07T00:00:00+09:00</published><updated>2023-02-07T00:00:00+09:00</updated><id>http://localhost:4000/machinelearning/MachineLearning</id><content type="html" xml:base="http://localhost:4000/machinelearning/MachineLearning/">&lt;h4 id=&quot;머신러닝의-개념&quot;&gt;머신러닝의 개념.&lt;/h4&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;참고
+파이썬 머신러닝 완벽 가이드&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>Nada</name></author><category term="machinelearning" /><summary type="html">1. Pandas란?</summary></entry><entry><title type="html">MachineLearning</title><link href="http://localhost:4000/machinelearning/MachineLearning/" rel="alternate" type="text/html" title="MachineLearning" /><published>2023-02-07T00:00:00+09:00</published><updated>2023-02-07T00:00:00+09:00</updated><id>http://localhost:4000/machinelearning/MachineLearning</id><content type="html" xml:base="http://localhost:4000/machinelearning/MachineLearning/">&lt;h4 id=&quot;머신러닝의-개념&quot;&gt;머신러닝의 개념.&lt;/h4&gt;
 &lt;h2 id=&quot;머신러닝&quot;&gt;머신러닝&lt;/h2&gt;
 &lt;blockquote&gt;
   &lt;p&gt;규칙을 일일이 프로그래밍하지 않아도 자동으로 데이터에서 규칙을 학습하는 알고리즘을 연구하는 분야
@@ -1804,8 +2072,12 @@ dtype: int64
       &lt;li&gt;Seaborn&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Nada</name></author><category term="MachineLearning" /><summary type="html">머신러닝의 개념. 머신러닝 규칙을 일일이 프로그래밍하지 않아도 자동으로 데이터에서 규칙을 학습하는 알고리즘을 연구하는 분야 대표적인 머신러닝 라이브러리 : 사이킷런(Scikit-learn)</summary></entry><entry><title type="html">Numpy</title><link href="http://localhost:4000/machinelearning/Numpy/" rel="alternate" type="text/html" title="Numpy" /><published>2023-02-07T00:00:00+09:00</published><updated>2023-02-07T00:00:00+09:00</updated><id>http://localhost:4000/machinelearning/Numpy</id><content type="html" xml:base="http://localhost:4000/machinelearning/Numpy/">&lt;h1 id=&quot;numpy&quot;&gt;Numpy&lt;/h1&gt;
-&lt;p&gt;-&amp;gt; 파이썬의 대표적인 배열(array) 라이브러리&lt;br /&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;참고
+파이썬 머신러닝 완벽 가이드&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>Nada</name></author><category term="MachineLearning" /><summary type="html">머신러닝의 개념. 머신러닝 규칙을 일일이 프로그래밍하지 않아도 자동으로 데이터에서 규칙을 학습하는 알고리즘을 연구하는 분야 대표적인 머신러닝 라이브러리 : 사이킷런(Scikit-learn)</summary></entry><entry><title type="html">Numpy</title><link href="http://localhost:4000/machinelearning/Numpy/" rel="alternate" type="text/html" title="Numpy" /><published>2023-02-07T00:00:00+09:00</published><updated>2023-02-07T00:00:00+09:00</updated><id>http://localhost:4000/machinelearning/Numpy</id><content type="html" xml:base="http://localhost:4000/machinelearning/Numpy/">&lt;p&gt;-&amp;gt; 파이썬의 대표적인 배열(array) 라이브러리&lt;br /&gt;
 -&amp;gt; 벡터 및 행렬 연산에 있어 매우 편리한 기능을 제공&lt;/p&gt;
 
 &lt;h3 id=&quot;1-numpy-정의&quot;&gt;1. Numpy 정의&lt;/h3&gt;
@@ -2350,4 +2622,9 @@ np.sort() 호출 후 원본 행렬: [1 3 5 9]
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;A의 전치 행렬: 
  [[1 3]
  [2 4]]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Nada</name></author><category term="MachineLearning" /><summary type="html">Numpy -&amp;gt; 파이썬의 대표적인 배열(array) 라이브러리 -&amp;gt; 벡터 및 행렬 연산에 있어 매우 편리한 기능을 제공</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;참고
+파이썬 머신러닝 완벽 가이드&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>Nada</name></author><category term="MachineLearning" /><summary type="html">-&amp;gt; 파이썬의 대표적인 배열(array) 라이브러리 -&amp;gt; 벡터 및 행렬 연산에 있어 매우 편리한 기능을 제공</summary></entry></feed>
