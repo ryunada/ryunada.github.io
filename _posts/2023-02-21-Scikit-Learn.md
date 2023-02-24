@@ -25,7 +25,7 @@ import sklearn
 
 ## 2. Scikit-learn의 주요 기능
 
-<img src="/assets/Images/machinelearning/scikit-Learn/scikit-Learn_1.png" width=50%>
+<img src="/assets/images/machinelearning/scikit-Learn/scikit-Learn_1.png" width=50%>
 
 ### 1. Example Data
 
