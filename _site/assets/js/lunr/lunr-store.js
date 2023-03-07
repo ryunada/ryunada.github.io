@@ -28,4 +28,10 @@ var store = [{
         "tags": [],
         "url": "/machinelearning/Evaluation/",
         "teaser": null
+      },{
+        "title": "Local to Server & Shell",
+        "excerpt":"[Terminal] 원격 접속 및 파일 저장 1. 원격 Shell 접속 ssh [원격지서버 UserID]@[원격지서버 HostName] ex) 서버 IP : 111.222.333.444 계정명 : abc ssh abc@111.222.333.444 연결 종료 exit 명령어 Ctrl+d 2. Local → Server scp [옵션] [원본 경로 및 파일] [계정명]@[원격IP주소]:[전송할 경로] ex) 서버 IP : 111.222.333.444 계정명 : abc 로컬...","categories": ["Server"],
+        "tags": [],
+        "url": "/server/LocalToServer&Shell/",
+        "teaser": null
       }]

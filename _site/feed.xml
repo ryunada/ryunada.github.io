@@ -1,4 +1,120 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-24T21:54:56+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nada</title><subtitle>To be DataScientist</subtitle><author><name>Nada</name></author><entry><title type="html">Evaluation</title><link href="http://localhost:4000/machinelearning/Evaluation/" rel="alternate" type="text/html" title="Evaluation" /><published>2023-02-24T00:00:00+09:00</published><updated>2023-02-24T00:00:00+09:00</updated><id>http://localhost:4000/machinelearning/Evaluation</id><content type="html" xml:base="http://localhost:4000/machinelearning/Evaluation/">&lt;h1 id=&quot;성능-평가-지표evaluation-metric&quot;&gt;성능 평가 지표(Evaluation Metric)&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-07T17:41:51+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nada</title><subtitle>To be DataScientist</subtitle><author><name>Nada</name></author><entry><title type="html">Local to Server &amp;amp; Shell</title><link href="http://localhost:4000/server/LocalToServer&Shell/" rel="alternate" type="text/html" title="Local to Server &amp;amp; Shell" /><published>2023-03-07T00:00:00+09:00</published><updated>2023-03-07T00:00:00+09:00</updated><id>http://localhost:4000/server/LocalToServer&amp;Shell</id><content type="html" xml:base="http://localhost:4000/server/LocalToServer&amp;Shell/">&lt;h1 id=&quot;terminal-원격-접속-및-파일-저장&quot;&gt;[Terminal] 원격 접속 및 파일 저장&lt;/h1&gt;
+
+&lt;h2 id=&quot;1-원격-shell-접속&quot;&gt;1. 원격 Shell 접속&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;ssh [원격지서버 UserID]@[원격지서버 HostName]&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;ex)
+서버 IP : 111.222.333.444
+계정명 : abc&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh abc@111.222.333.444
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;연결 종료&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;exit 명령어&lt;/li&gt;
+      &lt;li&gt;Ctrl+d&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2-local--server&quot;&gt;2. Local → Server&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;scp [옵션] [원본 경로 및 파일] [계정명]@[원격IP주소]:[전송할 경로]&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;ex)
+서버 IP : 111.222.333.444
+계정명 : abc
+로컬 파일 : /User/home/test.csv
+서버 저장 위치 : /home/abc/Dataset&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scp /User/home/test.csv abc@111.222.333.444:/home/abc/Dataset/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;3-server--local&quot;&gt;3. Server → Local&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;scp [옵션] [원본 경로 및 파일] [계정명]@[원격IP주소]:[원본 경로 및 파일] [전송받을 위치]&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;ex) 
+서버 IP : 111.222.333.444
+계정명 : abc
+서버에 있는 파일 : /home/abc/test.csv
+로컬 저장 위치 : /User/home/&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scp abc@111.222.333.444:/home/abc/test.csv /User/home/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;4-ssh포트를-기본-22번으로-사용하고-있지-않는-서버로의-전송&quot;&gt;4. ssh포트를 기본 22번으로 사용하고 있지 않는 서버로의 전송&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;예제3) 2222번인 SSH포트를 사용한다면 아래와 같이 -P옵션과 포트번호를 넣어준다.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scp -P 2222 abc@111.222.333.444:/home/abc/test.csv /User/home/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scp -P 2222 /User/home/test.csv abc@111.222.333.444:/home/abc/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;주의사항&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;옵션 중에 -P와 -p가 있으니 대/소문자 확인&lt;/li&gt;
+      &lt;li&gt;-P : 포트번호를 지정함&lt;/li&gt;
+      &lt;li&gt;-p : 원본파일 수정/사용시간 및 권한을 유지함&lt;/li&gt;
+      &lt;li&gt;-r : 하위 디렉토리 및 파일 모두 복사함&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;[ 참고 ]&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;원격 Shell 접속
+    &lt;ul&gt;
+      &lt;li&gt;https://eunguru.tistory.com/122&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Local to Server &amp;amp; Server to Local
+    &lt;ul&gt;
+      &lt;li&gt;https://faq.hostway.co.kr/?mid=Linux_ETC&amp;amp;page=8&amp;amp;document_srl=1426&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Nada</name></author><category term="Server" /><summary type="html">[Terminal] 원격 접속 및 파일 저장</summary></entry><entry><title type="html">Evaluation</title><link href="http://localhost:4000/machinelearning/Evaluation/" rel="alternate" type="text/html" title="Evaluation" /><published>2023-02-24T00:00:00+09:00</published><updated>2023-02-24T00:00:00+09:00</updated><id>http://localhost:4000/machinelearning/Evaluation</id><content type="html" xml:base="http://localhost:4000/machinelearning/Evaluation/">&lt;h1 id=&quot;성능-평가-지표evaluation-metric&quot;&gt;성능 평가 지표(Evaluation Metric)&lt;/h1&gt;
 
 &lt;ul&gt;
   &lt;li&gt;분류 성능 평가 지표
@@ -15,7 +131,7 @@
 
 &lt;h2 id=&quot;1-정확도&quot;&gt;1. 정확도&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;./assets/images/machinelearning/evaluation/evaluation_1.png&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/machinelearning/evaluation/evaluation_1.png&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
 
 &lt;details&gt;
 &lt;summary&gt; 함수 &lt;/summary&gt;
@@ -114,7 +230,7 @@ def transform_features(df):
               &lt;li&gt;
                 &lt;p&gt;카테고리가 많을 수록 숫자가 커짐 -&amp;gt; &lt;span style=&quot;color: red&quot;&gt;가중치 문제&lt;/span&gt;&lt;/p&gt;
 
-                &lt;p&gt;&lt;img src=&quot;/assets/Images/machinelearning/scikit-Learn/scikit-Learn_2.png&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+                &lt;p&gt;&lt;img src=&quot;/assets/images/machinelearning/scikit-Learn/scikit-Learn_2.png&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
               &lt;/li&gt;
             &lt;/ul&gt;
           &lt;/li&gt;
@@ -123,7 +239,7 @@ def transform_features(df):
 
             &lt;ul&gt;
               &lt;li&gt;피처 값의 유형에 따라 새로운 피처를 추가해 고유 값에 해당하는 칼럼에만 1을 하고 나머지 컬럼에는 0을 표시하는 방식
-&amp;lt;img src=”/assets/Images/machinelearning/scikit-Learn/scikit-Learn_3.png” width=50%&amp;gt;&lt;/li&gt;
+&amp;lt;img src=”/assets/images/machinelearning/scikit-Learn/scikit-Learn_3.png” width=50%&amp;gt;&lt;/li&gt;
             &lt;/ul&gt;
           &lt;/li&gt;
         &lt;/ul&gt;
@@ -263,7 +379,7 @@ def transform_features(df):
 
 &lt;p&gt;IV. 평가&lt;/p&gt;
 
-&lt;p&gt;/assets/Images/Scikit-Learn/Scikit-Learn_3.png&lt;/p&gt;</content><author><name>Nada</name></author><category term="MachineLearning" /><summary type="html">1. Scikit-learn 정의</summary></entry><entry><title type="html">Pandas</title><link href="http://localhost:4000/machinelearning/Pandas/" rel="alternate" type="text/html" title="Pandas" /><published>2023-02-10T00:00:00+09:00</published><updated>2023-02-10T00:00:00+09:00</updated><id>http://localhost:4000/machinelearning/Pandas</id><content type="html" xml:base="http://localhost:4000/machinelearning/Pandas/">&lt;h2 id=&quot;1-pandas란&quot;&gt;1. Pandas란?&lt;/h2&gt;
+&lt;p&gt;/assets/images/Scikit-Learn/Scikit-Learn_3.png&lt;/p&gt;</content><author><name>Nada</name></author><category term="MachineLearning" /><summary type="html">1. Scikit-learn 정의</summary></entry><entry><title type="html">Pandas</title><link href="http://localhost:4000/machinelearning/Pandas/" rel="alternate" type="text/html" title="Pandas" /><published>2023-02-10T00:00:00+09:00</published><updated>2023-02-10T00:00:00+09:00</updated><id>http://localhost:4000/machinelearning/Pandas</id><content type="html" xml:base="http://localhost:4000/machinelearning/Pandas/">&lt;h2 id=&quot;1-pandas란&quot;&gt;1. Pandas란?&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;데이터 처리와 분석을 위한 라이브러리&lt;/li&gt;
@@ -1352,15 +1468,15 @@ Name: Pclass, dtype: int64
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.iloc[0:2, [0,1]]&lt;/td&gt;
-      &lt;td&gt;&lt;img src=&quot;./assets/Images/machinelearning/pandas/pandas_1.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;/assets/images/machinelearning/pandas/pandas_1.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.iloc[:]&lt;br /&gt;== data_df.iloc[:,:]&lt;/td&gt;
-      &lt;td&gt;&lt;img src=&quot;/assets/Images/machinelearning/pandas/pandas_2.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;/assets/images/machinelearning/pandas/pandas_2.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.iloc[:, -1]&lt;/td&gt;
-      &lt;td&gt;맨 마지막 칼럼 데이터&lt;br /&gt;&lt;img src=&quot;/assets/Images/machinelearning/pandas/pandas_3.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;맨 마지막 칼럼 데이터&lt;br /&gt;&lt;img src=&quot;/assets/images/machinelearning/pandas/pandas_3.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1392,19 +1508,19 @@ Name: Pclass, dtype: int64
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.loc[‘one’:’two’,[‘Name’,’Year’]]&lt;/td&gt;
-      &lt;td&gt;인덱스 값 one 부터 two까지의 행의 Name과 Year 칼럼에 해당하는 DataFrame 반환&lt;br /&gt;&lt;img src=&quot;/assets/Images/machinelearning/pandas/pandas_4.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;인덱스 값 one 부터 two까지의 행의 Name과 Year 칼럼에 해당하는 DataFrame 반환&lt;br /&gt;&lt;img src=&quot;/assets/images/machinelearning/pandas/pandas_4.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.loc[‘one’:’three’,’Name’:’Gender’]&lt;/td&gt;
-      &lt;td&gt;인덱스 값 one부터 three까지 행의 Name부터 Gender 칼럼까지의 DataFrame 반환&lt;br /&gt;반환 값: &lt;br /&gt;&lt;img src=&quot;/assets/Images/machinelearning/pandas/pandas_5.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;인덱스 값 one부터 three까지 행의 Name부터 Gender 칼럼까지의 DataFrame 반환&lt;br /&gt;반환 값: &lt;br /&gt;&lt;img src=&quot;/assets/images/machinelearning/pandas/pandas_5.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.loc[:]&lt;/td&gt;
-      &lt;td&gt;모든 데이터 값 : &lt;br /&gt;&lt;img src=&quot;/assets/Images/machinelearning/pandas/pandas_6.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;모든 데이터 값 : &lt;br /&gt;&lt;img src=&quot;/assets/images/machinelearning/pandas/pandas_6.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;data_df.loc[data_df.Year &amp;gt;= 2017]&lt;/td&gt;
-      &lt;td&gt;iloc&lt;a href=&quot;Series로 출력&quot;&gt; &lt;/a&gt;와 다르게 loc&lt;a href=&quot;Series로 출력&quot;&gt; &lt;/a&gt;은 불린 인덱싱 가능.&lt;br /&gt;Year이 2017보다 이상인 모든 데이터&lt;br /&gt;&lt;img src=&quot;/assets/Images/machinelearning/pandas/pandas_7.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;iloc&lt;a href=&quot;Series로 출력&quot;&gt; &lt;/a&gt;와 다르게 loc&lt;a href=&quot;Series로 출력&quot;&gt; &lt;/a&gt;은 불린 인덱싱 가능.&lt;br /&gt;Year이 2017보다 이상인 모든 데이터&lt;br /&gt;&lt;img src=&quot;/assets/images/machinelearning/pandas/pandas_7.png&quot; width=&quot;50%&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;

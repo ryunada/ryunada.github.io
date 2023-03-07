@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Evaluation - Nada</title>
-<meta name="description" content="성능 평가 지표(Evaluation Metric)">
+<!-- begin _includes/seo.html --><title>Local to Server &amp; Shell - Nada</title>
+<meta name="description" content="[Terminal] 원격 접속 및 파일 저장">
 
 
   <meta name="author" content="Nada">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Nada">
-<meta property="og:title" content="Evaluation">
-<meta property="og:url" content="http://localhost:4000/machinelearning/Evaluation/">
+<meta property="og:title" content="Local to Server &amp; Shell">
+<meta property="og:url" content="http://localhost:4000/server/LocalToServer&Shell/">
 
 
-  <meta property="og:description" content="성능 평가 지표(Evaluation Metric)">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2023-02-24T00:00:00+09:00">
+  <meta property="og:description" content="[Terminal] 원격 접속 및 파일 저장">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2023-03-07T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/machinelearning/Evaluation/">
+
+<link rel="canonical" href="http://localhost:4000/server/LocalToServer&Shell/">
 
 
 
@@ -268,16 +268,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Evaluation">
-    <meta itemprop="description" content="성능 평가 지표(Evaluation Metric)">
-    <meta itemprop="datePublished" content="2023-02-24T00:00:00+09:00">
+    <meta itemprop="headline" content="Local to Server &amp; Shell">
+    <meta itemprop="description" content="[Terminal] 원격 접속 및 파일 저장">
+    <meta itemprop="datePublished" content="2023-03-07T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/machinelearning/Evaluation/" class="u-url" itemprop="url">Evaluation
+            <a href="http://localhost:4000/server/LocalToServer&Shell/" class="u-url" itemprop="url">Local to Server &amp; Shell
 </a>
           </h1>
           
@@ -309,65 +309,128 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Evaluation</h4></header>
-              <ul class="toc__menu"><li><a href="#성능-평가-지표evaluation-metric">성능 평가 지표(Evaluation Metric)</a><ul><li><a href="#1-정확도">1. 정확도</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#terminal-원격-접속-및-파일-저장">[Terminal] 원격 접속 및 파일 저장</a><ul><li><a href="#1-원격-shell-접속">1. 원격 Shell 접속</a></li><li><a href="#2-local--server">2. Local → Server</a></li><li><a href="#3-server--local">3. Server → Local</a></li><li><a href="#4-ssh포트를-기본-22번으로-사용하고-있지-않는-서버로의-전송">4. ssh포트를 기본 22번으로 사용하고 있지 않는 서버로의 전송</a></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <h1 id="성능-평가-지표evaluation-metric">성능 평가 지표(Evaluation Metric)</h1>
+        <h1 id="terminal-원격-접속-및-파일-저장">[Terminal] 원격 접속 및 파일 저장</h1>
+
+<h2 id="1-원격-shell-접속">1. 원격 Shell 접속</h2>
 
 <ul>
-  <li>분류 성능 평가 지표
+  <li>
+    <p>ssh [원격지서버 UserID]@[원격지서버 HostName]</p>
+
     <ul>
-      <li>정확도(Accuracy)</li>
-      <li>오차행렬(Confusion Matrix)</li>
-      <li>정밀도(Precision)</li>
-      <li>재현율(Recall)</li>
-      <li>F1 Score</li>
-      <li>ROC AUC</li>
+      <li>
+        <p>ex)
+서버 IP : 111.222.333.444
+계정명 : abc</p>
+      </li>
+      <li>
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh abc@111.222.333.444
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>연결 종료</p>
+
+    <ul>
+      <li>exit 명령어</li>
+      <li>Ctrl+d</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="1-정확도">1. 정확도</h2>
+<h2 id="2-local--server">2. Local → Server</h2>
 
-<p><img src="/assets/images/machinelearning/evaluation/evaluation_1.png" width="50%" /></p>
+<ul>
+  <li>
+    <p><strong>scp [옵션] [원본 경로 및 파일] [계정명]@[원격IP주소]:[전송할 경로]</strong></p>
 
-<details>
-<summary> 함수 </summary>
-```python
-from sklearn import preprocessing
+    <ul>
+      <li>
+        <p>ex)
+서버 IP : 111.222.333.444
+계정명 : abc
+로컬 파일 : /User/home/test.csv
+서버 저장 위치 : /home/abc/Dataset</p>
+      </li>
+      <li>
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scp /User/home/test.csv abc@111.222.333.444:/home/abc/Dataset/
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
 
-def fillna(df):
-    df['Age'].fillna(df['Age'].mean(), inplace = True)
-    df['Cabin'].fillna('N', inplace = True)
-    df['Embarked'].fillna('N', inplace = True)
-    df['Fare'].fillna(0, inplace = True)
-    return df
+<h2 id="3-server--local">3. Server → Local</h2>
 
-def drop_features(df):
-    df.drop(['PassengerId','Name','Ticket'], axis = 1, inplace = True)
-    return df
+<ul>
+  <li>
+    <p><strong>scp [옵션] [원본 경로 및 파일] [계정명]@[원격IP주소]:[원본 경로 및 파일] [전송받을 위치]</strong></p>
 
-def format_features(df):
-    df['Cabin'] = df['Cabin'].str[:1]
-    features = ['Cabin','Sex','Embarked']
-    for feature in features:
-        le = preprocessing.LabelEncoder()
-        le = le.fit(df[feature])
-        df[feature] = le.transform(df[feature])
-    return df
+    <ul>
+      <li>
+        <p>ex) 
+서버 IP : 111.222.333.444
+계정명 : abc
+서버에 있는 파일 : /home/abc/test.csv
+로컬 저장 위치 : /User/home/</p>
+      </li>
+      <li>
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scp abc@111.222.333.444:/home/abc/test.csv /User/home/
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
 
-def transform_features(df):
-    df = fillna(df)
-    df = drop_features(df)
-    df = format_features(df)
-    return df
+<h2 id="4-ssh포트를-기본-22번으로-사용하고-있지-않는-서버로의-전송">4. ssh포트를 기본 22번으로 사용하고 있지 않는 서버로의 전송</h2>
 
-```
-&lt;/div&gt;
-</details>
+<ul>
+  <li>
+    <p>예제3) 2222번인 SSH포트를 사용한다면 아래와 같이 -P옵션과 포트번호를 넣어준다.</p>
 
+    <ul>
+      <li>
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scp -P 2222 abc@111.222.333.444:/home/abc/test.csv /User/home/
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scp -P 2222 /User/home/test.csv abc@111.222.333.444:/home/abc/
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>주의사항</p>
+
+    <ul>
+      <li>옵션 중에 -P와 -p가 있으니 대/소문자 확인</li>
+      <li>-P : 포트번호를 지정함</li>
+      <li>-p : 원본파일 수정/사용시간 및 권한을 유지함</li>
+      <li>-r : 하위 디렉토리 및 파일 모두 복사함</li>
+    </ul>
+  </li>
+</ul>
+
+<p>[ 참고 ]</p>
+
+<ul>
+  <li>원격 Shell 접속
+    <ul>
+      <li>https://eunguru.tistory.com/122</li>
+    </ul>
+  </li>
+  <li>Local to Server &amp; Server to Local
+    <ul>
+      <li>https://faq.hostway.co.kr/?mid=Linux_ETC&amp;page=8&amp;document_srl=1426</li>
+    </ul>
+  </li>
+</ul>
 
         
       </section>
@@ -386,7 +449,7 @@ def transform_features(df):
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#machinelearning" class="page__taxonomy-item p-category" rel="tag">MachineLearning</a>
+      <a href="/categories/#server" class="page__taxonomy-item p-category" rel="tag">Server</a>
     
     </span>
   </p>
@@ -394,7 +457,7 @@ def transform_features(df):
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-02-24T00:00:00+09:00">February 24, 2023</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-03-07T00:00:00+09:00">March 7, 2023</time></p>
 
       </footer>
 
@@ -403,23 +466,22 @@ def transform_features(df):
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Evaluation%20http%3A%2F%2Flocalhost%3A4000%2Fmachinelearning%2FEvaluation%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Local+to+Server+%26+Shell%20http%3A%2F%2Flocalhost%3A4000%2Fserver%2FLocalToServer%26Shell%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fmachinelearning%2FEvaluation%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fserver%2FLocalToServer%26Shell%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fmachinelearning%2FEvaluation%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fserver%2FLocalToServer%26Shell%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/machinelearning/Scikit-Learn/" class="pagination--pager" title="Scikit-Learn
+      <a href="/machinelearning/Evaluation/" class="pagination--pager" title="Evaluation
 ">Previous</a>
     
     
-      <a href="/server/LocalToServer&Shell/" class="pagination--pager" title="Local to Server &amp; Shell
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -443,7 +505,7 @@ def transform_features(df):
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/server/LocalToServer&Shell/" rel="permalink">Local to Server &amp; Shell
+        <a href="/machinelearning/Evaluation/" rel="permalink">Evaluation
 </a>
       
     </h2>
@@ -461,14 +523,14 @@ def transform_features(df):
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          less than 1 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">[Terminal] 원격 접속 및 파일 저장
+    <p class="archive__item-excerpt" itemprop="description">성능 평가 지표(Evaluation Metric)
 
 </p>
   </article>
