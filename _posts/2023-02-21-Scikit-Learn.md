@@ -25,7 +25,7 @@ import sklearn
 
 ## 2. Scikit-learn의 주요 기능
 
-<img src="/assets/images/machinelearning/scikit-Learn/scikit-Learn_1.png" width=50%>
+<img src="/assets/images/machinelearning/scikit-Learn/scikit-Learn_1.png" width="50%">
 
 ### 1. Example Data
 
@@ -59,6 +59,7 @@ import sklearn
     - 원 핫 인코딩(One Hot encoding)
 
       - 피처 값의 유형에 따라 새로운 피처를 추가해 고유 값에 해당하는 칼럼에만 1을 하고 나머지 컬럼에는 0을 표시하는 방식
+      
         <img src="/assets/images/machinelearning/scikit-Learn/scikit-Learn_3.png" width=50%>
 
   - 피처 스케일링과 정규화
@@ -144,5 +145,3 @@ II. 모델 학습
 III. 예측 수행
 
 IV. 평가
-
-/assets/images/Scikit-Learn/Scikit-Learn_3.png
