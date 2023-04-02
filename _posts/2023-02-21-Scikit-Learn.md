@@ -60,7 +60,7 @@ import sklearn
 
       - 피처 값의 유형에 따라 새로운 피처를 추가해 고유 값에 해당하는 칼럼에만 1을 하고 나머지 컬럼에는 0을 표시하는 방식
       
-        <img src="/assets/images/machinelearning/scikit-Learn/scikit-Learn_3.png" width=50%>
+        <img src="/assets/images/machinelearning/scikit-Learn/scikit-Learn_3.png" width="50%">
 
   - 피처 스케일링과 정규화
 
