@@ -4,10 +4,6 @@ main:
     url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
   - title: "Category"
     url: /categories/
-  - title: "Posts"
-    url: /posts/
-  - title: "Pages"
-    url: /archive/
 
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
