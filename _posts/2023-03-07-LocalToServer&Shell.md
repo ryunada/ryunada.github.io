@@ -7,6 +7,8 @@ toc: true
 toc_label: "Evaluation"
 toc_sticky: True
 # toc_icon: ""
+sidebar:
+  nav: 'counts'
 ---
 
 # [Terminal] 원격 접속 및 파일 저장

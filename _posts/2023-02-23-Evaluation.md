@@ -7,6 +7,8 @@ toc: true
 toc_label: "Evaluation"
 toc_sticky: True
 # toc_icon: ""
+sidebar:
+  nav: 'counts'
 ---
 # 성능 평가 지표(Evaluation Metric)
 

@@ -7,6 +7,8 @@ toc: true
 toc_label: "Scikit-Learn"
 toc_sticky: True
 # toc_icon: ""
+sidebar:
+  nav: 'counts'
 ---
 ## 1. Scikit-learn 정의
 

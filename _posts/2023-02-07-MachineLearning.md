@@ -7,6 +7,8 @@ toc: true
 toc_label: "MachineLeanring"
 toc_sticky: True
 # toc_icon: ""
+sidebar:
+  nav: 'counts'
 ---
 
 #### 머신러닝의 개념. 
