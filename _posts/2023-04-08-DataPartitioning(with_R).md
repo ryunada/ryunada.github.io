@@ -10,7 +10,6 @@ toc_sticky: True
 sidebar:
   nav: 'counts'
 ---
-[TOC]
 
 # 데이터 분할(Data Partitioning)
 
