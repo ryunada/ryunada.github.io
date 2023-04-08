@@ -4,7 +4,7 @@ categories:
     - Server
 date: 2023-03-07
 toc: true
-toc_label: "Evaluation"
+toc_label: "Local to Server & Shell"
 toc_sticky: True
 # toc_icon: ""
 sidebar:
