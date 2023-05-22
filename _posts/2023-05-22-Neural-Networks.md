@@ -16,7 +16,7 @@ sidebar:
 - 각 특성(뉴런)에 가중치(중요도)를 바꾸며 정확한 가중치를 구하는 방법
 
 
-<img src="_site/assets/images/deeplearning/neuralnetwork/neuralnetwork_1.png" width="70%">
+<img src="/assets/images/deeplearning/neuralnetwork/neuralnetwork_1.png" width="70%">
 
 <img src="/assets/images/deeplearning/neuralnetwork/neuralnetwork_2.png" width="50%">
 
