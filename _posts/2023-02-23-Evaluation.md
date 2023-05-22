@@ -25,7 +25,8 @@ sidebar:
 <img src="/assets/images/machinelearning/evaluation/evaluation_1.png" width = "50%">
 
 <details>
-<summary> 함수 </summary>
+    <summary> 함수 </summary>
+
 ```python
 from sklearn import preprocessing
 
@@ -54,9 +55,8 @@ def transform_features(df):
     df = drop_features(df)
     df = format_features(df)
     return df
-
 ```
-</div>
+
 </details>
 
   
