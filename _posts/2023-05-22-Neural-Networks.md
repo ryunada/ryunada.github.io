@@ -1,24 +1,24 @@
 ---
-title : DeepLearning 기본 신경망
+title : Neural-Networks
 categories:
     - DeepLearning
 date: 2023-05-22
 toc: true
-toc_label: "DeepLearning"
+toc_label: "NeuralNetworks"
 toc_sticky: True
 # toc_icon: ""
 sidebar:
   nav: 'counts'
 ---
 
-## 1. 기본적인 신경망
+## 1. 기본적인 신경망(NeuralNetworks)
 
 - 각 특성(뉴런)에 가중치(중요도)를 바꾸며 정확한 가중치를 구하는 방법
 
 
-<img src='https://p.ipic.vip/vd10ou.png' width=70%>
+<img src='/assets/images/deeplearning/neuralnetwork/neuralnetwork_1.png' width=70%>
 
-<img src='https://p.ipic.vip/5abp1c.png' width=50%>
+<img src='/assets/images/deeplearning/neuralnetwork/neuralnetwork_2.png' width=50%>
 
 
 ```python
