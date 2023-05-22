@@ -47,7 +47,6 @@ print(f'신경망이 학습한 것 : {model.layers[0].get_weights()}')
 <details>
   <summary>Result</summary>
 
-
 ```
 Epoch 1/500
 1/1 [==============================] - 0s 148ms/step - loss: 1.2064
