@@ -291,8 +291,8 @@ defaults:
   # _posts
   - scope:
       path: ""
-      # type: posts
-      type : categories
+      type: posts
+      # type : categories
     values:
       layout: single
       author_profile: true
