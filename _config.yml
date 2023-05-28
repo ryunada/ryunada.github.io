@@ -17,21 +17,21 @@ github: [metadata]
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "dirt" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : "en-US"
-title                    : "Nada"
-title_separator          : "-"
-subtitle                 : "To be DataScientist" # site tagline that appears below site title in masthead
-name                     : "Ryu SeungHo"
-description              : "To be DataScientist"
-url                      : "https://ryunada.github.io/" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+locale                   : "ko-KR"
+title                    : "Nada"    # Meta 태그에 들어가는 영역, masthead_title등이 없으면 기본값으로 나옴
+title_separator          : "-"       # 타이틀 사이 구분자
+subtitle                 : "To be DataScientist" # 타이틀 아래에 나올 작은 글씨
+name                     : "Ryu SeungHo"   # 맨 하단에 이름
+description              : "To be DataScientist"  # Meta 태그에 들어가는 영역
+url                      : "https://ryunada.github.io/" # GitBlog 호스트 주소 
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : "/assets/images/Logo.png" # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
+masthead_title           : "기록하는 DataScientist"  # 홈페이지 최 상단에 들어갈 타이틀 # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
@@ -110,7 +110,7 @@ analytics:
 # Site Author
 author:
   name             : "Nada"
-  avatar           : "/assets/images/Black_Profile.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/Black_Profile.jpg"  # 프로필 이미지 # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "To be DataScientist"
   location         : "Korea"
   # email            : "rst3047@gmail.com"
