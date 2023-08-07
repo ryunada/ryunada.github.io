@@ -1,5 +1,5 @@
 ---
-title : [Python] DataFrame 생성 :: pd.DataFrame()
+title : "[Python] DataFrame 생성 :: pd.DataFrame()"
 categories:
     - Pandas
 date: 2023-08-06
