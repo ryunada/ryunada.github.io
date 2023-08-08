@@ -24,7 +24,7 @@ import pandas as pd
 pd.DataFrame(
     data = None,           # 딕셔너리(Dictionary), Numpy ndarray, etc...
     index = None,          # 리스트(list), MultiIndex 객체
-    columns = None,         # 리스트(list_, MultiIndex 객체
+    columns = None,         # 리스트(list), MultiIndex 객체
 )
 ```
 
