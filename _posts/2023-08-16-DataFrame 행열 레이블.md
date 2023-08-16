@@ -42,7 +42,7 @@ nba
 
 450 rows × 5 columns
 
-# 2. df 인덱스(행 레이블) :: df.index
+# 1. df 인덱스(행 레이블) :: df.index
 
 ```python
 df.index
