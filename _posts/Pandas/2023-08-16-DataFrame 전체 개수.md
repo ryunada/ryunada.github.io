@@ -15,7 +15,7 @@ sidebar:
         Pandas In Action
 </details>
 
-# df 데이터 셋의 전체 개수 확인
+# df 데이터 전체 개수 :: df.size
 
 ```python
 import pandas as pd
