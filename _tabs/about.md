@@ -5,28 +5,27 @@ order: 4
 ---
 
 # 👨🏻‍💻 AI-Driven Data Scientist
-데이터를 통해 인사이트를 발견하는 AI 기반 데이터 과학자 입니다. 
+데이터를 통해 인사이트를 발견하는 AI 기반 데이터 과학자 입니다. 데이터 분석, 머신러닝, 딥러닝, 시계열 분석을 중심으로 연구하고 있습니다.
 
-## 👋 Introduction
-안녕하세요! 데이터 분석(ML, DL), Computer Vision, NLP을 사용하는 연구자입니다.
+# 👋 Experience & Projects
 
-## 📌 Research Interests
-- **Machine Learning** : 예측 성능을 향상시키기 위한 머신러닝 기법을 연구합니다.
-- **Deep Learning** : 예측 성능을 향상시키기 위한 딥러닝 기법을 연구합니다.
-- **Computer Vision** : 이미지 인식을 위한 컴퓨터 비전을 연구합니다.
-- **Natural Language Processing** : 자연어 처리를 연구합니다. 
+## 💡 연구 및 학술 발표
+
+- **한국데이터정보과학회 포스터 발표 우수상 수상 (2024 추계)**
+  VAE-based Replication and Ensemble Methods for Enhanced Time Series Prediction
+
+- **한국통계학회 포스터 발표 (2024 하계)**
+  TED Talks' topic variation utilizing a dynamic topic modeling approach
+
+- **한국통계학회 포스터 발표 (2023 추계)**
+  Prediction Improvement of Non-stationary Time Series Analysis based on Transformation
 
 ## 🛠 Skills
-- **Programming**: Python(Pandas, NumPy, Scikit-Learn, Tensorflow, etc...)
-- **Data Visualization**: Matplotlib, Seaborn, Plotly, Tableau
+- **Programming** : Python, R, SQL (MySQL, PostgreSQL, NoSQL)
+- **Machine Learning / Deep Learning** : TensorFlow, Keras, OpenCV, CNN, VAE, etc...
+- **EDA & 데이터 시각화** : Pandas, Matplotlib, Power BI, Tableau
 
 ## 📂 Projects 
-### 🏆 Selected Projects
-- **VAE-based Replication and Ensemble Methods for Enhanced Time Series Prediction(한국데이터정보과학회 포스터 발표_우수상 수상)**
-- **TED Talks' topic variation utilizing a dynamic topic modeling approach(한국통계학회 포스터 발표)**
-- **Prediction Improvement of Non-stationary Time Series Analysis based on Transformation(한국통계학회 포스터 발표)**
-
-## 📮 Contact
-
-
-더 많은 연구 및 프로젝트를 공유할 예정이니, 관심 있으시면 블로그를 찾아 주세요.
+- 민간 협력 분야_날씨에 따른 소비패턴 분석(기상청 빅데이터 공모전)_팀프로젝트 [2021.04.26 ~ 2021.05.28]
+- 경북지역 커피박 재활용 활성화(경북 지역문제 해결 아이디어 공모전)_팀프로젝트 [2021.09.08 ~ 2021.12.07]
+- 
