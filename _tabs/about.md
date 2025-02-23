@@ -4,7 +4,8 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-# About Me
+# 👨🏻‍💻 AI-Driven Data Scientist
+데이터를 통해 인사이트를 발견하는 AI 기반 데이터 과학자 입니다. 
 
 ## 👋 Introduction
 안녕하세요! 데이터 분석(ML, DL), Computer Vision, NLP을 사용하는 연구자입니다.
