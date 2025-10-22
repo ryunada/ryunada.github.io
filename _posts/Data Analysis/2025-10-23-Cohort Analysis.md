@@ -1704,6 +1704,7 @@ plt.title("Cohort")
 sns.heatmap(new_cohort_table, annot = True, cmap = "Blues", fmt = '.0%')
 plt.show()
 ```
+TEst
 
 <div align="center">
     <IMG SRC = "/assets/img/Data Analysis/Cohort/Cohort_2.png" alt = "Cohort Graph_2" width = "60%">
