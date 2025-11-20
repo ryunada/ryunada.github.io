@@ -80,6 +80,7 @@ memory usage: 33.1+ MB
 df.dropna(subset = ['CustomerID'], axis = 0, inplace = True)
 df
 ```
+
 |   | InvoiceNo | StockCode | Description | Quantity | InvoiceDate | UnitPrice | CustomerID | Country |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 0 | 536365 | 85123A | WHITE HANGING HEART T-LIGHT HOLDER | 6 | 2010-12-01 08:26:00 | 2.55 | 17850.0 | United Kingdom |
@@ -100,7 +101,8 @@ df
 	- 541909 rows에서 CutomerID가 비어있는 행이 제거되고 406829 rows만 남음
 
 ## II-II. 구매한 날짜(월) 추출
--   기준이 월이기 때문에 day는 1로 통일한다
+-   기준이 월이기 때문에 day는 1로 통일한다.
+
 ```Python
 import datetime as dt
 
@@ -111,6 +113,7 @@ def get_date(x):
 df['InvoiceMonth'] = df['InvoiceDate'].apply(get_date)
 df
 ```
+
 |   | InvoiceNo | StockCode | Description | Quantity | InvoiceDate | UnitPrice | CustomerID | Country | InvoiceMonth |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 0 | 536365 | 85123A | WHITE HANGING HEART T-LIGHT HOLDER | 6 | 2010-12-01 08:26:00 | 2.55 | 17850.0 | United Kingdom | 2010-12-01 |
@@ -225,6 +228,7 @@ cohort_data
 cohort_table = cohort_data.pivot(index = 'Cohort First Month', columns = ['Cohort Retention Period'], values = 'CustomerID')
 cohort_table
 ```
+
 | Cohort Retention Period | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Cohort First Month |   |   |   |   |   |   |   |   |   |   |   |   |   |
