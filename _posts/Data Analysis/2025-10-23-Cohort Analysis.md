@@ -278,7 +278,9 @@ sns.heatmap(cohort_table, annot = True, cmap = "Blues")
 plt.show()
 ```
 
-!\[Cohort Graph\_1\](/assets/img/Data Analysis/Cohort/Cohort\_1.png)
+<div align="center">
+    <IMG SRC = "/assets/img/Data Analysis/Cohort/Cohort_1.png" alt = "Cohort_1" width = "60%">
+</div>
 
 ```Python
 # cohort table for percentage
@@ -312,4 +314,6 @@ sns.heatmap(new_cohort_table, annot = True, cmap = "Blues", fmt = '.0%')
 plt.show()
 ```
 
-!\[Cohort Graph\_2\](/assets/img/Data Analysis/Cohort/Cohort\_2.png)
+<div align="center">
+    <IMG SRC = "/assets/img/Data Analysis/Cohort/Cohort_2.png" alt = "Cohort_2" width = "60%">
+</div>
