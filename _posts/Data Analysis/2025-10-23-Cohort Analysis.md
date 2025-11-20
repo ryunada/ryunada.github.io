@@ -10,7 +10,7 @@ toc_sticky: True
 sidebar:
   nav: 'counts'
 ---
-
+- Cohort
 -   [I. Load Data](#i.-load-data)
 -   [II. Data Preprocessing](#ii.-data-preprocessing)
     -   [II-I. 고객 ID (CustomerID)가 NaN인 행  
