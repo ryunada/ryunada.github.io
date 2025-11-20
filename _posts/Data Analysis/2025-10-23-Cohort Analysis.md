@@ -10,17 +10,7 @@ toc_sticky: True
 sidebar:
   nav: 'counts'
 ---
-- Cohort
--   [I. Load Data](#i.-load-data)
--   [II. Data Preprocessing](#ii.-data-preprocessing)
-    -   [II-I. 고객 ID (CustomerID)가 NaN인 행  
-        제거](#ii-i.-%EA%B3%A0%EA%B0%9D-id-customerid%EA%B0%80-nan%EC%9D%B8-%ED%96%89-%EC%A0%9C%EA%B1%B0)
-    -   [II-II. 구매한 날짜(월) 추출](#ii-ii.-%EA%B5%AC%EB%A7%A4%ED%95%9C-%EB%82%A0%EC%A7%9C%EC%9B%94-%EC%B6%94%EC%B6%9C)
-    -   [II-III. 고객 별 처음 구매한 날짜  
-        추출](#ii-iii.-%EA%B3%A0%EA%B0%9D-%EB%B3%84-%EC%B2%98%EC%9D%8C-%EA%B5%AC%EB%A7%A4%ED%95%9C-%EB%82%A0%EC%A7%9C-%EC%B6%94%EC%B6%9C)
-    -   [II-IV. 고객이 유지된 날짜 변수  
-        생성](#ii-iv.-%EA%B3%A0%EA%B0%9D%EC%9D%B4-%EC%9C%A0%EC%A7%80%EB%90%9C-%EB%82%A0%EC%A7%9C-%EB%B3%80%EC%88%98-%EC%83%9D%EC%84%B1)
--   [III. Visualization](#iii.-visualization)
+
 -   데이터 설명
     -   실제 전자상거래(이커머스) 거래 내역을 기반으로 한 거래  
         데이터(Transaction Data)로, 고객의 구매 행동 분석, RFM 세분화,  
