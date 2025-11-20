@@ -48,6 +48,7 @@ import seaborn as sns
 ```
 
 # I. Load Data
+
 ```Python
 # Load Data
 df = pd.read_excel("./Data/Cohort_1/Online Retail.xlsx")
