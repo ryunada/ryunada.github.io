@@ -32,7 +32,7 @@ sidebar:
 	- 구간 합 당 : O(1)
 ## 2 Dimension
 <p align = 'center'> 
-	<img src = "/assets/img/Algorithm/Programming/Prefix Sum Algorithm 2D.png" alt = 'Prefix Sum Algorithm 2D' width = '50%'>
+	<img src = "/assets/img/Algorithm/Prefix Sum Algorithm 2D.png" alt = 'Prefix Sum Algorithm 2D' width = '50%'>
 </p>
 
 - 정의
