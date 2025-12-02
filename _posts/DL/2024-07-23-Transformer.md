@@ -15,8 +15,8 @@ sidebar:
 <details>
     <summary>Reference</summary>
 
-- 파이썬 텍스트 마이닝 완벽 가이드(Section 13)\\
-- 텐서플로 2와 머신러닝으로 시작하는 자연어 처리(Section 6)\\
+- 파이썬 텍스트 마이닝 완벽 가이드(Section 13)  
+- 텐서플로 2와 머신러닝으로 시작하는 자연어 처리(Section 6)  
 - 케라스 창시자에게 배우는 딥러닝(2판)(Section 11.5)
 
 </details>
