@@ -168,7 +168,7 @@ kramdown:
 
 collections:
   tabs:
-    output: False
+    output: false  # 2025.12.02
     sort_by: order
 
 defaults:
