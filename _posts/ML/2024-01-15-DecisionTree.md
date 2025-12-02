@@ -24,18 +24,18 @@ sidebar:
 
 </details>
 
-<img src = "/assets/img/dt/DT_Information.png" width = "70%" alt = "DT_Information">
+<img src = "/assets/img/ML/dt/DT_Information.png" width = "70%" alt = "DT_Information">
 
 **< 실습 데이터셋 >**
 
 - Titanic 데이터 셋 : 타이타닉 사건(1912년도) 때 타이타닉 호에 탑승했던 승객들의 정보, 생존 여부등으로 총 11개의 Feature로 이루어져 있습니다.
     - 11개의 변수 중 분석에 사용할 변수는 아래의 표에서 소개를 합니다.
 
-<img src = "/assets/img/dt/Features_Information.png" width = "70%" alt = "Features_Information">
+<img src = "/assets/img/ML/dt/Features_Information.png" width = "70%" alt = "Features_Information">
 
 - Flow Chart
 
-<img src = "/assets/img/dt/Flow_Chart.png" width = "70%" alt = "Flow_Chart">
+<img src = "/assets/img/ML/dt/Flow_Chart.png" width = "70%" alt = "Flow_Chart">
 
 
 ```python
@@ -187,7 +187,7 @@ DecisionTreeClassifier(
 
 <details>
     <summary>Parameters</summary>
-<img src = "/assets/img/dt/DT_Parameter_Information.png" width = "60%" alt = "DT_Parameter_Information">
+<img src = "/assets/img/ML/dt/DT_Parameter_Information.png" width = "60%" alt = "DT_Parameter_Information">
 
 </details>
 
@@ -277,7 +277,7 @@ DT_pred
 
 ### 6-3-1. Confusion Matrix
 
-<img src = "/assets/img/dt/Confusion Matrix.png" width = "50%" alt = "Confusion Matrix">
+<img src = "/assets/img/ML/dt/Confusion Matrix.png" width = "50%" alt = "Confusion Matrix">
 
 
 ```python
