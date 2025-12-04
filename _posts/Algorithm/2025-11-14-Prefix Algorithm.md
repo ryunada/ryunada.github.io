@@ -9,6 +9,7 @@ toc_sticky: True
 # toc_icon: ""
 sidebar:
   nav: 'counts'
+math: true           # 수식 설정
 ---
 
 # Prefix Sum Algorithm이란?

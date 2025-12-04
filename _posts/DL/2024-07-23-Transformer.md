@@ -9,7 +9,7 @@ toc_sticky: True
 # toc_icon: ""
 sidebar:
   nav: 'counts'
-math: true
+math: true           # 수식 설정
 ---
 
 <span style = 'color:blue'>**By Seung Ho Ryu (Comment. Jung In Seo)**</span>
