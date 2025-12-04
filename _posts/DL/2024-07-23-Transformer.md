@@ -59,9 +59,7 @@ sidebar:
     - 단, 전체 입력 문장을 전부 다 동일한 비율로 참고하는 것이 아닌, 해당 시점에서 예측해야할 단어와 연관이 있는 단어 부분을 좀 더 집중(Attention)해서 참고
         - 즉, 'bonjour'를 예측한다면 'bonjour'과 연관성을 확인하여 가장 연관있는 단어에 집중해서 참고하는 것임
     - Attention은 디코더의 출력 단어를 예측하기 위해서 전체 입력 문장을 어텐션 값(Attention Value)을 통해 참고함
-
-<img src = "/assets/img/DL/Transformer/Attention.png" width = "100%" alt = "Attention">  
-        
+        - <img src = "/assets/img/DL/Transformer/Attention.png" width = "100%" alt = "Attention">  
         - $t$시점의 Attention Value  
             1. t시점의 디코더의 은닉 상태와 인코더의 모든 은닉상태를 내적 곱하여 Attention Score를 구함
                 - $Attention Score(s_t, h_i) = s_t^Th_i$
