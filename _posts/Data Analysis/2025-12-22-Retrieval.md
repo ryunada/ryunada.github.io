@@ -10,6 +10,7 @@ toc_sticky: True
 sidebar:
   nav: 'counts'
 math: true           # 수식 설정
+permalink: /posts/retrieval/
 ---
 
 # RAG에서 Retrieval이란?
