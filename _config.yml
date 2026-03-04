@@ -132,7 +132,7 @@ comments:
 # Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
 assets:
   self_host:
-    enabled: fasle # boolean, keep empty means false # false로 수정 About 2026.03.04
+    enabled: # boolean, keep empty means false 
     # specify the Jekyll environment, empty means both
     # only works if `assets.self_host.enabled` is 'true'
     env: # [development | production]
@@ -154,10 +154,7 @@ baseurl:
 
 # ------------ The following options are not recommended to be modified ------------------
 
-markdown: kramdown # About 수정 2026.03.04
-
 kramdown:
-  input: GFM  # About 수정 2026.03.04
   footnote_backlink: "&#8617;&#xfe0e;"
   syntax_highlighter: rouge
   syntax_highlighter_opts: # Rouge Options › https://github.com/jneen/rouge#full-options
