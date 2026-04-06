@@ -1,5 +1,5 @@
 ---
-title : "[Python] Machine Learning-LightGBM"
+title : "[Python] ML-LightGBM"
 categories:
     - ML
 date: 2026-04-06

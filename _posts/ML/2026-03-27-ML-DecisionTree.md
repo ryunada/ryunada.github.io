@@ -1,5 +1,5 @@
 ---
-title : "[Python] Machine Learning-Decision Tree"
+title : "[Python] ML-Decision Tree"
 categories:
     - ML
 date: 2026-03-27
