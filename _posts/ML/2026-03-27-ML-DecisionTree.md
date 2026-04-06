@@ -11,155 +11,258 @@ sidebar:
   nav: 'counts'
 math: true           # 수식 설정
 ---
+## 개념
 
-# 수정
+Decision Tree는 데이터를 **조건으로 반복적으로 분할**하여 예측하는 알고리즘입니다. 마치 스무고개처럼, 각 노드에서 특정 조건으로 데이터를 나누고 최종 Leaf 노드에서 예측값을 반환합니다.
 
-  [ML 알고리즘] 왜 결정 트리(Decision Tree)가 여전히 현업에서
-  강력한 도구인가?
+- **분류(Classification)** 와 **회귀(Regression)** 모두 사용 가능
+- 결과를 트리 구조로 시각화할 수 있어 **해석이 쉬움**
+- 별도의 스케일링 불필요
 
-  > 작성자: Seung-Ho Ryu (Senior Data Scientist)
-  > 프로젝트: Machine Learning Deep-Dive 시리즈
+---
 
-  머신러닝 모델을 선택할 때, 우리는 흔히 '성능'과 '설명력'
-  사이에서 고민합니다. 딥러닝이 아무리 뛰어나도 "왜 이런 결과가
-  나왔는가?"라는 비즈니스 측면의 질문에 답하지 못하면 실무에서는
-  버려지기 일쑤입니다. 이때 가장 먼저 떠오르는 강력한 카드가 바로
-  결정 트리(Decision Tree)입니다.
+<img src = "/assets/img/ML/decision_tree/decision_tree.png" width = "70%" alt = "decision_tree">
 
-  ---
+## 트리 분할 기준
 
-#  1. 직관: 데이터로 하는 '전략적 스무고개'
+노드를 분할할 때 **불순도(Impurity)** 를 최소화하는 방향으로 조건을 선택합니다.
 
-  결정 트리의 핵심은 "데이터를 가장 잘 가르는 질문을 순서대로
-  던지는 것"입니다.
+| 기준                   | 설명                                    | 사용          |
+| ---------------------- | --------------------------------------- | ------------- |
+| **지니 계수 (Gini)**   | 무작위로 선택한 샘플이 잘못 분류될 확률 | 분류 (기본값) |
+| **엔트로피 (Entropy)** | 데이터의 불확실성 정도                  | 분류          |
+| **MSE**                | 평균 제곱 오차                          | 회귀          |
 
-  우리가 스무고개를 할 때 첫 질문으로 "그것은 생물인가요?"라고
-  묻는 이유는 무엇일까요? 바로 그 질문이 정답 후보군을 가장 많이
-  날려버릴 수 있는(정보 이득이 큰) 질문이기 때문입니다. 결정
-  트리는 수학적으로 이 '가장 효율적인 질문'의 순서를 설계하는
-  알고리즘입니다.
+### Gini vs Entropy 계산 예시
 
-  ---
+노드에 Class A 40개, Class B 60개가 있다고 가정합니다.
 
-#  2. 이론: 불순도를 낮추는 수학적 설계
+```
+p_A = 0.4,  p_B = 0.6
 
-  결정 트리는 노드를 분할할 때마다 불순도(Impurity)를 최소화하는
-  방향을 택합니다.
+Gini     = 1 - (0.4² + 0.6²) = 1 - (0.16 + 0.36) = 0.48
+Entropy  = -(0.4 × log₂0.4 + 0.6 × log₂0.6)
+         = -(0.4 × (-1.322) + 0.6 × (-0.737))
+         = 0.971
 
-##  2-1. 지니 불순도(Gini) vs 엔트로피(Entropy)
-   * Gini: $1 - \sum (p_i)^2$. 계산이 빨라 Scikit-Learn의
-     기본값으로 쓰입니다. 실무적으로 성능 차이는 미미하지만, 연산
-     효율이 중요할 때 유리합니다.
-   * Entropy: $-\sum p_i \log p_i$. 정보 이론에 기반하며, 지니보다
-     조금 더 균형 잡힌 트리를 만드는 경향이 있으나 로그 계산으로
-     인해 속도가 약간 느립니다.
+완전히 순수한 노드 (한 클래스만 존재):
+  Gini    = 1 - (1² + 0²) = 0
+  Entropy = -(1 × log₂1)  = 0
 
-  2-2. 정보 이득(Information Gain)
-  부모 노드의 불순도와 자식 노드들의 불순도 합 사이의 차이를
-  말합니다. 모델은 이 Information Gain을 최대화하는 지점을 찾아
-  분기점(Split point)을 결정합니다.
+→ 두 기준 모두 순수할수록 0, 불순할수록 커짐
+→ 실무에서 성능 차이는 거의 없음 (Gini가 계산이 빠름)
+```
 
-  ---
+---
 
-#  3. 실무: 왜 Logistic Regression이나 SVM 대신 트리를 쓰는가?
+## 언제 사용하는가
 
+### 사용해야 할 때
 
-  ┌─────────────────┬──────────────────┬────────────────────┐
-  │ 비교 항목       │ Decision Tree    │ Logistic           │
-  │                 │                  │ Regression / SVM   │
-  ├─────────────────┼──────────────────┼────────────────────┤
-  │ 데이터 스케일링 │ 필요 없음. (가장 │ 필수적임           │
-  │                 │ 큰 장점)         │ (정규화/표준화     │
-  │                 │                  │ 미비 시 성능 저하) │
-  │ 비선형성 처리   │ 매우 뛰어남.     │ 선형적 한계.       │
-  │                 │ 계단식 분할로    │ Kernel 기법 필요.  │
-  │                 │ 비선형 대응.     │                    │
-  │ 이상치(Outlier) │ 강건함(Robust).  │ 민감함. 이상치가   │
-  │                 │ 순서만 중요함.   │ 경계선을 왜곡함.   │
-  │ 해석 가능성     │ White Box. 로직  │ 확률/가중치        │
-  │                 │ 추적이 가능함.   │ 기반으로 직관적    │
-  │                 │                  │ 해석 난해.         │
-  └─────────────────┴──────────────────┴────────────────────┘
+| 상황                                        | 이유                                                         |
+| ------------------------------------------- | ------------------------------------------------------------ |
+| **모델 결과를 비전문가에게 설명해야 할 때** | 트리 구조로 시각화하면 "왜 이런 예측을 했는지" 직관적으로 설명 가능 |
+| **전처리를 최소화하고 싶을 때**             | 스케일링 불필요, 결측값 처리 최소화                          |
+| **빠른 프로토타이핑**                       | 구현이 단순하고 학습이 빠름                                  |
+| **변수 중요도가 필요할 때**                 | Feature Importance로 어떤 변수가 중요한지 빠르게 파악        |
+| **앙상블 모델의 구조 이해**                 | Random Forest, XGBoost의 기반 알고리즘이므로 이해 필수       |
 
-  실무 Tip: 데이터에 범주형 변수가 많고, 스케일링을 일일이 신경
-  쓰기 힘든 빠른 프로토타이핑 단계에서 결정 트리는 최선의
-  선택입니다.
+### 사용하지 말아야 할 때
 
-  ---
+| 상황                             | 이유                                          |
+| -------------------------------- | --------------------------------------------- |
+| **높은 예측 성능이 최우선일 때** | 단독 사용 시 앙상블 대비 성능 낮음            |
+| **데이터가 적고 변수가 많을 때** | 과적합 위험 높음                              |
+| **연속적인 수치 예측 (회귀)**    | 선형 패턴 표현 불가, 외삽(extrapolation) 불가 |
 
-  4. 하이퍼파라미터: 과적합(Overfitting)과의 끝없는 전쟁
+### 실무 활용 사례
 
-  결정 트리의 최대 약점은 "너무 똑똑해서 문제"라는 것입니다. 훈련
-  데이터의 잡음(Noise)까지 다 외워버립니다.
+```
+금융: 대출 승인 여부 판단 (심사 기준을 트리로 시각화)
+의료: 질병 진단 보조 (의사에게 판단 근거 제공)
+마케팅: 고객 세그멘테이션 1차 분석
+```
 
-   * max_depth: 트리의 깊이. 너무 깊으면 훈련 데이터만 완벽히
-     외우는 과적합이 발생합니다. 실무에서는 3~5 정도로 시작하는
-     것이 좋습니다.
-   * min_samples_split: 노드를 분할하기 위한 최소 샘플 수. 이 값을
-     키우면 트리가 더 이상 깊어지지 못하게 강제하여 모델을
-     단순화(Regularization)합니다.
-   * min_samples_leaf: 리프 노드가 되기 위한 최소 샘플 수.
-     데이터가 적은 리프 노드가 생기는 것을 방지하여 일반화 성능을
-     높입니다.
+## 핵심 파라미터
 
-  ---
+| 파라미터            | 설명                            | 기본값 |
+| ------------------- | ------------------------------- | ------ |
+| `max_depth`         | 트리의 최대 깊이                | None   |
+| `min_samples_split` | 노드 분할에 필요한 최소 샘플 수 | 2      |
+| `min_samples_leaf`  | Leaf 노드의 최소 샘플 수        | 1      |
+| `max_features`      | 분할 시 고려할 최대 변수 수     | None   |
+| `criterion`         | 분할 기준 (`gini`, `entropy`)   | `gini` |
 
-  5. 실전 구현 (Titanic Survival Analysis)
+> `max_depth`를 제한하지 않으면 과적합(Overfitting)이 발생하기 쉽습니다.
 
-  <img src="https://p.ipic.vip/10p7ep.png" width="70%"
-  alt="Titanic Header">
+---
 
-    1 import pandas as pd
-    2 from sklearn.model_selection import train_test_split
-    3 from sklearn.tree import DecisionTreeClassifier, plot_tree
-    4 import matplotlib.pyplot as plt
-    5
-    6 # 1. 데이터 전처리 (현업 스타일: 파생 변수 및 원-핫 인코딩)
-    7 titanic = pd.read_csv('./Data/Titanic.csv')
-    8 titanic['FamSize'] = titanic['SibSp'] + titanic['Parch']
-    9 X = pd.get_dummies(titanic[['Pclass', 'Sex', 'Age',
-      'FamSize', 'Fare']].dropna(), drop_first=True)
-   10 y = titanic.loc[X.index, 'Survived']
-   11
-   12 X_train, X_test, y_train, y_test = train_test_split(X, y,
-      test_size=0.2, random_state=42)
-   13
-   14 # 2. 모델 훈련 (Pruning 적용)
-   15 model = DecisionTreeClassifier(max_depth=3,
-      min_samples_leaf=5, random_state=42)
-   16 model.fit(X_train, y_train)
-   17
-   18 # 3. 시각화 (의사결정 로직 확인)
-   19 plt.figure(figsize=(15, 8))
-   20 plot_tree(model, feature_names=X.columns,
-      class_names=['Perished', 'Survived'], filled=True)
-   21 plt.show()
+## 실습 — Titanic 생존자 예측
 
-  <img src="https://p.ipic.vip/dmvire.png" width="70%" alt="DT
-  Visualization">
+### 데이터셋
 
-  ---
+- **Titanic 데이터셋**: 891명의 승객 정보로 생존 여부를 예측
+- 사용 변수: `Pclass`, `Sex`, `Age`, `FamSize`, `Fare`, `Embarked`
 
-#  6. 실무에서의 한계와 해결 방법
+### 전처리
 
-   1. 불안정성(Instability): 데이터가 살짝만 바뀌어도 트리의
-      구조가 완전히 뒤집힙니다.
-       * 해결: 이를 극복하기 위해 트리를 수백 개 합친 Random
-         Forest나 XGBoost/LightGBM 같은 앙상블 기법이
-         탄생했습니다.
-   2. 데이터 편향: 특정 클래스의 샘플이 너무 많으면 트리가
-      그쪽으로 치우칩니다.
-       * 해결: class_weight='balanced' 파라미터를 사용하거나
-         언더/오버 샘플링을 고려해야 합니다.
+```python
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
 
-  ---
+titanic = pd.read_csv('./Data/Titanic.csv')
 
-# 7. 실무자가 흔히 하는 실수
+# 파생변수 생성
+titanic['FamSize'] = titanic['SibSp'] + titanic['Parch']
 
-   * 가지치기(Pruning) 생략: 기본 파라미터로 돌리면 무조건
-     과적합됩니다. max_depth 제약은 선택이 아닌 필수입니다.
-   * 데이터 누수(Data Leakage): 예측 시점에는 알 수 없는 정보를
-     피처로 넣는 실수(예: 생존 여부와 직결된 '구조 시간' 등)를
-     주의하세요.
+# 분석 변수 선택
+use_cols = ['Survived', 'Pclass', 'Sex', 'Age', 'FamSize', 'Fare', 'Embarked']
+titanic = titanic[use_cols].dropna(subset=['Age'])
 
-  ---
+# 자료형 변환
+titanic[['Survived', 'Pclass', 'Sex', 'Embarked']] = \
+    titanic[['Survived', 'Pclass', 'Sex', 'Embarked']].astype('category')
+titanic['Age'] = titanic['Age'].astype('int')
+
+# One-Hot Encoding
+titanic = pd.get_dummies(titanic, columns=['Pclass', 'Sex', 'Embarked'], drop_first=True)
+
+y = titanic['Survived']
+X = titanic.drop(['Survived'], axis=1)
+
+# 75 : 25 분할 (스케일링 불필요)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
+```
+
+### 모델 학습
+
+```python
+from sklearn.tree import DecisionTreeClassifier
+
+DT = DecisionTreeClassifier(
+    max_depth=8,
+    min_samples_split=2,
+    min_samples_leaf=4,
+    max_features=6,
+    random_state=0
+)
+
+DT.fit(X_train, y_train)
+```
+
+### 트리 시각화
+
+```python
+from sklearn.tree import plot_tree
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(20, 8))
+plot_tree(DT,
+          feature_names=X.columns,
+          class_names=['사망', '생존'],
+          filled=True,
+          max_depth=3)   # 전체 트리는 너무 크므로 3단계만 표시
+plt.show()
+```
+
+### 성능 평가
+
+```python
+from sklearn.metrics import accuracy_score, confusion_matrix
+
+pred = DT.predict(X_test)
+cfx  = confusion_matrix(y_test, pred)
+
+sensitivity = cfx[1, 1] / (cfx[1, 0] + cfx[1, 1])
+specificity = cfx[0, 0] / (cfx[0, 0] + cfx[0, 1])
+
+print(f"정확도 : {accuracy_score(y_test, pred) * 100:.2f}%")
+print(f"민감도 : {sensitivity * 100:.2f}%")
+print(f"특이도 : {specificity * 100:.2f}%")
+print(f"Confusion Matrix:\n{cfx}")
+```
+
+```
+정확도 : 78.21%
+민감도 : 65.79%
+특이도 : 87.38%
+Confusion Matrix:
+[[90 13]
+ [26 50]]
+```
+
+### Feature Importance 시각화
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+importances = pd.Series(DT.feature_importances_, index=X.columns)
+importances = importances.sort_values(ascending=True)
+
+importances.plot(kind='barh', figsize=(8, 5), color='#1565C0')
+plt.title('Feature Importance (Decision Tree)')
+plt.xlabel('중요도')
+plt.tight_layout()
+plt.show()
+```
+
+```
+Sex_male      0.412   ← 성별이 가장 중요한 변수
+Fare          0.198
+Age           0.175
+Pclass_3      0.089
+FamSize       0.076
+Embarked_S    0.031
+Embarked_Q    0.019
+```
+
+---
+
+## 과적합 방지 — 가지치기 (Pruning)
+
+`max_depth`를 변화시키며 훈련/검증 성능 변화를 확인합니다.
+
+```python
+import matplotlib.pyplot as plt
+
+train_scores, test_scores = [], []
+depths = range(1, 20)
+
+for d in depths:
+    dt = DecisionTreeClassifier(max_depth=d, random_state=0)
+    dt.fit(X_train, y_train)
+    train_scores.append(dt.score(X_train, y_train))
+    test_scores.append(dt.score(X_test, y_test))
+
+plt.plot(depths, train_scores, label='Train')
+plt.plot(depths, test_scores, label='Test')
+plt.xlabel('max_depth')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.title('Depth에 따른 과적합 확인')
+plt.show()
+```
+
+> 훈련 점수는 계속 오르지만 검증 점수가 내려가기 시작하는 지점이 최적 `max_depth`입니다.
+
+---
+
+## 장단점
+
+**장점**
+
+- 결과 해석이 직관적 (트리 시각화 가능)
+- 스케일링 불필요
+- 범주형 / 연속형 변수 모두 처리 가능
+
+**단점**
+
+- 과적합이 발생하기 쉬움
+- 데이터 변화에 민감 (분산이 높음)
+- 단독 사용보다 **앙상블(Random Forest, Gradient Boost)** 로 쓰는 것이 일반적
+
+---
+
+> 다음 포스팅: [[ML 시리즈 #2] K-Nearest Neighbor](02_knn.md)

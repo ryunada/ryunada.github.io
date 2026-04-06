@@ -20,7 +20,8 @@ LightGBM은 Microsoft에서 개발한 **빠르고 효율적인 Gradient Boosting
 
 ---
 
-![LightGBM Leaf-wise](images/lightgbm.png)
+<img src = "/assets/img/ML/lightgbm/lightgbm.png" width = "70%" alt = "lightgbm">
+
 
 > Level-wise(좌)는 같은 깊이의 모든 노드를 분할하지만, Leaf-wise(우)는 손실이 가장 큰 Leaf 하나만 집중 분할합니다.
 

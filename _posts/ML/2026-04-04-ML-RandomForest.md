@@ -26,7 +26,7 @@ Random Forest의 해결책:
 
 ---
 
-![Random Forest Bagging](images/random_forest.png)
+<img src = "/assets/img/ML/randomforest/random_forest.png" width = "70%" alt = "random_forest">
 
 ## 두 가지 핵심 전략
 
