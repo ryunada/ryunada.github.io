@@ -264,4 +264,3 @@ plt.show()
 - 단독 사용보다 **앙상블(Random Forest, Gradient Boost)** 로 쓰는 것이 일반적
 
 ---
-> 다음 포스팅: [[ML 시리즈 #2] K-Nearest Neighbor](02_knn.md)
