@@ -2,7 +2,7 @@
 title : "[Python] Machine Learning-LightGBM"
 categories:
     - ML
-date: 2026-04-04
+date: 2026-04-06
 toc: true
 toc_label: "Concept"
 toc_sticky: True
