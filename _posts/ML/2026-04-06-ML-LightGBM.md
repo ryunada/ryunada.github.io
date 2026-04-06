@@ -250,6 +250,3 @@ print(f"특이도 : {specificity * 100:.2f}%")
 - XGBoost보다 직관적 이해가 어려움
 
 ---
-
-> 이전 포스팅: [[ML 시리즈 #9] Gradient Boost](09_gradient_boost.md)
-> 다음 포스팅: [[ML 시리즈 #11] XGBoost](11_xgboost.md)
