@@ -12,12 +12,9 @@ sidebar:
 math: true           # 수식 설정
 ---
 
-# 개념
+# Light GBM 개념
 ---
-데이터가 수백만 건에 달하는 빅데이터 시대, 전통적인 Gradient Boost는 너무 느립니다. 이때 혜성처럼 등장하여 Kaggle과 현업을 휩쓴 모델이 바로 **LightGBM**입니다. 이름처럼 가볍고 빠른 이 모델의 강력함은 어디서 나오는지 분석합니다.
-
-
-LightGBM은 Microsoft에서 개발한 **빠르고 효율적인 Gradient Boosting** 프레임워크입니다. 기존 Gradient Boost의 느린 속도 문제를 두 가지 핵심 기술로 해결했습니다.
+LightGBM은 Microsoft에서 개발한 **빠르고 효율적인 Gradient Boosting** 프레임워크입니다. 기존 Gradient Boost의 느린 속도 문제를 두 가지 핵심 기술로 해결
 
 ---
 
@@ -115,40 +112,49 @@ Leaf-wise (LightGBM):
 
 ## 실습 — Titanic 생존자 예측
 
-### 전처리
-
+### I. Library & Data Load
 ```python
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split
 
-titanic = pd.read_csv('./Data/Titanic.csv')
+# Data Load
+titanic = pd.read_csv("./Data/Titanic.csv")
+titanic
+```
 
+### II. 전처리
+
+#### II-I. Feature Engineering
+```python
 titanic['FamSize'] = titanic['SibSp'] + titanic['Parch']
 use_cols = ['Survived', 'Pclass', 'Sex', 'Age', 'FamSize', 'Fare', 'Embarked']
-titanic = titanic[use_cols].dropna(subset=['Age'])
+titanic = titanic[use_cols].dropna(subset = ['Age'])
 titanic[['Survived', 'Pclass', 'Sex', 'Embarked']] = \
     titanic[['Survived', 'Pclass', 'Sex', 'Embarked']].astype('category')
 titanic['Age'] = titanic['Age'].astype('int')
-titanic = pd.get_dummies(titanic, columns=['Pclass', 'Sex', 'Embarked'], drop_first=True)
-
-y = titanic['Survived']
-X = titanic.drop(['Survived'], axis=1)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
+titanic = pd.get_dummies(titanic, columns = ['Pclass', 'Sex', 'Embarked'], drop_first = True)
 ```
 
-### 모델 학습
+### II-II. Train & Test Split
+```python
+from sklearn.model_selection import train_test_split
+
+y = titanic['Survived']
+X = titanic.drop(['Survived'], axis = 1)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
+```
+### III. 모델 학습
 
 ```python
 from lightgbm import LGBMClassifier
 
 LGB = LGBMClassifier(
-    n_estimators=200,
-    learning_rate=0.05,
-    num_leaves=31,
-    min_child_samples=20,
-    random_state=0,
-    verbose=-1
+    n_estimators = 200,
+    learning_rate = 0.05,
+    num_leaves = 31,
+    min_child_samples = 20,
+    random_state = 0,
+    verbose = -1
 )
 
 LGB.fit(X_train, y_train)
@@ -157,22 +163,20 @@ LGB.fit(X_train, y_train)
 ### 조기 종료 적용
 
 ```python
-from sklearn.model_selection import train_test_split
-
-X_tr, X_val, y_tr, y_val = train_test_split(X_train, y_train, test_size=0.2, random_state=0)
+X_tr, X_val, y_tr, y_val = train_test_split(X_train, y_train, test_size = 0.2, random_state = 0)
 
 LGB_ES = LGBMClassifier(
-    n_estimators=1000,
-    learning_rate=0.05,
-    num_leaves=31,
-    random_state=0,
-    verbose=-1
+    n_estimators = 1000,
+    learning_rate = 0.05,
+    num_leaves = 31,
+    random_state = 0,
+    verbose = -1
 )
 
 LGB_ES.fit(
     X_tr, y_tr,
-    eval_set=[(X_val, y_val)],
-    callbacks=[lgb.early_stopping(stopping_rounds=50, verbose=False)]
+    eval_set = [(X_val, y_val)],
+    callbacks = [lgb.early_stopping(stopping_rounds = 50, verbose = False)]
 )
 
 print(f"최적 트리 수: {LGB_ES.best_iteration_}")
@@ -190,7 +194,7 @@ from lightgbm import LGBMClassifier
 titanic_cat = pd.read_csv('./Data/Titanic.csv')
 titanic_cat['FamSize'] = titanic_cat['SibSp'] + titanic_cat['Parch']
 use_cols = ['Survived', 'Pclass', 'Sex', 'Age', 'FamSize', 'Fare', 'Embarked']
-titanic_cat = titanic_cat[use_cols].dropna(subset=['Age'])
+titanic_cat = titanic_cat[use_cols].dropna(subset = ['Age'])
 titanic_cat['Age'] = titanic_cat['Age'].astype('int')
 
 # 범주형 변수를 category 타입으로만 지정
@@ -199,12 +203,12 @@ for col in cat_features:
     titanic_cat[col] = titanic_cat[col].astype('category')
 
 y_cat = titanic_cat['Survived']
-X_cat = titanic_cat.drop('Survived', axis=1)
-X_tr_cat, X_te_cat, y_tr_cat, y_te_cat = train_test_split(X_cat, y_cat, test_size=0.25, random_state=0)
+X_cat = titanic_cat.drop('Survived', axis = 1)
+X_tr_cat, X_te_cat, y_tr_cat, y_te_cat = train_test_split(X_cat, y_cat, test_size = 0.25, random_state = 0)
 
-LGB_cat = LGBMClassifier(n_estimators=200, random_state=0, verbose=-1)
+LGB_cat = LGBMClassifier(n_estimators = 200, random_state = 0, verbose = -1)
 LGB_cat.fit(X_tr_cat, y_tr_cat,
-            categorical_feature=cat_features)  # 범주형 변수 지정
+            categorical_feature = cat_features)  # 범주형 변수 지정
 
 print(f"정확도 : {LGB_cat.score(X_te_cat, y_te_cat) * 100:.2f}%")
 # One-Hot Encoding 결과와 성능 비교 가능
