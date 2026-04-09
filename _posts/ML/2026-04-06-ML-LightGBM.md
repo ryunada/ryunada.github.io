@@ -126,12 +126,20 @@ titanic
 
 #### II-I. Feature Engineering
 ```python
-titanic['FamSize'] = titanic['SibSp'] + titanic['Parch']
+# 가족 변수 추가
+titanic['FamSize'] = titanic['SibSp'] + titanic['Parch']  
+
+# 분석에 사용할 변수만 선택
 use_cols = ['Survived', 'Pclass', 'Sex', 'Age', 'FamSize', 'Fare', 'Embarked']
+
+# 결측값 제거
 titanic = titanic[use_cols].dropna(subset = ['Age'])
-titanic[['Survived', 'Pclass', 'Sex', 'Embarked']] = \
-    titanic[['Survived', 'Pclass', 'Sex', 'Embarked']].astype('category')
+
+# 변수 형태 변경
+titanic[['Survived', 'Pclass', 'Sex', 'Embarked']] = titanic[['Survived', 'Pclass', 'Sex', 'Embarked']].astype('category')
 titanic['Age'] = titanic['Age'].astype('int')
+
+# One-Hot-Encoding
 titanic = pd.get_dummies(titanic, columns = ['Pclass', 'Sex', 'Embarked'], drop_first = True)
 ```
 
