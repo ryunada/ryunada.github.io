@@ -14,7 +14,8 @@ math: true           # 수식 설정
 
 # Light GBM 개념
 ---
-LightGBM은 Microsoft에서 개발한 **빠르고 효율적인 Gradient Boosting** 프레임워크입니다. 기존 Gradient Boost의 느린 속도 문제를 두 가지 핵심 기술로 해결
+- LightGBM은 Microsoft에서 개발한 **빠르고 효율적인 Gradient Boosting** 프레임워크.
+- 기존 Gradient Boost의 느린 속도 문제를 두 가지 핵심 기술로 해결
 
 ---
 
@@ -122,7 +123,7 @@ titanic = pd.read_csv("./Data/Titanic.csv")
 titanic
 ```
 
-### II. 전처리
+### II. Preprocessing
 
 #### II-I. Feature Engineering
 ```python

@@ -12,9 +12,8 @@ sidebar:
 math: true           # 수식 설정
 ---
 
-## 개념
-
-Random Forest는 **여러 개의 Decision Tree를 독립적으로 학습**시키고 그 결과를 다수결(분류) 또는 평균(회귀)으로 합치는 **앙상블(Ensemble)** 알고리즘입니다.
+# Random Forest 개념
+Random Forest는 **여러 개의 Decision Tree를 독립적으로 학습**시키고 그 결과를 다수결(분류) 또는 평균(회귀)으로 합치는 **앙상블(Ensemble)** 알고리즘
 
 ```
 단일 Decision Tree의 문제:
@@ -93,7 +92,17 @@ Random Forest의 해결책:
 
 ## 실습 — Titanic 생존자 예측
 
-### 전처리
+### I. Library & Data Load
+```python
+import pandas as pd
+import numpy as np
+
+# Data Load
+titanic = pd.read_csv("./Data/Titanic.csv")
+titanic
+```
+
+### II. Preprocessing
 
 ```python
 import pandas as pd
