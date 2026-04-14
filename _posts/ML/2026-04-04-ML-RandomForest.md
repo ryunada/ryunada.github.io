@@ -104,38 +104,43 @@ titanic
 
 ### II. Preprocessing
 
+#### II-I. Feature Engineering
 ```python
-import pandas as pd
-import numpy as np
-from sklearn.model_selection import train_test_split
+# 가족 변수 추가
+titanic['FamSize'] = titanic['SibSp'] + titanic['Parch']  
 
-titanic = pd.read_csv('./Data/Titanic.csv')
-
-titanic['FamSize'] = titanic['SibSp'] + titanic['Parch']
+# 분석에 사용할 변수만 선택
 use_cols = ['Survived', 'Pclass', 'Sex', 'Age', 'FamSize', 'Fare', 'Embarked']
-titanic = titanic[use_cols].dropna(subset=['Age'])
-titanic[['Survived', 'Pclass', 'Sex', 'Embarked']] = \
-    titanic[['Survived', 'Pclass', 'Sex', 'Embarked']].astype('category')
+
+# 결측값 제거
+titanic = titanic[use_cols].dropna(subset = ['Age'])
+
+# 변수 형태 변경
+titanic[['Survived', 'Pclass', 'Sex', 'Embarked']] = titanic[['Survived', 'Pclass', 'Sex', 'Embarked']].astype('category')
 titanic['Age'] = titanic['Age'].astype('int')
-titanic = pd.get_dummies(titanic, columns=['Pclass', 'Sex', 'Embarked'], drop_first=True)
 
-y = titanic['Survived']
-X = titanic.drop(['Survived'], axis=1)
-
-# 스케일링 불필요
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
+# One-Hot-Encoding
+titanic = pd.get_dummies(titanic, columns = ['Pclass', 'Sex', 'Embarked'], drop_first = True)
 ```
 
-### 모델 학습
+### II-II. Train & Test Split
+```python
+from sklearn.model_selection import train_test_split
 
+y = titanic['Survived']
+X = titanic.drop(['Survived'], axis = 1)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
+```
+
+### III. Model Train
 ```python
 from sklearn.ensemble import RandomForestClassifier
 
 RF = RandomForestClassifier(
-    n_estimators=200,
-    max_depth=10,
-    max_features='sqrt',
-    random_state=0
+    n_estimators = 200,
+    max_depth = 10,
+    max_features = 'sqrt',
+    random_state = 0
 )
 
 RF.fit(X_train, y_train)

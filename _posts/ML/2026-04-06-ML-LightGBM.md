@@ -152,8 +152,7 @@ y = titanic['Survived']
 X = titanic.drop(['Survived'], axis = 1)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
 ```
-### III. 모델 학습
-
+### III. Model Train
 ```python
 from lightgbm import LGBMClassifier
 
@@ -169,7 +168,7 @@ LGB = LGBMClassifier(
 LGB.fit(X_train, y_train)
 ```
 
-### 조기 종료 적용
+### III_V2. Model Trian (with Early Stopping)
 
 ```python
 X_tr, X_val, y_tr, y_val = train_test_split(X_train, y_train, test_size = 0.2, random_state = 0)
