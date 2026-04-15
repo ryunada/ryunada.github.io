@@ -166,10 +166,10 @@ Bagging에서 각 트리는 복원 추출로 데이터를 선택하기 때문에
 
 ```python
 RF_oob = RandomForestClassifier(
-    n_estimators=200,
-    max_depth=10,
-    oob_score=True,   # OOB Score 활성화
-    random_state=0
+    n_estimators = 200,
+    max_depth = 10,
+    oob_score = True,   # OOB Score 활성화
+    random_state = 0
 )
 RF_oob.fit(X_train, y_train)
 
