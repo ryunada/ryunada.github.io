@@ -64,16 +64,16 @@ Random Forest의 해결책:
 | 상황                                    | 이유                                            |
 | --------------------------------------- | ----------------------------------------------- |
 | **실시간 예측 or 메모리가 제한적일 때** | 수백 개의 트리를 메모리에 저장 → 무거움         |
-| **최고 성능이 필요할 때**               | XGBoost, LightGBM이 일반적으로 성능 우위        |
+| **최고 성능이 필요할 때**               | XGBoost, LightGBM이 일반적으로 성능 우위(XGBoost, LightGBM은 오차를 점진적으로 개선해 나감)        |
 | **선형 관계가 강한 데이터**             | 선형 모델(Logistic Regression, Ridge)이 더 적합 |
 
 ### 실무 활용 사례
 
 ```
-금융: 사기 거래 탐지 (불균형 데이터에서도 강건)
-의료: 환자 재입원 예측
-제조: 불량품 탐지, 예측 정비
-마케팅: 고객 이탈 예측 (빠른 배포 필요 시)
+금융 : 사기 거래 탐지 (불균형 데이터에서도 강건)
+의료 : 환자 재입원 예측
+제조 : 불량품 탐지, 예측 정비
+마케팅 : 고객 이탈 예측 (빠른 배포 필요 시)
 ```
 
 ## 핵심 파라미터
@@ -86,7 +86,13 @@ Random Forest의 해결책:
 | `min_samples_split` | 노드 분할 최소 샘플 수               | 2      |
 | `min_samples_leaf`  | Leaf 노드 최소 샘플 수               | 1      |
 
-> `n_estimators`가 클수록 성능은 안정되지만 학습 시간이 늘어납니다. 보통 100~300이면 충분합니다.
+> `n_estimators`가 클수록 성능은 안정되지만 학습 시간이 늘어납니다. 보통 100 ~ 300이면 충분.
+> `mxa_features` : 각 노드에서 분할(Split)을 결정할 때, 전체 피처(Feature) 중 일부만 무작위로 골라서 그중 최적의 피처를 찾도록 제한하는 설정
+>   `float` : (예: 5개)float (실수): 전체 피처 대비 비율로 지정합니다. (예: 0.3이면 전체의 30%)
+>   `sqrt or auto` : 전체 피처 개수가 $M$일 때, $\sqrt{M}$ 개만 사용합니다. (분류 문제에서 권장)
+>   `log2` : $\log_2(M)$ 개를 사용
+>   `None` : 모든 피처를 다 고려, 이는 Bagging 방식과 동일해지며 무작위성이 줄어듦.
+
 
 ---
 
@@ -137,23 +143,24 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, rand
 from sklearn.ensemble import RandomForestClassifier
 
 RF = RandomForestClassifier(
-    n_estimators = 200,
-    max_depth = 10,
-    max_features = 'sqrt',
-    random_state = 0
+    n_estimators = 200,     # 생성할 트리 개수
+    max_depth = 10,         # 각 트리의 최대 깊이
+    max_features = 'sqrt',  # 분할 시 사용할 변수 
+    min_samples_split = 2,  # 노드 분할 최소 샘플 수 
+    min_samples_leaf = 1,   # Leaf 노드의 최소 샘플 수
+    random_state = 0        # random seed
 )
 
 RF.fit(X_train, y_train)
 ```
 
-### 변수 중요도 시각화
+### Variable Importance Visualization
 
 ```python
 import matplotlib.pyplot as plt
-import pandas as pd
 
-importances = pd.Series(RF.feature_importances_, index=X.columns)
-importances.sort_values().plot(kind='barh', figsize=(8, 5))
+importances = pd.Series(RF.feature_importances_, index = X.columns)
+importances.sort_values().plot(kind = 'barh', figsize = (8, 5))
 plt.title('Feature Importance')
 plt.xlabel('중요도')
 plt.tight_layout()
@@ -162,7 +169,7 @@ plt.show()
 
 ### OOB Score (Out-of-Bag Score)
 
-Bagging에서 각 트리는 복원 추출로 데이터를 선택하기 때문에, 선택되지 않은 약 37%의 데이터가 생깁니다. 이를 OOB(Out-of-Bag) 샘플이라 하며, 별도의 검증셋 없이 성능을 추정할 수 있습니다.
+Bagging에서 각 트리는 복원 추출로 데이터를 선택하기 때문에, 선택되지 않은 약 37%의 데이터가 생깁니다. 이를 OOB(Out-of-Bag) 샘플이라 하며, 별도의 검증셋 없이 성능을 추정할 수 있음.
 
 ```python
 RF_oob = RandomForestClassifier(
@@ -173,7 +180,7 @@ RF_oob = RandomForestClassifier(
 )
 RF_oob.fit(X_train, y_train)
 
-print(f"OOB Score : {RF_oob.oob_score_ * 100:.2f}%")
+print(f"OOB Score : {RF_oob.oob_score_ * 100 : .2f}%")
 # OOB Score는 교차 검증 점수와 유사하게 해석 가능
 ```
 
@@ -181,26 +188,48 @@ print(f"OOB Score : {RF_oob.oob_score_ * 100:.2f}%")
 OOB Score : 81.93%
 ```
 
-### 성능 평가
+### Evaluation Score
 
 ```python
 from sklearn.metrics import accuracy_score, confusion_matrix
 
 pred = RF.predict(X_test)
-cfx  = confusion_matrix(y_test, pred)
+cfx  = confusion_matrix(y_test, pred)  # Confusion Matrix
 
-sensitivity = cfx[1, 1] / (cfx[1, 0] + cfx[1, 1])
-specificity = cfx[0, 0] / (cfx[0, 0] + cfx[0, 1])
+specificity = cfx[1, 1] / (cfx[1, 0] + cfx[1, 1])  # 특이도 계산
+sensitivity = cfx[0, 0] / (cfx[0, 0] + cfx[0, 1])  # 민감도 계산
 
 print(f"정확도 : {accuracy_score(y_test, pred) * 100:.2f}%")
 print(f"민감도 : {sensitivity * 100:.2f}%")
 print(f"특이도 : {specificity * 100:.2f}%")
 ```
 
-```
-정확도 : 82.68%
-민감도 : 73.68%
-특이도 : 88.35%
+### Roc Curve
+```python
+RF_pred = RF.predict(X_test)
+
+fpr, tpr, thresholds = roc_curve(y_test, RF_pred)
+
+J = tpr - fpr
+ix = np.argmax(J)             # 가장 큰 원소의 위치(최대값의 인덱스)
+best_thresh = thresholds[ix]
+
+#plot roc and best threshold
+sens, spec = tpr[ix], 1 - fpr[ix]
+
+# plot the roc curve for the model
+plt.plot([0,1], [0,1], linestyle = '--', markersize = 0.01, color = 'black')  # 중간 기준 선
+plt.plot(fpr, tpr, marker = '.', color = 'black', markersize = 0.01, label = "Ridge AUC = %.2f" % roc_auc_score(y_test, RF_pred))
+plt.scatter(fpr[ix], tpr[ix], marker = '+', s = 100, color = 'r', 
+            label = f"Best threshold = {best_thresh:.3f}, \nSensitivity = {sens:.3f}, \nSpecificity = {spec:.3f}")
+
+# axis labels
+plt.xlabel("False Positive Rate(1 - Specificity)")
+plt.ylabel("True Positive Rate(Sensitivity)")
+plt.legend(loc = 4)
+
+# show the plot
+plt.show()
 ```
 
 ---

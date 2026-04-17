@@ -283,8 +283,8 @@ DT_pred
 
 ```python
 DT_cfx = confusion_matrix(y_test, DT_pred)                     # Confusion Matrix(True, pred)
-DT_sensitivity = DT_cfx[1, 1] / (DT_cfx[1, 0] + DT_cfx[1, 1])  # 민감도 계산
-DT_specificity = DT_cfx[0, 0] / (DT_cfx[0, 0] + DT_cfx[0, 1])  # 특이도 계산
+DT_specificity = DT_cfx[1, 1] / (DT_cfx[1, 0] + DT_cfx[1, 1])  # 특이도 계산
+DT_sensitivity = DT_cfx[0, 0] / (DT_cfx[0, 0] + DT_cfx[0, 1])  # 민감도 계산
 
 print(f"DT 정확도(accuracy) : {accuracy_score(y_test, DT_pred) * 100 :.2f}%")
 print(f"DT Confusion_Matrix :\n{DT_cfx}")
