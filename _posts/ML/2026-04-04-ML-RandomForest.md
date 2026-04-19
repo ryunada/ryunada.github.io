@@ -88,12 +88,40 @@ Random Forest의 해결책:
 | `random_state`      | 고정값                            | None   |
 | `n_jobs`            | 사용할 CPU 코어 개수                | None   |
 
-> - `n_estimators`가 클수록 성능은 안정되지만 학습 시간이 늘어납니다. 보통 100 ~ 300이면 충분.
-> - `mxa_features` : 각 노드에서 분할(Split)을 결정할 때, 전체 피처(Feature) 중 일부만 무작위로 골라서 그중 최적의 피처를 찾도록 제한하는 설정
->   - `float` : (예: 5개)float (실수): 전체 피처 대비 비율로 지정합니다. (예: 0.3이면 전체의 30%)
->   - `sqrt or auto` : 전체 피처 개수가 $M$일 때, $\sqrt{M}$ 개만 사용합니다. (분류 문제에서 권장)
->   - `log2` : $\log_2(M)$ 개를 사용
->   - `None` : 모든 피처를 다 고려, 이는 Bagging 방식과 동일해지며 무작위성이 줄어듦.
+- `n_estimators` : 여러 개의 Decision Tree를 몇 개 만들지 결정하는 파라미터(보통 100 ~ 300 | 데이터 크면 500 이상도 사용)  
+    - 값 변화별 효과
+        - 클수록 → 성능 안정화 (Variance 감소), 과적합 ↓  
+        - 작을수록 → 모델 불안정, 성능 변동 큼  
+    - 단점 → 학습 시간 증가  
+- `max_depth` : 각 트리의 최대 깊이를 제한하는 파라미터  
+    - Random Forest의 '랜덤성'을 결정하는 주요 파라미터
+    - 값 변화별 효과
+        - 클수록 → 복잡한 패턴 학습, 과적합 ↑
+        - 작을수록 → 단순한 모델, 과적합 ↓  
+- `mxa_features` : 각 노드에서 분할(Split)을 결정할 때, 전체 피처(Feature) 중 일부만 무작위로 골라서 그중 최적의 피처를 찾도록 제한하는 설정  
+    - 값 변화별 효과
+        - 클수록 → 트리들이 비슷해짐, 과적합 ↑
+        - 작을수록 → 트리 다양성 증가, 일반화 ↑ (너무 작으면 성능 ↓)  
+    - Options
+        - `int` : 사용할 feature 개수를 직접 지정
+        - `float` : (예: 5개)float (실수): 전체 피처 대비 비율로 지정합니다. (예: 0.3이면 전체의 30%)
+        - `sqrt or auto` : 전체 피처 개수가 $M$일 때, $\sqrt{M}$ 개만 사용합니다. (분류 문제에서 권장)
+        - `log2` : $\log_2(M)$ 개를 사용
+        - `None` : 모든 피처를 다 고려, 이는 Bagging 방식과 동일해지며 무작위성이 줄어듦.
+- `min_samples_split` : 노드를 분할하기 위해 필요한 최소 샘플 수
+    - 값 변화별 효과
+        - 클수록 → 분할 덜함 → 모델 단순 → 과적합 ↓  
+        - 작을수록 → 계속 분할 → 모델 복잡 → 과적합 ↑  
+    - Options
+        - `int` : 최소 샘플 개수
+        - `floate` : 전체 데이터 대비 비율
+- `min_samples_leaf` : leaf node(최종 노드)에 있어야 하는 최소 샘플 수  
+    - 값 변화별 효과
+        - 클수록 → leaf가 커짐 → 부드러운 모델 → 과적합 ↓  
+        - 작을수록 → leaf가 작아짐 → 복잡한 모델 → 과적합 ↑  
+    - Options
+        - `int` : 최소 샘플 개수
+        - `floate` : 전체 데이터 대비 비율
 
 ---
 
@@ -101,9 +129,29 @@ Random Forest의 해결책:
 
 ### I. Library & Data Load
 ```python
+# warning ignore 
+import warnings
+warnings.filterwarnings(action = 'ignore')
+
+# Data Preprocessing 
 import pandas as pd
 import numpy as np
+from sklearn.model_selection import train_test_split, cross_val_score, StratifiedKFold
+from sklearn.preprocessing import StandardScaler, LabelEncoder
 
+# Visualization 
+import seaborn as sns
+import matplotlib.pyplot as plt
+plt.rcParams['font.family'] ='AppleGothic'  # mac 한글 깨짐 현상 해결
+
+# Model Definition
+from sklearn.ensemble import RandomForestClassifier
+
+# Evaluation
+from sklearn.metrics import roc_curve, accuracy_score, confusion_matrix, roc_auc_score
+````
+
+```python
 # Data Load
 titanic = pd.read_csv("./Data/Titanic.csv")
 titanic
@@ -159,7 +207,31 @@ titanic
 890	0	32	0	7.7500	False	True	True	True	False
 714 rows × 9 columns
 
-#### II-II. Train & Test Split
+#### II-II. 수치형 변수 시각화
+```python
+# 수치형 변수 시각화
+def numberic_plot(df, target):
+    g = sns.PairGrid(df, hue = target)  # 주어진 데이터 컬럼에 대한 모든 조합을 만들어주는 빈 틀을 위한 코드        
+    g.map_diag(sns.histplot)            # 삼각행렬의 중간 부분
+    g.map_lower(sns.scatterplot)        # 아래 부분
+    
+    # 상관 계수 행렬을 구하고 상관 계수 값 표시
+    corr_matrix = df.corr()
+    for i, j in zip(*plt.np.triu_indices_from(g.axes, k = 1)):                                        # np.triu_indices_from : 삼각행렬의 위쪽 삼각형의 인덱스 (k = 0 : 대각 행렬 포함, 1 : 제외)
+        g.axes[i, j].annotate(f"corr : {corr_matrix.iloc[i, j]:.2f}",                                 # 상관계수
+                              (0.5, 0.5), xycoords = "axes fraction", ha = 'center', va = 'center',   # 중앙 정렬
+                              fontsize = 12,                                                          # 글자 크기
+                              color = 'black')                                                        # 글자 색  
+    g.add_legend()  # 범례 표시
+    plt.show()
+
+Columns = ['Age', 'FamSize', 'Fare', 'Survived']  # 수치형 변수
+numberic_plot(titanic[Columns], 'Survived')
+```
+
+<img src = "/assets/img/ML/randomforest/수치형 변수 시각화.png" width = "70%" alt = "수치형 변수 시각화">
+
+#### II-III. Train & Test Split
 ```python
 from sklearn.model_selection import train_test_split
 
@@ -185,10 +257,36 @@ RF = RandomForestClassifier(
 RF.fit(X_train, y_train)
 ```
 
-### Variable Importance Visualization
+### IV. OOB Score (Out-of-Bag Score)
+
+Bagging에서 각 트리는 복원 추출로 데이터를 선택하기 때문에, 선택되지 않은 약 37%의 데이터가 생깁니다. 이를 OOB(Out-of-Bag) 샘플이라 하며, 별도의 검증셋 없이 성능을 추정할 수 있음.
+
+```python
+RF_oob = RandomForestClassifier(
+    n_estimators = 200,     # 생성할 트리 개수
+    max_depth = 10,         # 각 트리의 최대 깊이
+    max_features = 'sqrt',  # 분할 시 사용할 변수 
+    min_samples_split = 2,  # 노드 분할 최소 샘플 수 
+    min_samples_leaf = 1,   # Leaf 노드의 최소 샘플 수
+    random_state = 0,       # random seed
+    n_jobs = None,          # 사용할 CPU 코어 개수 
+    oob_score = True,       # OOB Score 활성화
+)
+RF_oob.fit(X_train, y_train)
+
+print(f"OOB Score : {RF_oob.oob_score_ * 100 : .2f}%")
+# OOB Score는 교차 검증 점수와 유사하게 해석 가능
+```
+
+```
+OOB Score : 80.37%
+```
+
+### V. Variable Importance Visualization
 
 ```python
 import matplotlib.pyplot as plt
+plt.rcParams['font.family'] ='AppleGothic'  # mac에서 한글 깨짐 해결
 
 importances = pd.Series(RF.feature_importances_, index = X.columns)
 importances.sort_values().plot(kind = 'barh', figsize = (8, 5))
@@ -198,44 +296,32 @@ plt.tight_layout()
 plt.show()
 ```
 
-### OOB Score (Out-of-Bag Score)
+<img src = "/assets/img/ML/randomforest/rf_feature_important.png" width = "70%" alt = "rf_feature_important">
 
-Bagging에서 각 트리는 복원 추출로 데이터를 선택하기 때문에, 선택되지 않은 약 37%의 데이터가 생깁니다. 이를 OOB(Out-of-Bag) 샘플이라 하며, 별도의 검증셋 없이 성능을 추정할 수 있음.
 
-```python
-RF_oob = RandomForestClassifier(
-    n_estimators = 200,
-    max_depth = 10,
-    oob_score = True,   # OOB Score 활성화
-    random_state = 0
-)
-RF_oob.fit(X_train, y_train)
-
-print(f"OOB Score : {RF_oob.oob_score_ * 100 : .2f}%")
-# OOB Score는 교차 검증 점수와 유사하게 해석 가능
-```
-
-```
-OOB Score : 81.93%
-```
-
-### Evaluation Score
+### VI. Evaluation Score
 
 ```python
-from sklearn.metrics import accuracy_score, confusion_matrix
+RF_cfx = confusion_matrix(y_test, pred)                     # Confusion Matrix
+RF_sensitivity = RF_cfx[0, 0] / (RF_cfx[0, 0] + RF_cfx[0, 1])  # 민감도 계산
+RF_specificity = RF_cfx[1, 1] / (RF_cfx[1, 0] + RF_cfx[1, 1])  # 특이도 계산
 
-pred = RF.predict(X_test)
-cfx  = confusion_matrix(y_test, pred)  # Confusion Matrix
-
-specificity = cfx[1, 1] / (cfx[1, 0] + cfx[1, 1])  # 특이도 계산
-sensitivity = cfx[0, 0] / (cfx[0, 0] + cfx[0, 1])  # 민감도 계산
-
-print(f"정확도 : {accuracy_score(y_test, pred) * 100:.2f}%")
-print(f"민감도 : {sensitivity * 100:.2f}%")
-print(f"특이도 : {specificity * 100:.2f}%")
+print(f"RF 정확도(accuracy) : {accuracy_score(y_test, pred) * 100 :.2f}%")
+print(f"RF Confusion_Matrix :\n{RF_cfx}")
+print(f"RF 민감도(sensitivity) : {RF_sensitivity * 100 :.2f}%")
+print(f"RF 특이도(specificity) : {RF_specificity * 100 :.2f}%")
 ```
 
-### Roc Curve
+```
+RF 정확도(accuracy) : 79.89%
+RF Confusion_Matrix :
+[[88 15]
+ [21 55]]
+RF 민감도(sensitivity) : 85.44%
+RF 특이도(specificity) : 72.37%
+```
+
+### VII. Roc Curve
 ```python
 RF_pred = RF.predict(X_test)
 
@@ -262,6 +348,8 @@ plt.legend(loc = 4)
 # show the plot
 plt.show()
 ```
+
+<img src = "/assets/img/ML/randomforest/rf_roc_curve.png" width = "70%" alt = "rf_roc_curve">
 
 ---
 
