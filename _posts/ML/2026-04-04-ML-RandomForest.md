@@ -76,23 +76,24 @@ Random Forest의 해결책:
 마케팅 : 고객 이탈 예측 (빠른 배포 필요 시)
 ```
 
-## 핵심 파라미터
+## Parameters
 
-| 파라미터            | 설명                                 | 기본값 |
-| ------------------- | ------------------------------------ | ------ |
-| `n_estimators`      | 생성할 트리 수                       | 100    |
-| `max_depth`         | 각 트리의 최대 깊이                  | None   |
-| `max_features`      | 분할 시 사용할 변수 수 (`sqrt` 권장) | `sqrt` |
+| Parameters          | Explanation                     | Default |
+| ------------------- | ------------------------------- | ------ |
+| `n_estimators`      | 트리 개수                         | 100    |
+| `max_depth`         | 각 트리의 최대 깊이                 | None   |
+| `max_features`      | 분할 시 사용할 변수 수 (`sqrt` 권장)  | `sqrt` |
 | `min_samples_split` | 노드 분할 최소 샘플 수               | 2      |
-| `min_samples_leaf`  | Leaf 노드 최소 샘플 수               | 1      |
+| `min_samples_leaf`  | Leaf 노드 최소 샘플 수              | 1      |
+| `random_state`      | 고정값                            | None   |
+| `n_jobs`            | 사용할 CPU 코어 개수                | None   |
 
-> `n_estimators`가 클수록 성능은 안정되지만 학습 시간이 늘어납니다. 보통 100 ~ 300이면 충분.
-> `mxa_features` : 각 노드에서 분할(Split)을 결정할 때, 전체 피처(Feature) 중 일부만 무작위로 골라서 그중 최적의 피처를 찾도록 제한하는 설정
->   `float` : (예: 5개)float (실수): 전체 피처 대비 비율로 지정합니다. (예: 0.3이면 전체의 30%)
->   `sqrt or auto` : 전체 피처 개수가 $M$일 때, $\sqrt{M}$ 개만 사용합니다. (분류 문제에서 권장)
->   `log2` : $\log_2(M)$ 개를 사용
->   `None` : 모든 피처를 다 고려, 이는 Bagging 방식과 동일해지며 무작위성이 줄어듦.
-
+> - `n_estimators`가 클수록 성능은 안정되지만 학습 시간이 늘어납니다. 보통 100 ~ 300이면 충분.
+> - `mxa_features` : 각 노드에서 분할(Split)을 결정할 때, 전체 피처(Feature) 중 일부만 무작위로 골라서 그중 최적의 피처를 찾도록 제한하는 설정
+>   - `float` : (예: 5개)float (실수): 전체 피처 대비 비율로 지정합니다. (예: 0.3이면 전체의 30%)
+>   - `sqrt or auto` : 전체 피처 개수가 $M$일 때, $\sqrt{M}$ 개만 사용합니다. (분류 문제에서 권장)
+>   - `log2` : $\log_2(M)$ 개를 사용
+>   - `None` : 모든 피처를 다 고려, 이는 Bagging 방식과 동일해지며 무작위성이 줄어듦.
 
 ---
 
@@ -107,6 +108,20 @@ import numpy as np
 titanic = pd.read_csv("./Data/Titanic.csv")
 titanic
 ```
+
+	Survived	Pclass	Name	Sex	Age	SibSp	Parch	Ticket	Fare	Cabin	Embarked
+0	0	3	Braund, Mr. Owen Harris	male	22.0	1	0	A/5 21171	7.2500	NaN	S
+1	1	1	Cumings, Mrs. John Bradley (Florence Briggs Th...	female	38.0	1	0	PC 17599	71.2833	C85	C
+2	1	3	Heikkinen, Miss. Laina	female	26.0	0	0	STON/O2. 3101282	7.9250	NaN	S
+3	1	1	Futrelle, Mrs. Jacques Heath (Lily May Peel)	female	35.0	1	0	113803	53.1000	C123	S
+4	0	3	Allen, Mr. William Henry	male	35.0	0	0	373450	8.0500	NaN	S
+...	...	...	...	...	...	...	...	...	...	...	...
+886	0	2	Montvila, Rev. Juozas	male	27.0	0	0	211536	13.0000	NaN	S
+887	1	1	Graham, Miss. Margaret Edith	female	19.0	0	0	112053	30.0000	B42	S
+888	0	3	Johnston, Miss. Catherine Helen "Carrie"	female	NaN	1	2	W./C. 6607	23.4500	NaN	S
+889	1	1	Behr, Mr. Karl Howell	male	26.0	0	0	111369	30.0000	C148	C
+890	0	3	Dooley, Mr. Patrick	male	32.0	0	0	370376	7.7500	NaN	Q
+891 rows × 11 columns
 
 ### II. Preprocessing
 
@@ -127,9 +142,24 @@ titanic['Age'] = titanic['Age'].astype('int')
 
 # One-Hot-Encoding
 titanic = pd.get_dummies(titanic, columns = ['Pclass', 'Sex', 'Embarked'], drop_first = True)
+titanic
 ```
 
-### II-II. Train & Test Split
+	Survived	Age	FamSize	Fare	Pclass_2	Pclass_3	Sex_male	Embarked_Q	Embarked_S
+0	0	22	1	7.2500	False	True	True	False	True
+1	1	38	1	71.2833	False	False	False	False	False
+2	1	26	0	7.9250	False	True	False	False	True
+3	1	35	1	53.1000	False	False	False	False	True
+4	0	35	0	8.0500	False	True	True	False	True
+...	...	...	...	...	...	...	...	...	...
+885	0	39	5	29.1250	False	True	False	True	False
+886	0	27	0	13.0000	True	False	True	False	True
+887	1	19	0	30.0000	False	False	False	False	True
+889	1	26	0	30.0000	False	False	True	False	False
+890	0	32	0	7.7500	False	True	True	True	False
+714 rows × 9 columns
+
+#### II-II. Train & Test Split
 ```python
 from sklearn.model_selection import train_test_split
 
@@ -148,7 +178,8 @@ RF = RandomForestClassifier(
     max_features = 'sqrt',  # 분할 시 사용할 변수 
     min_samples_split = 2,  # 노드 분할 최소 샘플 수 
     min_samples_leaf = 1,   # Leaf 노드의 최소 샘플 수
-    random_state = 0        # random seed
+    random_state = 0,       # random seed
+    n_jobs = None           # 사용할 CPU 코어 개수 
 )
 
 RF.fit(X_train, y_train)
