@@ -87,6 +87,7 @@ Random Forest의 해결책:
 | `min_samples_leaf`  | Leaf 노드 최소 샘플 수              | 1      |
 | `random_state`      | 고정값                            | None   |
 | `n_jobs`            | 사용할 CPU 코어 개수                | None   |
+  
 
 - `n_estimators` : 여러 개의 Decision Tree를 몇 개 만들지 결정하는 파라미터(보통 100 ~ 300 | 데이터 크면 500 이상도 사용)  
     - 값 변화별 효과
@@ -157,6 +158,7 @@ titanic = pd.read_csv("./Data/Titanic.csv")
 titanic
 ```
 
+```
 	Survived	Pclass	Name	Sex	Age	SibSp	Parch	Ticket	Fare	Cabin	Embarked
 0	0	3	Braund, Mr. Owen Harris	male	22.0	1	0	A/5 21171	7.2500	NaN	S
 1	1	1	Cumings, Mrs. John Bradley (Florence Briggs Th...	female	38.0	1	0	PC 17599	71.2833	C85	C
@@ -170,6 +172,7 @@ titanic
 889	1	1	Behr, Mr. Karl Howell	male	26.0	0	0	111369	30.0000	C148	C
 890	0	3	Dooley, Mr. Patrick	male	32.0	0	0	370376	7.7500	NaN	Q
 891 rows × 11 columns
+```
 
 ### II. Preprocessing
 
@@ -193,6 +196,7 @@ titanic = pd.get_dummies(titanic, columns = ['Pclass', 'Sex', 'Embarked'], drop_
 titanic
 ```
 
+```
 	Survived	Age	FamSize	Fare	Pclass_2	Pclass_3	Sex_male	Embarked_Q	Embarked_S
 0	0	22	1	7.2500	False	True	True	False	True
 1	1	38	1	71.2833	False	False	False	False	False
@@ -206,6 +210,7 @@ titanic
 889	1	26	0	30.0000	False	False	True	False	False
 890	0	32	0	7.7500	False	True	True	True	False
 714 rows × 9 columns
+```
 
 #### II-II. 수치형 변수 시각화
 ```python
@@ -233,8 +238,6 @@ numberic_plot(titanic[Columns], 'Survived')
 
 #### II-III. Train & Test Split
 ```python
-from sklearn.model_selection import train_test_split
-
 y = titanic['Survived']
 X = titanic.drop(['Survived'], axis = 1)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
@@ -242,8 +245,6 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, rand
 
 ### III. Model Train
 ```python
-from sklearn.ensemble import RandomForestClassifier
-
 RF = RandomForestClassifier(
     n_estimators = 200,     # 생성할 트리 개수
     max_depth = 10,         # 각 트리의 최대 깊이
@@ -285,9 +286,6 @@ OOB Score : 80.37%
 ### V. Variable Importance Visualization
 
 ```python
-import matplotlib.pyplot as plt
-plt.rcParams['font.family'] ='AppleGothic'  # mac에서 한글 깨짐 해결
-
 importances = pd.Series(RF.feature_importances_, index = X.columns)
 importances.sort_values().plot(kind = 'barh', figsize = (8, 5))
 plt.title('Feature Importance')
@@ -302,7 +300,7 @@ plt.show()
 ### VI. Evaluation Score
 
 ```python
-RF_cfx = confusion_matrix(y_test, pred)                     # Confusion Matrix
+RF_cfx = confusion_matrix(y_test, pred)                        # Confusion Matrix
 RF_sensitivity = RF_cfx[0, 0] / (RF_cfx[0, 0] + RF_cfx[0, 1])  # 민감도 계산
 RF_specificity = RF_cfx[1, 1] / (RF_cfx[1, 0] + RF_cfx[1, 1])  # 특이도 계산
 
