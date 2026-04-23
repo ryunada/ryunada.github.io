@@ -120,7 +120,7 @@ titanic['FamSize'] = titanic['SibSp'] + titanic['Parch']
 
 # 분석 변수 선택
 use_cols = ['Survived', 'Pclass', 'Sex', 'Age', 'FamSize', 'Fare', 'Embarked']
-titanic = titanic[use_cols].dropna(subset=['Age'])
+titanic = titanic[use_cols].dropna(subset = ['Age'])
 
 # 자료형 변환
 titanic[['Survived', 'Pclass', 'Sex', 'Embarked']] = \
@@ -128,13 +128,13 @@ titanic[['Survived', 'Pclass', 'Sex', 'Embarked']] = \
 titanic['Age'] = titanic['Age'].astype('int')
 
 # One-Hot Encoding
-titanic = pd.get_dummies(titanic, columns=['Pclass', 'Sex', 'Embarked'], drop_first=True)
+titanic = pd.get_dummies(titanic, columns = ['Pclass', 'Sex', 'Embarked'], drop_first = True)
 
 y = titanic['Survived']
-X = titanic.drop(['Survived'], axis=1)
+X = titanic.drop(['Survived'], axis = 1)
 
 # 75 : 25 분할 (스케일링 불필요)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
 ```
 
 ### 모델 학습
@@ -143,11 +143,11 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random
 from sklearn.tree import DecisionTreeClassifier
 
 DT = DecisionTreeClassifier(
-    max_depth=8,
-    min_samples_split=2,
-    min_samples_leaf=4,
-    max_features=6,
-    random_state=0
+    max_depth = 8,
+    min_samples_split = 2,
+    min_samples_leaf = 4,
+    max_features = 6,
+    random_state = 0
 )
 
 DT.fit(X_train, y_train)
