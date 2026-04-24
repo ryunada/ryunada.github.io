@@ -90,12 +90,41 @@ Entropy  = -(0.4 × log₂0.4 + 0.6 × log₂0.6)
 | 파라미터            | 설명                            | 기본값 |
 | ------------------- | ------------------------------- | ------ |
 | `max_depth`         | 트리의 최대 깊이                | None   |
-| `min_samples_split` | 노드 분할에 필요한 최소 샘플 수 | 2      |
+| `min_samples_split` | 노드 분할에 필요한 최소 샘플 수    | 2      |
 | `min_samples_leaf`  | Leaf 노드의 최소 샘플 수        | 1      |
-| `max_features`      | 분할 시 고려할 최대 변수 수     | None   |
-| `criterion`         | 분할 기준 (`gini`, `entropy`)   | `gini` |
+| `max_features`      | 분할 시 고려할 최대 변수 수       | None   |
+| `criterion`         | 분할 기준 (`gini`, `entropy`) | `gini` |
+| `random_state`      | 고정값                       |  None  |
 
-> `max_depth`를 제한하지 않으면 과적합(Overfitting)이 발생하기 쉽습니다.
+
+- `max_depth` : 트리의 최대 깊이를 제한하는 파라미터
+    - 값 변화별 효과
+        - 클수록 → 복잡한 패턴 학습, 과적합 ↑
+        - 작을수록 → 단순한 모델, 과적합 ↓
+    - `None`이면 모든 Leaf가 순수해질 때까지 분할 → 과적합 위험
+
+- `min_samples_split` : 노드를 분할하기 위해 필요한 최소 샘플 수
+    - 값 변화별 효과
+        - 클수록 → 분할 덜함 → 모델 단순 → 과적합 ↓
+        - 작을수록 → 계속 분할 → 모델 복잡 → 과적합 ↑
+    - Options
+        - `int` : 최소 샘플 개수
+        - `float` : 전체 데이터 대비 비율
+
+- `min_samples_leaf` : Leaf 노드에 있어야 하는 최소 샘플 수
+    - 값 변화별 효과
+        - 클수록 → Leaf가 커짐 → 부드러운 모델 → 과적합 ↓
+        - 작을수록 → Leaf가 작아짐 → 복잡한 모델 → 과적합 ↑
+
+- `max_features` : 각 노드 분할 시 고려할 변수 수
+    - 값 변화별 효과
+        - 클수록 → 더 좋은 분할 탐색, 트리 간 유사도 ↑
+        - 작을수록 → 빠른 학습, 트리 다양성 ↑
+    - `None`이면 전체 변수 사용
+
+- `criterion` : 분할 기준
+    - `gini` : 계산 빠름, 실무 기본값
+    - `entropy` : 정보 이론 기반, 성능 차이 거의 없음
 
 ---
 
@@ -143,11 +172,11 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, rand
 from sklearn.tree import DecisionTreeClassifier
 
 DT = DecisionTreeClassifier(
-    max_depth = 8,
-    min_samples_split = 2,
-    min_samples_leaf = 4,
-    max_features = 6,
-    random_state = 0
+    max_depth = 8,          # 트리의 최대 깊이 
+    min_samples_split = 2,  # 노드 분할에 필요한 최소 샘플 수
+    min_samples_leaf = 4,   # 말단(Leaf) 노드에 필요한 최소 샘플
+    max_features = 6,       # 각 분할을 위해 검사할 특징의 수
+    random_state = 0        # 고정값
 )
 
 DT.fit(X_train, y_train)
@@ -159,12 +188,12 @@ DT.fit(X_train, y_train)
 from sklearn.tree import plot_tree
 import matplotlib.pyplot as plt
 
-plt.figure(figsize=(20, 8))
+plt.figure(figsize = (20, 8))
 plot_tree(DT,
-          feature_names=X.columns,
-          class_names=['사망', '생존'],
-          filled=True,
-          max_depth=3)   # 전체 트리는 너무 크므로 3단계만 표시
+          feature_names = X.columns,
+          class_names = ['사망', '생존'],
+          filled = True,
+          max_depth = 3)   # 전체 트리는 너무 크므로 3단계만 표시
 plt.show()
 ```
 
@@ -201,9 +230,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 importances = pd.Series(DT.feature_importances_, index=X.columns)
-importances = importances.sort_values(ascending=True)
+importances = importances.sort_values(ascending = True)
 
-importances.plot(kind='barh', figsize=(8, 5), color='#1565C0')
+importances.plot(kind = 'barh', figsize = (8, 5), color = '#1565C0')
 plt.title('Feature Importance (Decision Tree)')
 plt.xlabel('중요도')
 plt.tight_layout()
@@ -233,13 +262,13 @@ train_scores, test_scores = [], []
 depths = range(1, 20)
 
 for d in depths:
-    dt = DecisionTreeClassifier(max_depth=d, random_state=0)
+    dt = DecisionTreeClassifier(max_depth = d, random_state = 0)
     dt.fit(X_train, y_train)
     train_scores.append(dt.score(X_train, y_train))
     test_scores.append(dt.score(X_test, y_test))
 
-plt.plot(depths, train_scores, label='Train')
-plt.plot(depths, test_scores, label='Test')
+plt.plot(depths, train_scores, label = 'Train')
+plt.plot(depths, test_scores, label = 'Test')
 plt.xlabel('max_depth')
 plt.ylabel('Accuracy')
 plt.legend()
