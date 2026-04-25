@@ -26,7 +26,7 @@ LightGBM의 해결책:
 
 ---
 
-<img src="images/lightgbm.png" width="70%" alt="lightgbm">
+<!-- <img src="images/lightgbm.png" width="70%" alt="lightgbm"> -->
 
 ## 두 가지 핵심 기술
 
