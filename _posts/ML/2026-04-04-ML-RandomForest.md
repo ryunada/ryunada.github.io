@@ -232,14 +232,16 @@ def numberic_plot(df, target):
 
 Columns = ['Age', 'FamSize', 'Fare', 'Survived']  # 수치형 변수
 numberic_plot(titanic[Columns], 'Survived')
-```
 
-<img src = "/assets/img/ML/randomforest/수치형 변수 시각화.png" width = "70%" alt = "수치형 변수 시각화">
+```
+<img src = "/assets/img/ML/randomforest/rf_수치형 변수 시각화.png" width = "70%" alt = "rf_수치형 변수 시각화">
 
 #### II-III. Train & Test Split
 ```python
 y = titanic['Survived']
 X = titanic.drop(['Survived'], axis = 1)
+
+# 75 : 25 분할
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
 ```
 
@@ -300,30 +302,29 @@ plt.show()
 ### VI. Evaluation Score
 
 ```python
-RF_cfx = confusion_matrix(y_test, pred)                        # Confusion Matrix
-RF_sensitivity = RF_cfx[0, 0] / (RF_cfx[0, 0] + RF_cfx[0, 1])  # 민감도 계산
-RF_specificity = RF_cfx[1, 1] / (RF_cfx[1, 0] + RF_cfx[1, 1])  # 특이도 계산
+pred = RF.predict(X_test)
+cfx = confusion_matrix(y_test, pred)                     # Confusion Matrix
+sensitivity = cfx[0, 0] / (cfx[0, 0] + cfx[0, 1])  # 민감도 계산
+specificity = cfx[1, 1] / (cfx[1, 0] + cfx[1, 1])  # 특이도 계산
 
-print(f"RF 정확도(accuracy) : {accuracy_score(y_test, pred) * 100 :.2f}%")
-print(f"RF Confusion_Matrix :\n{RF_cfx}")
-print(f"RF 민감도(sensitivity) : {RF_sensitivity * 100 :.2f}%")
-print(f"RF 특이도(specificity) : {RF_specificity * 100 :.2f}%")
+print(f"정확도(accuracy) : {accuracy_score(y_test, pred) * 100 :.2f}%")
+print(f"Confusion_Matrix :\n{cfx}")
+print(f"민감도(sensitivity) : {sensitivity * 100 :.2f}%")
+print(f"특이도(specificity) : {specificity * 100 :.2f}%")
 ```
 
 ```
-RF 정확도(accuracy) : 79.89%
-RF Confusion_Matrix :
+정확도(accuracy) : 79.89%
+Confusion_Matrix :
 [[88 15]
  [21 55]]
-RF 민감도(sensitivity) : 85.44%
-RF 특이도(specificity) : 72.37%
+민감도(sensitivity) : 85.44%
+특이도(specificity) : 72.37%
 ```
 
 ### VII. Roc Curve
 ```python
-RF_pred = RF.predict(X_test)
-
-fpr, tpr, thresholds = roc_curve(y_test, RF_pred)
+fpr, tpr, thresholds = roc_curve(y_test, pred)
 
 J = tpr - fpr
 ix = np.argmax(J)             # 가장 큰 원소의 위치(최대값의 인덱스)
@@ -334,11 +335,12 @@ sens, spec = tpr[ix], 1 - fpr[ix]
 
 # plot the roc curve for the model
 plt.plot([0,1], [0,1], linestyle = '--', markersize = 0.01, color = 'black')  # 중간 기준 선
-plt.plot(fpr, tpr, marker = '.', color = 'black', markersize = 0.01, label = "Ridge AUC = %.2f" % roc_auc_score(y_test, RF_pred))
+plt.plot(fpr, tpr, marker = '.', color = 'black', markersize = 0.01, label = "Ridge AUC = %.2f" % roc_auc_score(y_test, pred))
 plt.scatter(fpr[ix], tpr[ix], marker = '+', s = 100, color = 'r', 
             label = f"Best threshold = {best_thresh:.3f}, \nSensitivity = {sens:.3f}, \nSpecificity = {spec:.3f}")
 
-# axis labels
+# Title & Axis Labels
+plt.title("ROC Curve")
 plt.xlabel("False Positive Rate(1 - Specificity)")
 plt.ylabel("True Positive Rate(Sensitivity)")
 plt.legend(loc = 4)
