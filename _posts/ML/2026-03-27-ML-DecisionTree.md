@@ -336,7 +336,7 @@ plt.legend(loc = 4)
 plt.show()
 ```
 
-<img src = "/assets/img/ML/decisiontree/dt_roc_score.png" width = "70%" alt = "dt_roc_score">
+<img src = "/assets/img/ML/decisiontree/dt_roc_curve.png" width = "70%" alt = "dt_roc_curve">
 
 ## 장단점
 
