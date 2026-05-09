@@ -269,7 +269,7 @@ plot_tree(DT,
 plt.show()
 ```
 
-<img src = "/assets/img/ML/decisiontree/dt_tree visualization.png.png" width = "70%" alt = "dt_tree visualization.png">
+<img src = "/assets/img/ML/decisiontree/dt_visualization.png" width = "70%" alt = "dt_visualization.png">
 
 ### IV. Feature Importance Visualization
 ```python
@@ -336,7 +336,7 @@ plt.legend(loc = 4)
 plt.show()
 ```
 
-<img src = "/assets/img/ML/decisiontree/idt_roc_socre.png" width = "70%" alt = "dt_roc_socre">
+<img src = "/assets/img/ML/decisiontree/dt_roc_score.png" width = "70%" alt = "dt_roc_score">
 
 ## 장단점
 
