@@ -28,7 +28,9 @@ LightGBM의 해결책:
 
 <!-- <img src="images/lightgbm.png" width="70%" alt="lightgbm"> -->
 
-<img src = "/assets/img/ML/lightgbm/LightGBM_Framework.png" width = "70%" alt = "LightGBM_Framework">
+<p align="center">
+    <img src = "/assets/img/ML/lightgbm/LightGBM_Framework.png" width = "70%" alt = "LightGBM_Framework">
+</p>
 
 ## 두 가지 핵심 기술
 
