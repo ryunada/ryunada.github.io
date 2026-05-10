@@ -28,6 +28,8 @@ LightGBM의 해결책:
 
 <!-- <img src="images/lightgbm.png" width="70%" alt="lightgbm"> -->
 
+<img src = "/assets/img/ML/lgithgbm/LightGBM_Framework.png" width = "70%" alt = "LightGBM_Framework">
+
 ## 두 가지 핵심 기술
 
 ### 1. GOSS (Gradient-based One-Side Sampling)
