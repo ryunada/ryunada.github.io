@@ -25,7 +25,7 @@ Random Forest의 해결책:
 
 ---
 
-<img src = "/assets/img/ML/randomforest/random_forest.png" width = "70%" alt = "random_forest">
+<img src = "/assets/img/ML/rf/random_forest.png" width = "70%" alt = "random_forest">
 
 ## 두 가지 핵심 전략
 
