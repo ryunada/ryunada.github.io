@@ -234,7 +234,7 @@ Columns = ['Age', 'FamSize', 'Fare', 'Survived']  # 수치형 변수
 numberic_plot(titanic[Columns], 'Survived')
 
 ```
-<img src = "/assets/img/ML/randomforest/rf_수치형 변수 시각화.png" width = "70%" alt = "rf_수치형 변수 시각화">
+<img src = "/assets/img/ML/rf/rf_수치형 변수 시각화.png" width = "70%" alt = "rf_수치형 변수 시각화">
 
 #### II-III. Train & Test Split
 ```python
@@ -296,7 +296,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-<img src = "/assets/img/ML/randomforest/rf_feature_important.png" width = "70%" alt = "rf_feature_important">
+<img src = "/assets/img/ML/rf/rf_feature_important.png" width = "70%" alt = "rf_feature_important">
 
 
 ### VI. Evaluation Score
@@ -349,7 +349,7 @@ plt.legend(loc = 4)
 plt.show()
 ```
 
-<img src = "/assets/img/ML/randomforest/rf_roc_curve.png" width = "70%" alt = "rf_roc_curve">
+<img src = "/assets/img/ML/rf/rf_roc_curve.png" width = "70%" alt = "rf_roc_curve">
 
 ---
 
