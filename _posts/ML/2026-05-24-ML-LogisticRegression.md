@@ -12,9 +12,6 @@ sidebar:
 math: true           # 수식 설정
 ---
 
-<p style="text-align: center;">
-    <img src = "/assets/img/ML/knn/knn_framework.png" width = "70%" alt = "KNN_Framework">
-</p>
 
 # Logistic Regression(로지스틱 회귀) 개념
 
@@ -32,7 +29,7 @@ Logistic Regression은 이름에 "회귀"가 붙지만 **분류 알고리즘**�
 ---
 
 <p style="text-align: center;">
-    <img src = "/assets/img/ML/logistic_regression/lr_framework.png" width = "70%" alt = "LR_Framework">
+    <img src = "/assets/img/ML/lr/lr_framework.png" width = "70%" alt = "lr_framework">
 </p>
 
 
