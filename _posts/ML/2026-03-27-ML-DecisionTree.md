@@ -128,7 +128,7 @@ Entropy = -(0.4 × log₂0.4 + 0.6 × log₂0.6) = 0.971
 
 ---
 
-## 실습 — Titanic 생존자 예측
+## Decision Tree 실습 — Titanic 생존자 예측
 
 ### I. Library & Data Load
 ```python
