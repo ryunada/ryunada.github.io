@@ -209,11 +209,13 @@ print(f"최적 C: {best_C},  CV Accuracy: {lr_cv.best_score_:.4f}")
 # C에 따른 정확도 시각화
 results = pd.DataFrame(lr_cv.cv_results_)
 plt.semilogx(param_grid['C'], results['mean_test_score'], marker = 'o')
+plt.xticks(param_grid['C'], [str(c) for c in param_grid['C']])  # 틱 레이블 직접 지정 (U+2212 방지)
 plt.xlabel('C (정규화 역수)')
 plt.ylabel('CV Accuracy')
 plt.title('C 값에 따른 교차 검증 정확도')
 plt.grid(True)
 plt.show()
+
 ```
 
 <img src = "/assets/img/ML/lr/lr_c_search.png" width = "70%" alt = "lr_c_search">
