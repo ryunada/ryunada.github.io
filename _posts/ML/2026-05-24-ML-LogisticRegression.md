@@ -158,10 +158,10 @@ plt.rcParams['font.family'] = 'AppleGothic'
 
 ```python
 titanic = pd.read_csv('./Data/Titanic.csv')
+titanic
 ```
 
 ### II. Preprocessing
-
 #### II-I. Feature Engineering
 
 ```python
