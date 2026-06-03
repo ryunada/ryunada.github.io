@@ -1,5 +1,5 @@
 ---
-title : "[Python] ML-Random Forest_V1"
+title : "[Python] ML-Random Forest"
 categories:
     - ML
 date: 2026-04-04
