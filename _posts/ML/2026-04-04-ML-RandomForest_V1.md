@@ -1,5 +1,5 @@
 ---
-title : "[Python] ML-Random Forest"
+title : "[Python] ML-Random Forest_V1"
 categories:
     - ML
 date: 2026-04-04
@@ -85,8 +85,11 @@ Random Forest의 해결책:
 | `max_features`      | 분할 시 사용할 변수 수 (`sqrt` 권장)  | `sqrt` |
 | `min_samples_split` | 노드 분할 최소 샘플 수               | 2      |
 | `min_samples_leaf`  | Leaf 노드 최소 샘플 수              | 1      |
+| `criterion`         | 분할 기준 (`gini` or `entropy`)   | `gini` |
+| `bootstrap`         | Bootstrap 샘플링 사용 여부          | True   |
+| `class_weight`      | 클래스 가중치 (불균형 데이터 처리)    | None   |
 | `random_state`      | 고정값                            | None   |
-| `n_jobs`            | 사용할 CPU 코어 개수                | None   |
+| `n_jobs`            | 사용할 CPU 코어 개수 (`-1`이면 전체) | None   |
   
 
 - `n_estimators` : 여러 개의 Decision Tree를 몇 개 만들지 결정하는 파라미터(보통 100 ~ 300 | 데이터 크면 500 이상도 사용)  
@@ -99,14 +102,14 @@ Random Forest의 해결책:
     - 값 변화별 효과
         - 클수록 → 복잡한 패턴 학습, 과적합 ↑
         - 작을수록 → 단순한 모델, 과적합 ↓  
-- `mxa_features` : 각 노드에서 분할(Split)을 결정할 때, 전체 피처(Feature) 중 일부만 무작위로 골라서 그중 최적의 피처를 찾도록 제한하는 설정  
+- `max_features` : 각 노드에서 분할(Split)을 결정할 때, 전체 피처(Feature) 중 일부만 무작위로 골라서 그중 최적의 피처를 찾도록 제한하는 설정  
     - 값 변화별 효과
         - 클수록 → 트리들이 비슷해짐, 과적합 ↑
         - 작을수록 → 트리 다양성 증가, 일반화 ↑ (너무 작으면 성능 ↓)  
     - Options
         - `int` : 사용할 feature 개수를 직접 지정
-        - `float` : (예: 5개)float (실수): 전체 피처 대비 비율로 지정합니다. (예: 0.3이면 전체의 30%)
-        - `sqrt or auto` : 전체 피처 개수가 $M$일 때, $\sqrt{M}$ 개만 사용합니다. (분류 문제에서 권장)
+        - `float` : 전체 피처 대비 비율로 지정 (예: 0.3이면 전체의 30%)
+        - `sqrt or auto` : 전체 피처 개수가 $M$일 때, $\sqrt{M}$ 개만 사용 (분류 문제에서 권장)
         - `log2` : $\log_2(M)$ 개를 사용
         - `None` : 모든 피처를 다 고려, 이는 Bagging 방식과 동일해지며 무작위성이 줄어듦.
 - `min_samples_split` : 노드를 분할하기 위해 필요한 최소 샘플 수
@@ -115,14 +118,23 @@ Random Forest의 해결책:
         - 작을수록 → 계속 분할 → 모델 복잡 → 과적합 ↑  
     - Options
         - `int` : 최소 샘플 개수
-        - `floate` : 전체 데이터 대비 비율
+        - `float` : 전체 데이터 대비 비율
 - `min_samples_leaf` : leaf node(최종 노드)에 있어야 하는 최소 샘플 수  
     - 값 변화별 효과
         - 클수록 → leaf가 커짐 → 부드러운 모델 → 과적합 ↓  
         - 작을수록 → leaf가 작아짐 → 복잡한 모델 → 과적합 ↑  
     - Options
         - `int` : 최소 샘플 개수
-        - `floate` : 전체 데이터 대비 비율
+        - `float` : 전체 데이터 대비 비율
+- `criterion` : 노드 분할 기준 (불순도 측정 방식)
+    - `gini` : 지니 불순도 (기본값, 속도 빠름)
+    - `entropy` : 정보 이득 (gini와 성능 차이는 미미, 계산 비용이 더 높음)
+- `bootstrap` : 복원 추출(Bootstrap) 사용 여부
+    - `True` : Bagging 방식으로 학습 (기본값)
+    - `False` : 전체 데이터를 그대로 사용 → OOB Score 사용 불가
+- `class_weight` : 클래스 불균형 데이터에서 소수 클래스에 더 높은 가중치 부여
+    - `None` : 모든 클래스 동일 가중치
+    - `'balanced'` : 클래스 빈도에 반비례하여 자동 계산 → 불균형 데이터에 권장
 
 ---
 
@@ -234,7 +246,7 @@ Columns = ['Age', 'FamSize', 'Fare', 'Survived']  # 수치형 변수
 numberic_plot(titanic[Columns], 'Survived')
 
 ```
-<img src = "/assets/img/ML/rf/rf_수치형 변수 시각화.png" width = "70%" alt = "rf_수치형 변수 시각화">
+<img src = "/assets/img/ML/rf/rf_수치형 변수 시각화.png" class="mx-auto d-block" width = "70%" alt = "rf_수치형 변수 시각화">
 
 #### II-III. Train & Test Split
 ```python
@@ -254,7 +266,7 @@ RF = RandomForestClassifier(
     min_samples_split = 2,  # 노드 분할 최소 샘플 수 
     min_samples_leaf = 1,   # Leaf 노드의 최소 샘플 수
     random_state = 0,       # random seed
-    n_jobs = None           # 사용할 CPU 코어 개수 
+    n_jobs = -1             # 사용할 CPU 코어 개수 (-1: 전체 사용)
 )
 
 RF.fit(X_train, y_train)
@@ -264,6 +276,9 @@ RF.fit(X_train, y_train)
 
 Bagging에서 각 트리는 복원 추출로 데이터를 선택하기 때문에, 선택되지 않은 약 37%의 데이터가 생깁니다. 이를 OOB(Out-of-Bag) 샘플이라 하며, 별도의 검증셋 없이 성능을 추정할 수 있음.
 
+> **왜 약 37%인가?**  
+> $n$개의 샘플에서 복원 추출 시 특정 샘플이 한 번도 선택되지 않을 확률은 $\left(1 - \frac{1}{n}\right)^n$이며, $n \to \infty$일 때 $e^{-1} \approx 0.368$에 수렴합니다.
+
 ```python
 RF_oob = RandomForestClassifier(
     n_estimators = 200,     # 생성할 트리 개수
@@ -272,7 +287,7 @@ RF_oob = RandomForestClassifier(
     min_samples_split = 2,  # 노드 분할 최소 샘플 수 
     min_samples_leaf = 1,   # Leaf 노드의 최소 샘플 수
     random_state = 0,       # random seed
-    n_jobs = None,          # 사용할 CPU 코어 개수 
+    n_jobs = -1,            # 사용할 CPU 코어 개수 
     oob_score = True,       # OOB Score 활성화
 )
 RF_oob.fit(X_train, y_train)
@@ -285,7 +300,24 @@ print(f"OOB Score : {RF_oob.oob_score_ * 100 : .2f}%")
 OOB Score : 80.37%
 ```
 
-### V. Variable Importance Visualization
+### V. Cross Validation
+
+```python
+skf = StratifiedKFold(n_splits = 5, shuffle = True, random_state = 0)
+cv_scores = cross_val_score(RF, X, y, cv = skf, scoring = 'accuracy')
+
+print(f"CV Scores : {cv_scores.round(4)}")
+print(f"CV Mean   : {cv_scores.mean() * 100:.2f}%")
+print(f"CV Std    : {cv_scores.std() * 100:.2f}%")
+```
+
+```
+CV Scores : [0.8042 0.7972 0.8322 0.8252 0.7972]
+CV Mean   : 81.12%
+CV Std    : 1.39%
+```
+
+### VI. Variable Importance Visualization
 
 ```python
 importances = pd.Series(RF.feature_importances_, index = X.columns)
@@ -296,16 +328,16 @@ plt.tight_layout()
 plt.show()
 ```
 
-<img src = "/assets/img/ML/rf/rf_feature_important.png" width = "70%" alt = "rf_feature_important">
+<img src = "/assets/img/ML/rf/rf_feature_important.png" class="mx-auto d-block" width = "70%" alt = "rf_feature_important">
 
 
-### VI. Evaluation Score
+### VII. Evaluation Score
 
 ```python
 pred = RF.predict(X_test)
 cfx = confusion_matrix(y_test, pred)                     # Confusion Matrix
-sensitivity = cfx[0, 0] / (cfx[0, 0] + cfx[0, 1])  # 민감도 계산
-specificity = cfx[1, 1] / (cfx[1, 0] + cfx[1, 1])  # 특이도 계산
+sensitivity = cfx[1, 1] / (cfx[1, 0] + cfx[1, 1])  # 민감도 : TP / (FN + TP)
+specificity = cfx[0, 0] / (cfx[0, 0] + cfx[0, 1])  # 특이도 : TN / (TN + FP)
 
 print(f"정확도(accuracy) : {accuracy_score(y_test, pred) * 100 :.2f}%")
 print(f"Confusion_Matrix :\n{cfx}")
@@ -318,11 +350,11 @@ print(f"특이도(specificity) : {specificity * 100 :.2f}%")
 Confusion_Matrix :
 [[88 15]
  [21 55]]
-민감도(sensitivity) : 85.44%
-특이도(specificity) : 72.37%
+민감도(sensitivity) : 72.37%
+특이도(specificity) : 85.44%
 ```
 
-### VII. Roc Curve
+### VIII. Roc Curve
 ```python
 fpr, tpr, thresholds = roc_curve(y_test, pred)
 
@@ -335,7 +367,7 @@ sens, spec = tpr[ix], 1 - fpr[ix]
 
 # plot the roc curve for the model
 plt.plot([0,1], [0,1], linestyle = '--', markersize = 0.01, color = 'black')  # 중간 기준 선
-plt.plot(fpr, tpr, marker = '.', color = 'black', markersize = 0.01, label = "Ridge AUC = %.2f" % roc_auc_score(y_test, pred))
+plt.plot(fpr, tpr, marker = '.', color = 'black', markersize = 0.01, label = "RF AUC = %.2f" % roc_auc_score(y_test, pred))
 plt.scatter(fpr[ix], tpr[ix], marker = '+', s = 100, color = 'r', 
             label = f"Best threshold = {best_thresh:.3f}, \nSensitivity = {sens:.3f}, \nSpecificity = {spec:.3f}")
 
@@ -349,7 +381,7 @@ plt.legend(loc = 4)
 plt.show()
 ```
 
-<img src = "/assets/img/ML/rf/rf_roc_curve.png" width = "70%" alt = "rf_roc_curve">
+<img src = "/assets/img/ML/rf/rf_roc_curve.png" class="mx-auto d-block" width = "70%" alt = "rf_roc_curve">
 
 ---
 
