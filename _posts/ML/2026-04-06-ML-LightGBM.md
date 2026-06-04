@@ -159,6 +159,23 @@ plt.rcParams['font.family'] = 'AppleGothic'
 
 ```python
 titanic = pd.read_csv('./Data/Titanic.csv')  # 데이터 로드
+titanic
+```
+
+```
+	Survived	Pclass	Name	Sex	Age	SibSp	Parch	Ticket	Fare	Cabin	Embarked
+0	0	3	Braund, Mr. Owen Harris	male	22.0	1	0	A/5 21171	7.2500	NaN	S
+1	1	1	Cumings, Mrs. John Bradley (Florence Briggs Th...	female	38.0	1	0	PC 17599	71.2833	C85	C
+2	1	3	Heikkinen, Miss. Laina	female	26.0	0	0	STON/O2. 3101282	7.9250	NaN	S
+3	1	1	Futrelle, Mrs. Jacques Heath (Lily May Peel)	female	35.0	1	0	113803	53.1000	C123	S
+4	0	3	Allen, Mr. William Henry	male	35.0	0	0	373450	8.0500	NaN	S
+...	...	...	...	...	...	...	...	...	...	...	...
+886	0	2	Montvila, Rev. Juozas	male	27.0	0	0	211536	13.0000	NaN	S
+887	1	1	Graham, Miss. Margaret Edith	female	19.0	0	0	112053	30.0000	B42	S
+888	0	3	Johnston, Miss. Catherine Helen "Carrie"	female	NaN	1	2	W./C. 6607	23.4500	NaN	S
+889	1	1	Behr, Mr. Karl Howell	male	26.0	0	0	111369	30.0000	C148	C
+890	0	3	Dooley, Mr. Patrick	male	32.0	0	0	370376	7.7500	NaN	Q
+891 rows × 11 columns
 ```
 
 ### II. Preprocessing
