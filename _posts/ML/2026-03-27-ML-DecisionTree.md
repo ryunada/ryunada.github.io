@@ -93,26 +93,7 @@ Decision Tree는 분류뿐 아니라 **연속값 예측(회귀)** 도 됩니다.
 ---
 # 4. 트리의 구성 요소
 
-```
-                    ┌──────────────────┐
-                    │   루트 노드       │  ← 트리의 시작점
-                    │  성별 = 여성?    │     가장 중요한 특성으로 첫 분기
-                    └────────┬─────────┘
-                   YES       │        NO
-              ┌──────────────┘──────────────┐
-              ▼                             ▼
-     ┌────────────────┐           ┌─────────────────┐
-     │  내부 노드      │           │   내부 노드      │  ← 중간 질문
-     │ 1등석 또는 2등석?│           │  나이 ≤ 15?    │
-     └───────┬────────┘           └────────┬────────┘
-            YES│   NO                  YES │    NO
-               │    │                      │      │
-               ▼    ▼                      ▼      ▼
-          ┌──────┐ ┌──────┐          ┌──────┐ ┌──────┐
-          │ 리프  │ │ 리프  │          │ 리프  │ │ 리프  │  ← 최종 답
-          │✅생존│ │❌사망│          │✅생존│ │❌사망│
-          └──────┘ └──────┘          └──────┘ └──────┘
-```
+<img src = "/assets/img/ML/dt/dt_tree_structure.png" class = "mx-auto d-block" width = "100%" alt = "dt_tree_structure">
 
 | 구성 요소 | 설명 | 비유 |
 |-----------|------|------|
@@ -183,6 +164,16 @@ $$Entropy = -\sum_{k} p_k \log_2(p_k)$$
 
 $$IG = Impurity_{parent} - \sum_{child} \frac{n_{child}}{n_{parent}} \cdot Impurity_{child}$$
 
+왼쪽 그래프는 p 값에 따라 Gini와 Entropy가 어떻게 변하는지를,  
+오른쪽은 실제 분기 전후의 불순도 변화와 정보 이득 계산 예시를 보여줍니다.
+
+<img src = "/assets/img/ML/dt/dt_gini_entropy.png" class = "mx-auto d-block" width = "100%" alt = "dt_gini_entropy">
+
+> **읽는 법:**   
+> 왼쪽 — 두 곡선 모두 p = 0.5(50 : 50 섞임)일 때 최대, $p = 0$ 또는 $1$(완전 순수)일 때 0.    
+> 오른쪽 — 부모 Gini(0.500)에서 자식 평균 Gini(0.300)를 빼면 정보 이득 0.200.  
+> 이 값이 클수록 "좋은 분기"이므로, 알고리즘은 모든 특성 중 이 값을 최대화하는 분기를 선택합니다.
+
 ---
 # 6. Decision Tree 장・단점
 
@@ -249,6 +240,24 @@ dt_cv = GridSearchCV(
 )  
 dt_cv.fit(X_train, y_train)  
 ```
+
+max_depth 값에 따라 결정 경계가 어떻게 달라지는지 직접 확인해보세요.
+
+<img src = "/assets/img/ML/dt/dt_depth_boundary.png" class = "mx-auto d-block" width = "100%" alt = "dt_depth_boundary">
+
+> **읽는 법:**  
+> 왼쪽에서 오른쪽으로 갈수록 트리가 깊어집니다.  
+> `max_depth = 1`은 경계선 하나로 너무 단순하고, `max_depth = None`은 훈련 데이터를 통째로 외워  
+> 경계가 지나치게 복잡합니다. `max_depth = 2` 정도에서 훈련/테스트 균형이 가장 좋습니다.  
+
+<img src = "/assets/img/ML/dt/dt_overfitting.png" class = "mx-auto d-block" width = "100%" alt = "dt_overfitting">
+
+> **읽는 법:**  
+> 파란선(훈련)은 max_depth가 커질수록 100%에 수렴하지만,  
+> 주황선(테스트)은 `max_depth = 4` 근처에서 정점을 찍고 더 이상 오르지 않습니다.  
+> 두 선이 벌어지기 시작하는 지점이 과적합의 시작점입니다.  
+> 분홍 음영 구간이 과적합 구간 — 이 영역의 `max_depth`는 피해야 합니다.  
+
 ---
 # 7. 한눈에 요약
 
@@ -295,6 +304,17 @@ Decision Tree:
 
 Decision Tree는 **직각 경계(axis-aligned boundary)** 를 만듭니다.  
 곡선은 그릴 수 없지만, 충분한 깊이면 복잡한 패턴도 근사할 수 있습니다.
+
+Decision Tree는 **직각 경계(axis-aligned boundary)** 를 만듭니다.
+곡선은 그릴 수 없지만, 충분한 깊이면 복잡한 패턴도 근사할 수 있습니다.
+
+<img src = "/assets/img/ML/dt/dt_boundary_comparison.png" class = "mx-auto d-block" width = "100%" alt = "dt_boundary_comparison">
+
+> **읽는 법:**  
+> 왼쪽 로지스틱 회귀는 하나의 직선으로 두 클래스를 나눕니다.  
+> 오른쪽 Decision Tree는 수직·수평선의 조합으로 계단 모양 경계를 만듭니다.  
+> 이 데이터처럼 경계가 대각선에 가까울 때는 직각 경계가 불리하지만,  
+> 경계가 수직/수평에 가까운 데이터에서는 Decision Tree가 더 유리합니다.
 
 ---
 # 9. 코드로 보기 — 타이타닉 생존 예측
@@ -449,7 +469,7 @@ plt.show()
 ```
 > 이 시각화가 Decision Tree의 핵심입니다. **"왜 이 예측을 했는가"를 그림으로 설명할 수 있는** 거의 유일한 ML 알고리즘입니다.
 
-<img src = "/assets/img/ML/dt/dt tree visualization.png" class = "mx-auto d-block" width = "100%" alt = "dt tree visualization">
+<img src = "/assets/img/ML/dt/dt_tree_visualization.png" class = "mx-auto d-block" width = "100%" alt = "dt_tree_visualization">
 
 ---
 
@@ -470,4 +490,4 @@ plt.tight_layout()
 plt.show()
 ```
 
-<img src = "/assets/img/ML/dt/dt feature importance.png" class = "mx-auto d-block" width = "100%" alt = "dt feature importance">
+<img src = "/assets/img/ML/dt/dt_feature_importance.png" class = "mx-auto d-block" width = "100%" alt = "dt_feature_importance">
