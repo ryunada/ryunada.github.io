@@ -2,7 +2,7 @@
 title : "[Python] ML-Decision Tree"
 categories:
     - ML
-date: 2026-03-27
+date: 2026-06-07
 toc: true
 toc_label: "Concept"
 toc_sticky: True
