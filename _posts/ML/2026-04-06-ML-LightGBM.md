@@ -192,6 +192,23 @@ titanic[['Survived', 'Pclass', 'Sex', 'Embarked']] = \
 titanic['Age'] = titanic['Age'].astype('int')  # 정수형으로 변환
 
 titanic = pd.get_dummies(titanic, columns = ['Pclass', 'Sex', 'Embarked'], drop_first = True)  # 원-핫 인코딩
+titanic
+```
+
+```
+	Survived	Age	FamSize	Fare	Pclass_2	Pclass_3	Sex_male	Embarked_Q	Embarked_S
+0	0	22	1	7.2500	False	True	True	False	True
+1	1	38	1	71.2833	False	False	False	False	False
+2	1	26	0	7.9250	False	True	False	False	True
+3	1	35	1	53.1000	False	False	False	False	True
+4	0	35	0	8.0500	False	True	True	False	True
+...	...	...	...	...	...	...	...	...	...
+885	0	39	5	29.1250	False	True	False	True	False
+886	0	27	0	13.0000	True	False	True	False	True
+887	1	19	0	30.0000	False	False	False	False	True
+889	1	26	0	30.0000	False	False	True	False	False
+890	0	32	0	7.7500	False	True	True	True	False
+714 rows × 9 columns
 ```
 
 #### II-II. Train & Test Split
