@@ -404,7 +404,6 @@ DT = DecisionTreeClassifier(
    min_samples_leaf = 5,    # 리프 노드에 최소 몇 개의 샘플이 있어야 하는가  
    random_state = 0  
 )  
-DT.fit(X_train, y_train)
 ```
 ---
 ## 9-3. 평가

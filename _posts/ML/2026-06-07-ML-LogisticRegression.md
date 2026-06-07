@@ -44,7 +44,7 @@ Logistic Regression은 본질적으로 **선형 모델 위에 S자 함수를 씌
 > 아래 박스: P(생존) ≥ 0.5이면 생존, < 0.5이면 사망으로 예측합니다.
 ---
 
-# 3. 실제 예시로 보기 (분류 & 회귀)
+# 3. 실제 예시로 보기 (분류 / 회귀)
 
 ## 예시 1 — 타이타닉 생존 예측 (분류)
 
@@ -267,7 +267,6 @@ lr = LogisticRegression(
     max_iter = 1000,   # 수렴 보장을 위해 충분히 크게
     random_state = 0
 )
-lr.fit(X_train, y_train)
 ```
 
 | Parameter | 설명 | Default |
