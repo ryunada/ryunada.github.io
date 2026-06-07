@@ -324,11 +324,11 @@ Decision Tree는 **직각 경계(axis-aligned boundary)** 를 만듭니다.
 from sklearn.tree import DecisionTreeClassifier  
 ​  
 DT = DecisionTreeClassifier(  
-    criterion='gini',      # 분기 기준: 'gini' (기본) 또는 'entropy'  
-    max_depth=5,           # 트리 최대 깊이 — 가장 중요한 과적합 제어 파라미터  
-    min_samples_split=10,  # 노드를 분기하려면 최소 몇 개의 샘플이 필요한가  
-    min_samples_leaf=5,    # 리프 노드에 최소 몇 개의 샘플이 있어야 하는가  
-    random_state=0  
+    criterion = 'gini',      # 분기 기준: 'gini' (기본) 또는 'entropy'  
+    max_depth = 5,           # 트리 최대 깊이 — 가장 중요한 과적합 제어 파라미터  
+    min_samples_split = 10,  # 노드를 분기하려면 최소 몇 개의 샘플이 필요한가  
+    min_samples_leaf = 5,    # 리프 노드에 최소 몇 개의 샘플이 있어야 하는가  
+    random_state = 0  
 )  
 DT.fit(X_train, y_train)
 
@@ -342,6 +342,7 @@ DT.fit(X_train, y_train)
 | `min_samples_leaf`  | `1`          | 리프에 필요한 최소 샘플 수        | 작을수록 과적합 ↑ |
 | `criterion`         | `'gini'`     | 분기 기준 (gini / entropy) | 큰 차이 없음    |
 | `max_features`      | `None`       | 분기 시 고려할 특성 수          | 적을수록 과적합 ↓ |
+
 - `max_depth` : 트리의 최대 깊이를 제한하는 파라미터
 	- 값 변화별 효과
 		- 클수록 → 복잡한 패턴 학습, 과적합 ↑
@@ -377,13 +378,13 @@ titanic = pd.read_csv('./Data/Titanic.csv')
 titanic['FamSize'] = titanic['SibSp'] + titanic['Parch']  
 ​  
 use_cols = ['Survived', 'Pclass', 'Sex', 'Age', 'FamSize', 'Fare', 'Embarked']  
-titanic = titanic[use_cols].dropna(subset=['Age'])  
+titanic = titanic[use_cols].dropna(subset = ['Age'])  
 titanic['Age'] = titanic['Age'].astype(int)  
-titanic = pd.get_dummies(titanic, columns=['Pclass', 'Sex', 'Embarked'], drop_first=True)  
+titanic = pd.get_dummies(titanic, columns = ['Pclass', 'Sex', 'Embarked'], drop_first = True)  
 ​  
 y = titanic['Survived']  
-X = titanic.drop('Survived', axis=1)  
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)  
+X = titanic.drop('Survived', axis = 1)  
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)  
 ​  
 # ⚠️ Decision Tree는 스케일링 불필요 (거리 기반이 아님)  
 # StandardScaler 생략
@@ -394,15 +395,14 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random
 ### 9-2. 모델 학습
 
 ```python
-
 from sklearn.tree import DecisionTreeClassifier  
 ​  
 DT = DecisionTreeClassifier(  
-    criterion='gini',      # 분기 기준: 'gini' (기본) 또는 'entropy'  
-    max_depth=5,           # 트리 최대 깊이 — 가장 중요한 과적합 제어 파라미터  
-    min_samples_split=10,  # 노드를 분기하려면 최소 몇 개의 샘플이 필요한가  
-    min_samples_leaf=5,    # 리프 노드에 최소 몇 개의 샘플이 있어야 하는가  
-    random_state=0  
+   criterion = 'gini',      # 분기 기준: 'gini' (기본) 또는 'entropy'  
+   max_depth = 5,           # 트리 최대 깊이 — 가장 중요한 과적합 제어 파라미터  
+   min_samples_split = 10,  # 노드를 분기하려면 최소 몇 개의 샘플이 필요한가  
+   min_samples_leaf = 5,    # 리프 노드에 최소 몇 개의 샘플이 있어야 하는가  
+   random_state = 0  
 )  
 DT.fit(X_train, y_train)
 ```
@@ -429,7 +429,7 @@ print(f"Sensitivity : {sensitivity * 100:.2f}%")
 print(f"Specificity : {specificity * 100:.2f}%")  
 print(f"ROC AUC     : {roc_auc:.4f}")  
 print()  
-print(classification_report(y_test, pred, target_names=['Died (0)', 'Survived (1)']))
+print(classification_report(y_test, pred, target_names = ['Died (0)', 'Survived (1)']))
 ```
 
 ```
@@ -456,12 +456,12 @@ from sklearn.tree import plot_tree
 plt.figure(figsize=(20, 8))  
 plot_tree(  
     DT,  
-    feature_names=X.columns.tolist(),  
-    class_names=['Died', 'Survived'],  
-    filled=True,          # 클래스별 색상 채우기  
-    rounded=True,  
-    max_depth=3,          # 너무 크면 안 보임 — 상위 3단계만 표시  
-    fontsize=10  
+    feature_names = X.columns.tolist(),  
+    class_names = ['Died', 'Survived'],  
+    filled = True,          # 클래스별 색상 채우기  
+    rounded = True,  
+    max_depth = 3,          # 너무 크면 안 보임 — 상위 3단계만 표시  
+    fontsize = 10  
 )  
 plt.title('Decision Tree — Titanic Survival')  
 plt.tight_layout()  
@@ -469,7 +469,7 @@ plt.show()
 ```
 > 이 시각화가 Decision Tree의 핵심입니다. **"왜 이 예측을 했는가"를 그림으로 설명할 수 있는** 거의 유일한 ML 알고리즘입니다.
 
-<img src = "/assets/img/ML/dt/dt_tree_visualization.png" class = "mx-auto d-block" width = "100%" alt = "dt_tree_visualization">
+<img src = "/assets/img/ML/dt/dt_visualization.png" class = "mx-auto d-block" width = "100%" alt = "dt_visualization">
 
 ---
 
@@ -479,11 +479,11 @@ plt.show()
 import pandas as pd  
 import matplotlib.pyplot as plt  
 ​  
-importances = pd.Series(DT.feature_importances_, index=X.columns)  
-importances = importances.sort_values(ascending=True)  
+importances = pd.Series(DT.feature_importances_, index = X.columns)  
+importances = importances.sort_values(ascending = True)  
 ​  
-plt.figure(figsize=(7, 5))  
-importances.plot(kind='barh', color='steelblue')  
+plt.figure(figsize = (7, 5))  
+importances.plot(kind='barh', color = 'steelblue')  
 plt.xlabel('Feature Importance (Gini 기반)')  
 plt.title('Decision Tree Feature Importance')  
 plt.tight_layout()  
