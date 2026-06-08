@@ -12,7 +12,7 @@ sidebar:
 math: true           # 수식 설정
 ---
 
-# 1. 왜 등장했는가
+## 1. 왜 등장했는가
 
 기존 통계 모델(선형 회귀, 로지스틱 회귀)은 **"직선"으로만 데이터를 나눌 수 있었습니다.**  
 실제 세계의 패턴은 직선보다 복잡한 경우가 많아, 사람이 실제로 의사결정을 내리는 방식인  
@@ -20,7 +20,7 @@ math: true           # 수식 설정
 
 ---
 
-# 2. 핵심 아이디어 — 스무고개
+## 2. 핵심 아이디어 — 스무고개
 
 Decision Tree는 본질적으로 **스무고개**입니다.
 
@@ -43,9 +43,9 @@ Q1. 여성인가?
 
 ---
 
-# 3. 실제 예시로 보기 (분류 / 회귀)
+## 3. 실제 예시로 보기 (분류 / 회귀)
 
-## 예시 1 — 타이타닉 생존 예측 (분류)
+### 예시 1 — 타이타닉 생존 예측 (분류)
 
 ```
 훈련 데이터:
@@ -74,7 +74,7 @@ Q1. 여성인가?
 ```
 
 ---
-## 예시 2 — 집값 예측 (회귀)
+### 예시 2 — 집값 예측 (회귀)
 
 Decision Tree는 분류뿐 아니라 **연속값 예측(회귀)** 도 됩니다.
 
@@ -91,7 +91,7 @@ Decision Tree는 분류뿐 아니라 **연속값 예측(회귀)** 도 됩니다.
 ```
 
 ---
-# 4. 트리의 구성 요소
+## 4. 트리의 구성 요소
 
 <img src = "/assets/img/ML/dt/dt_tree_structure.png" class = "mx-auto d-block" width = "100%" alt = "dt_tree_structure">
 
@@ -105,11 +105,11 @@ Decision Tree는 분류뿐 아니라 **연속값 예측(회귀)** 도 됩니다.
 
 ---
 
-# 5. 어떻게 "좋은 질문"을 찾는가
+## 5. 어떻게 "좋은 질문"을 찾는가
 
 트리가 분기할 때 핵심 문제는 **"어떤 특성(feature)으로, 어떤 기준으로 나눌까?"** 입니다.
 
-## 5-1. 불순도 (Impurity)
+### 5-1. 불순도 (Impurity)
 
 노드 안에 **다양한 클래스가 섞여 있을수록** 불순도가 높습니다.
 
@@ -123,7 +123,7 @@ Decision Tree는 분류뿐 아니라 **연속값 예측(회귀)** 도 됩니다.
 
 ---
 
-## 5-2. 지니 불순도 (Gini Impurity)
+### 5-2. 지니 불순도 (Gini Impurity)
 
 sklearn의 기본값입니다.
 
@@ -146,7 +146,7 @@ Gini = 1 - (0.7² + 0.3²)
 
 ---
 
-## 5-3. 엔트로피 (Entropy)
+### 5-3. 엔트로피 (Entropy)
 
 정보이론에서 온 개념. `criterion='entropy'`로 사용합니다.
 
@@ -157,7 +157,7 @@ $$Entropy = -\sum_{k} p_k \log_2(p_k)$$
 
 ---
 
-## 5-4. 정보 이득 (Information Gain)
+### 5-4. 정보 이득 (Information Gain)
 
 분기 전후의 불순도 감소량입니다.  
 **정보 이득이 가장 큰 특성과 기준으로 분기**합니다.
@@ -175,9 +175,9 @@ $$IG = Impurity_{parent} - \sum_{child} \frac{n_{child}}{n_{parent}} \cdot Impur
 > 이 값이 클수록 "좋은 분기"이므로, 알고리즘은 모든 특성 중 이 값을 최대화하는 분기를 선택합니다.
 
 ---
-# 6. Decision Tree 장・단점
+## 6. Decision Tree 장・단점
 
-## 6-1. ✅ Decision Tree 장점
+### 6-1. ✅ Decision Tree 장점
 
 ```
 1. 결과를 설명해야 할 때
@@ -196,7 +196,7 @@ $$IG = Impurity_{parent} - \sum_{child} \frac{n_{child}}{n_{parent}} \cdot Impur
    → 코드 5줄로 동작하는 베이스라인
 ```
 
-## 6-2. ❌ Decision Tree가 약한 상황
+### 6-2. ❌ Decision Tree가 약한 상황
 
 ```
 1. 데이터가 적을 때
@@ -209,7 +209,7 @@ $$IG = Impurity_{parent} - \sum_{child} \frac{n_{child}}{n_{parent}} \cdot Impur
    → 직각 경계만 그릴 수 있어 곡선 패턴에 불리
 ```
 
-### 6-2-1.  과적합 (Overfitting) 문제
+#### 6-2-1.  과적합 (Overfitting) 문제
 Decision Tree의 가장 큰 약점입니다.
 
 max_depth=None (제한 없음)일 때:  
@@ -259,7 +259,7 @@ max_depth 값에 따라 결정 경계가 어떻게 달라지는지 직접 확인
 > 분홍 음영 구간이 과적합 구간 — 이 영역의 `max_depth`는 피해야 합니다.  
 
 ---
-# 7. 한눈에 요약
+## 7. 한눈에 요약
 
 | 항목           | 내용                                |
 | ------------ | --------------------------------- |
@@ -273,7 +273,7 @@ max_depth 값에 따라 결정 경계가 어떻게 달라지는지 직접 확인
 | **실전 사용**    | 단독보다 Random Forest / GBM의 기반으로 이해 |
 
 ---
-# 8. 다른 알고리즘과 무엇이 다른가
+## 8. 다른 알고리즘과 무엇이 다른가
 
 ### 로지스틱 회귀와 비교
 
@@ -317,7 +317,7 @@ Decision Tree는 **직각 경계(axis-aligned boundary)** 를 만듭니다.
 > 경계가 수직/수평에 가까운 데이터에서는 Decision Tree가 더 유리합니다.
 
 ---
-# 9. 코드로 보기 — 타이타닉 생존 예측
+## 9. 코드로 보기 — 타이타닉 생존 예측
 
 ```python
 
@@ -406,7 +406,7 @@ DT = DecisionTreeClassifier(
 )  
 ```
 ---
-## 9-3. 평가
+### 9-3. 평가
 
 ```python
 from sklearn.metrics import (  
@@ -447,7 +447,7 @@ Survived (1)       0.81      0.71      0.76        76
 weighted avg       0.80      0.80      0.80       179
 ```
 ---
-## 9-4. 트리 시각화
+### 9-4. 트리 시각화
 
 ```python
 from sklearn.tree import plot_tree  
@@ -472,7 +472,7 @@ plt.show()
 
 ---
 
-## 9-6. 특성 중요도
+### 9-6. 특성 중요도
 
 ```python
 import pandas as pd  

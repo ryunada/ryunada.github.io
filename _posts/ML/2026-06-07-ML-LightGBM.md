@@ -12,7 +12,7 @@ sidebar:
 math: true           # 수식 설정
 ---
 
-# 1. 왜 등장했는가
+## 1. 왜 등장했는가
 
 Gradient Boosting은 강력하지만, 모든 특성의 모든 분기점을 탐색하므로 대용량 데이터에서 매우 느렸습니다.  
 LightGBM은 **히스토그램 기반 분기 탐색**과 **리프 우선(Leaf-wise) 성장**으로  
@@ -23,7 +23,7 @@ LightGBM은 **"구간별로 묶어서 빠르게 탐색하면서도 정확도는 
 
 ---
 
-# 2. 핵심 아이디어 — 빠르고 정확한 Gradient Boosting
+## 2. 핵심 아이디어 — 빠르고 정확한 Gradient Boosting
 
 LightGBM은 본질적으로 **Gradient Boosting을 대용량 데이터에 맞게 최적화**한 알고리즘입니다.
 
@@ -31,9 +31,9 @@ LightGBM은 본질적으로 **Gradient Boosting을 대용량 데이터에 맞게
 
 ---
 
-# 3. 실제 예시로 보기 (분류 / 회귀)
+## 3. 실제 예시로 보기 (분류 / 회귀)
 
-## 예시 1 — 타이타닉 생존 예측 (분류)
+### 예시 1 — 타이타닉 생존 예측 (분류)
 
 ```
 훈련 데이터:
@@ -59,7 +59,7 @@ Leaf-wise 성장:
 
 ---
 
-## 예시 2 — 대용량 클릭률 예측 (회귀)
+### 예시 2 — 대용량 클릭률 예측 (회귀)
 
 ```
 데이터: 1억 행 × 200개 특성
@@ -72,7 +72,7 @@ LightGBM:              수십 분
 
 ---
 
-# 4. 알고리즘 구성 요소
+## 4. 알고리즘 구성 요소
 
 <img src = "/assets/img/ML/lgb/lgb_component.png" class = "mx-auto d-block" width = "100%" alt = "lgb_component">
 
@@ -85,9 +85,9 @@ LightGBM:              수십 분
 
 ---
 
-# 5. LightGBM의 핵심 기술
+## 5. LightGBM의 핵심 기술
 
-## 5-1. 히스토그램 기반 분기
+### 5-1. 히스토그램 기반 분기
 
 ```
 기존:      Age 값 정렬 → 모든 분기점 탐색 → O(N × features)
@@ -108,7 +108,7 @@ bins=256 고정 → 데이터 크기와 무관한 탐색 비용
 
 ---
 
-## 5-2. Leaf-wise vs Level-wise
+### 5-2. Leaf-wise vs Level-wise
 
 ```
 Level-wise (기존 GB):     Leaf-wise (LightGBM):
@@ -131,9 +131,9 @@ Level-wise와 Leaf-wise의 트리 성장 차이를 아래 그래프에서 확인
 
 ---
 
-# 6. LightGBM 장・단점
+## 6. LightGBM 장・단점
 
-## 6-1. ✅ LightGBM 장점
+### 6-1. ✅ LightGBM 장점
 
 ```
 1. 매우 빠른 학습 속도
@@ -149,7 +149,7 @@ Level-wise와 Leaf-wise의 트리 성장 차이를 아래 그래프에서 확인
    → One-hot 인코딩 없이도 학습 가능
 ```
 
-## 6-2. ❌ LightGBM이 약한 상황
+### 6-2. ❌ LightGBM이 약한 상황
 
 ```
 1. 소규모 데이터
@@ -162,7 +162,7 @@ Level-wise와 Leaf-wise의 트리 성장 차이를 아래 그래프에서 확인
    → 수백 개 트리의 앙상블 → 블랙박스
 ```
 
-### 6-2-1. Leaf-wise 과적합 문제
+#### 6-2-1. Leaf-wise 과적합 문제
 
 LightGBM의 주요 주의사항입니다.
 
@@ -204,7 +204,7 @@ print(f"Best AUC    : {lgb_cv.best_score_:.4f}")
 
 ---
 
-# 7. 한눈에 요약
+## 7. 한눈에 요약
 
 | 항목 | 내용 |
 | ---- | ---- |
@@ -217,7 +217,7 @@ print(f"Best AUC    : {lgb_cv.best_score_:.4f}")
 
 ---
 
-# 8. 다른 알고리즘과 무엇이 다른가
+## 8. 다른 알고리즘과 무엇이 다른가
 
 ### XGBoost vs LightGBM
 
@@ -240,7 +240,7 @@ Level-wise 트리 성장               Leaf-wise 트리 성장
 
 ---
 
-# 9. 코드로 보기 — 타이타닉 생존 예측
+## 9. 코드로 보기 — 타이타닉 생존 예측
 
 ```python
 from lightgbm import LGBMClassifier
