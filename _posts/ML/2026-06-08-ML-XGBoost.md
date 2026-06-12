@@ -259,7 +259,7 @@ from xgboost import XGBClassifier
 
 ---
 
-#### 9-1. 전처리 (짧게)
+### 9-1. 전처리 (짧게)
 
 ```python
 import pandas as pd
@@ -285,7 +285,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random
 
 ---
 
-#### 9-2. 모델 학습
+### 9-2. 모델 학습
 
 ```python
 xgb = XGBClassifier(
@@ -350,7 +350,7 @@ xgb.fit(
 
 ---
 
-#### 9-3. 평가
+### 9-3. 평가
 
 ```python
 from sklearn.metrics import (
