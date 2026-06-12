@@ -318,7 +318,9 @@ rf = RandomForestClassifier(
 		- `class_weight` : 클래스 불균형 데이터에서 소수 클래스에 더 높은 가중치 부여
 		- `None` : 모든 클래스 동일 가중치
 		- `'balanced'` : 클래스 빈도에 반비례하여 자동 계산 → 불균형 데이터에 권장
+		
 ---
+
 ### 9-1. 전처리 (짧게)
 
 ```python
